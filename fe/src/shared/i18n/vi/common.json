@@ -1,0 +1,37 @@
+{
+  "appName": "WriteStoryApp",
+  "nav": {
+    "library": "Thư viện",
+    "system": "Trạng thái hệ thống"
+  },
+  "connection": {
+    "connecting": "Đang kết nối…",
+    "open": "Đã kết nối",
+    "reconnecting": "Mất kết nối – đang nối lại…",
+    "closed": "Đã ngắt kết nối",
+    "noBackend": "Chưa cấu hình backend"
+  },
+  "library": {
+    "title": "Thư viện",
+    "emptyTitle": "Chưa có truyện nào",
+    "emptyHint": "Tạo truyện đầu tiên sẽ có ở bước F05. Hiện tại bạn có thể kiểm tra kết nối ở trang Trạng thái hệ thống."
+  },
+  "system": {
+    "title": "Trạng thái hệ thống",
+    "backend": "Backend",
+    "statusOk": "Hoạt động bình thường",
+    "noSession": "Chưa có thông tin backend. Chạy `uv run python -m writestory_be --dev` rồi tải lại trang.",
+    "fields": {
+      "appVersion": "Phiên bản",
+      "protocolVersion": "Giao thức",
+      "dataId": "Mã dữ liệu",
+      "startedAt": "Khởi động lúc",
+      "pid": "PID"
+    },
+    "events": "Sự kiện gần nhất",
+    "noEvents": "Chưa có sự kiện.",
+    "mockRuns": "Chạy thử 3 truyện song song (mock)",
+    "mockRunsHint": "Dùng mock provider để xem nhiều truyện cùng stream – chỉ có ở chế độ dev.",
+    "streams": "Văn bản đang stream"
+  }
+}

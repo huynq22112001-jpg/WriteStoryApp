@@ -1,0 +1,1748 @@
+{
+  "sourceRoot": "E:\\Inke\\inkos",
+  "version": "2.0.0",
+  "reviewDate": "2026-10-02",
+  "gitRevision": "8fc2ae57080b9821257dee3e37cc677e2b6f389a",
+  "evidenceLevel": "static source inventory; not runtime verified",
+  "apiRoutes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/works",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2751
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/works/:id",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2762
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/works/:id/artifacts",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2781
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/works/:id/artifacts/:artifactId/revisions/:revisionId",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2792
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/works/:id/artifacts/:artifactId/revisions/:revisionId/adopt",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2817
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/episodes/:id",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2829
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/profiles",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2835
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/profiles",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2836
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/profiles/:id",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2843
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/episodes",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2850
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2870
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2888
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/create",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2902
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/create-status",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 2989
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/chapters/:num",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3008
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/chapters/:num/workspace",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3026
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/books/:id/chapters/:num/workspace/brief",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3053
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/chapters/:num/workspace/inspiration",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3068
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/chapters/:num/versions/:versionId",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3132
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/chapters/:num/versions/:versionId/restore",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3147
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/books/:id/chapters/:num",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3180
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/books/:id/chapters/:num",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3197
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/truth/:file{.+}",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3286
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/analytics",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3316
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/write-next",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3328
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/foundation/revise",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3370
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/events",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3396
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/services",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3426
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/services/config",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3479
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/services/config/import-env",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3494
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/services/config",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3542
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cover/config",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3575
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/cover/config",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3606
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cover/secret/:service",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3639
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/cover/secret/:service",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3648
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/services/:service",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3676
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/services/:service/test",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3699
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/services/:service/secret",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3778
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/services/:service/secret",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3802
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/services/models",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3810
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/services/models/custom",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3854
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/services/:service/models",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3893
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3944
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/skills",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3972
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/skills/:skillId/documents",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3977
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/skills/:skillId/documents",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 3998
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/skills/import",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4022
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/skills/:skillId",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4030
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project/files/:file{.+}",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4041
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project/artifacts/:file{.+}",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4057
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/project/artifacts/:file{.+}",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4073
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/project",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4112
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project/detection",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4136
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/project/detection",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4141
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/truth",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4161
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/daemon",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4224
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/daemon/start",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4230
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/daemon/stop",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4269
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/logs",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4281
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/play/runs/:worldId/:runId",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4299
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/play/runs/:worldId/:runId/image-settings",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4368
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/play/runs/:worldId/:runId/generate-image",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4382
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/play/runs/:worldId/:runId/images/:file",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4401
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4422
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions/:sessionId",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4428
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sessions",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4436
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/sessions/:sessionId/play-mode",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4494
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/sessions/:sessionId",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4512
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/sessions/:sessionId",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4527
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sessions/:sessionId/abort",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4545
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agent",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 4622
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/project/language",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5529
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/audit/:chapter",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5546
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/revise/:chapter",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5571
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/export",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5606
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/export-save",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5631
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project/model-overrides",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5669
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/project/model-overrides",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5674
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project/default-model",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5686
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/project/default-model",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5701
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project/research-search",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5728
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/project/research-search",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5733
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/project/notify",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5744
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/project/notify",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5749
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/books/:id/truth/:file{.+}",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5761
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/books/:id",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5790
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/books/:id",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5805
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/rewrite/:chapter",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5832
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/resync/:chapter",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5875
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/detect/stats",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5902
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/style/analyze",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5917
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/style/import",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5940
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/import/chapters",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5969
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/import/canon",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 5999
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/import/canon/upload",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6023
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/books/:id/import/canon-file",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6034
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/fanfic/init",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6072
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/books/:id/fanfic",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6132
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/spinoff/init",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6145
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/imitation/init",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6216
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/radar/scan",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6281
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/radar/history",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6295
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/doctor",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6306
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/interactive-films",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6351
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/translations",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6363
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/translations/upload",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6383
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/translations/create",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6389
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/translations/:id",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6427
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/translations/:id/run",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6466
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/translations/:id/export",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6499
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/:id/story-graph/delta",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6515
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/story-graph",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6525
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/export",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6542
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/story-graph/validation",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6565
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/story-graph/analysis",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6577
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/export/json",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6585
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/export/ink",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6598
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/export/html",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6611
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects/:id/preview/html",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6636
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/:id/nodes/:nodeId/image",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6642
+    },
+    {
+      "method": "GET",
+      "path": "/assets/*",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6681
+    },
+    {
+      "method": "GET",
+      "path": "*",
+      "source": "packages/studio/src/api/server.ts",
+      "line": 6706
+    }
+  ],
+  "cliModules": [
+    {
+      "source": "packages/cli/src/commands/agent.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "agent",
+          "line": 5
+        },
+        {
+          "kind": ".description",
+          "value": "Natural language agent mode (LLM orchestrates via tool-use)",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/analytics.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "analytics",
+          "line": 5
+        },
+        {
+          "kind": ".description",
+          "value": "Show analytics and token stats for a book",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/auto.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "auto",
+          "line": 24
+        },
+        {
+          "kind": ".description",
+          "value": "Auto-write chapters until the book reaches a target chapter number: auto [book-id] <target-chapter>",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/book.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "book",
+          "line": 29
+        },
+        {
+          "kind": ".description",
+          "value": "Manage books",
+          "line": 30
+        },
+        {
+          "kind": ".command",
+          "value": "create",
+          "line": 33
+        },
+        {
+          "kind": ".description",
+          "value": "Create a new book with AI-generated foundation",
+          "line": 34
+        },
+        {
+          "kind": ".command",
+          "value": "update",
+          "line": 142
+        },
+        {
+          "kind": ".description",
+          "value": "Update book settings",
+          "line": 143
+        },
+        {
+          "kind": ".command",
+          "value": "list",
+          "line": 201
+        },
+        {
+          "kind": ".description",
+          "value": "List all books",
+          "line": 202
+        },
+        {
+          "kind": ".command",
+          "value": "delete",
+          "line": 251
+        },
+        {
+          "kind": ".description",
+          "value": "Delete a book and all its chapters, truth files, and snapshots",
+          "line": 252
+        },
+        {
+          "kind": ".command",
+          "value": "backup",
+          "line": 302
+        },
+        {
+          "kind": ".description",
+          "value": "Snapshot the whole book directory into .inkos/backups/<book-id>/ (or list backups with --list)",
+          "line": 303
+        },
+        {
+          "kind": ".command",
+          "value": "restore",
+          "line": 345
+        },
+        {
+          "kind": ".description",
+          "value": "Restore a whole-book backup (the current book state is automatically backed up first)",
+          "line": 346
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/chapter.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "chapter",
+          "line": 16
+        },
+        {
+          "kind": ".description",
+          "value": "Manage chapters",
+          "line": 17
+        },
+        {
+          "kind": ".command",
+          "value": "sync",
+          "line": 20
+        },
+        {
+          "kind": ".description",
+          "value": "Recount chapter word counts from chapter files and update chapters/index.json",
+          "line": 21
+        },
+        {
+          "kind": ".command",
+          "value": "delete",
+          "line": 61
+        },
+        {
+          "kind": ".description",
+          "value": "Delete the latest chapter: move its file to chapters/.trash/ and roll the index and story state back",
+          "line": 62
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/config.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "config",
+          "line": 8
+        },
+        {
+          "kind": ".description",
+          "value": "Manage project configuration",
+          "line": 9
+        },
+        {
+          "kind": ".command",
+          "value": "set",
+          "line": 12
+        },
+        {
+          "kind": ".description",
+          "value": "Set a configuration value",
+          "line": 13
+        },
+        {
+          "kind": ".command",
+          "value": "set-global",
+          "line": 89
+        },
+        {
+          "kind": ".description",
+          "value": "Set global LLM config (~/.inkos/.env), shared by all projects",
+          "line": 90
+        },
+        {
+          "kind": ".command",
+          "value": "show-global",
+          "line": 126
+        },
+        {
+          "kind": ".description",
+          "value": "Show global LLM config (~/.inkos/.env)",
+          "line": 127
+        },
+        {
+          "kind": ".command",
+          "value": "show",
+          "line": 142
+        },
+        {
+          "kind": ".description",
+          "value": "Show current project configuration",
+          "line": 143
+        },
+        {
+          "kind": ".command",
+          "value": "set-model",
+          "line": 175
+        },
+        {
+          "kind": ".description",
+          "value": "Set model override for a specific agent (with optional provider routing)",
+          "line": 176
+        },
+        {
+          "kind": ".command",
+          "value": "remove-model",
+          "line": 227
+        },
+        {
+          "kind": ".description",
+          "value": "Remove model override for a specific agent (falls back to default)",
+          "line": 228
+        },
+        {
+          "kind": ".command",
+          "value": "show-models",
+          "line": 253
+        },
+        {
+          "kind": ".description",
+          "value": "Show model routing for all agents",
+          "line": 254
+        },
+        {
+          "kind": ".command",
+          "value": "list-models <service>",
+          "line": 301
+        },
+        {
+          "kind": ".description",
+          "value": "List available models for a service (with maxOutput / contextWindow / abilities)",
+          "line": 302
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/daemon.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "up",
+          "line": 10
+        },
+        {
+          "kind": ".description",
+          "value": "Start the InkOS daemon (autonomous mode)",
+          "line": 11
+        },
+        {
+          "kind": "new Command",
+          "value": "down",
+          "line": 98
+        },
+        {
+          "kind": ".description",
+          "value": "Stop the InkOS daemon",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/detect.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "detect",
+          "line": 13
+        },
+        {
+          "kind": ".description",
+          "value": "Run AIGC detection on chapters",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/doctor.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "doctor",
+          "line": 108
+        },
+        {
+          "kind": ".description",
+          "value": "Check environment and project health",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/export.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "export",
+          "line": 6
+        },
+        {
+          "kind": ".description",
+          "value": "Export book chapters to a single file",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/fanfic.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "fanfic",
+          "line": 21
+        },
+        {
+          "kind": ".description",
+          "value": "Fan fiction writing tools",
+          "line": 22
+        },
+        {
+          "kind": ".command",
+          "value": "init",
+          "line": 25
+        },
+        {
+          "kind": ".description",
+          "value": "Create a fanfic book from external source material",
+          "line": 26
+        },
+        {
+          "kind": ".command",
+          "value": "show",
+          "line": 120
+        },
+        {
+          "kind": ".description",
+          "value": "Display parsed fanfic canon",
+          "line": 121
+        },
+        {
+          "kind": ".command",
+          "value": "refresh",
+          "line": 157
+        },
+        {
+          "kind": ".description",
+          "value": "Re-import source material and regenerate fanfic canon",
+          "line": 158
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/forecast.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "forecast",
+          "line": 16
+        },
+        {
+          "kind": ".description",
+          "value": "Narrative forecast: compare non-canonical future branches before writing",
+          "line": 17
+        },
+        {
+          "kind": ".command",
+          "value": "create",
+          "line": 20
+        },
+        {
+          "kind": ".description",
+          "value": "Create isolated candidate future branches from the current canon",
+          "line": 21
+        },
+        {
+          "kind": ".command",
+          "value": "show",
+          "line": 70
+        },
+        {
+          "kind": ".description",
+          "value": "Show a narrative forecast and re-check it against the current canon (marks it stale when canon changed)",
+          "line": 71
+        },
+        {
+          "kind": ".command",
+          "value": "select",
+          "line": 105
+        },
+        {
+          "kind": ".description",
+          "value": "Select a branch: writes only selected-branch-plan.md; canonical files are never modified",
+          "line": 106
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/import.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "import",
+          "line": 19
+        },
+        {
+          "kind": ".description",
+          "value": "Import external data into a book",
+          "line": 20
+        },
+        {
+          "kind": ".command",
+          "value": "canon",
+          "line": 23
+        },
+        {
+          "kind": ".description",
+          "value": "Import parent book's canon for spinoff writing",
+          "line": 24
+        },
+        {
+          "kind": ".command",
+          "value": "chapters",
+          "line": 71
+        },
+        {
+          "kind": ".description",
+          "value": "Import existing chapters for continuation writing. Reverse-engineers all truth files.",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/init.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "init",
+          "line": 7
+        },
+        {
+          "kind": ".description",
+          "value": "Initialize an InkOS project (current directory by default)",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/interact.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "interact",
+          "line": 50
+        },
+        {
+          "kind": ".description",
+          "value": "Run a natural-language agent interaction against the current project",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/radar.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "radar",
+          "line": 7
+        },
+        {
+          "kind": ".description",
+          "value": "Market intelligence",
+          "line": 8
+        },
+        {
+          "kind": ".command",
+          "value": "scan",
+          "line": 11
+        },
+        {
+          "kind": ".description",
+          "value": "Scan market for opportunities",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/review.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "review",
+          "line": 5
+        },
+        {
+          "kind": ".description",
+          "value": "Show persisted review observations",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/revise.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "revise",
+          "line": 20
+        },
+        {
+          "kind": ".description",
+          "value": "Revise a chapter from user direction and review observations",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/short-fiction.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "short",
+          "line": 23
+        },
+        {
+          "kind": ".description",
+          "value": "Short fiction production workflow",
+          "line": 24
+        },
+        {
+          "kind": ".command",
+          "value": "revise",
+          "line": 26
+        },
+        {
+          "kind": ".description",
+          "value": "Revise a complete short-fiction Work using its review and update its sales package",
+          "line": 27
+        },
+        {
+          "kind": ".command",
+          "value": "run",
+          "line": 50
+        },
+        {
+          "kind": ".description",
+          "value": "Run a short fiction chain from a direction",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/status.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "status",
+          "line": 5
+        },
+        {
+          "kind": ".description",
+          "value": "Show project status",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/studio.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "studio",
+          "line": 241
+        },
+        {
+          "kind": ".description",
+          "value": "Start InkOS Studio web workbench",
+          "line": 242
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/style.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "style",
+          "line": 11
+        },
+        {
+          "kind": ".description",
+          "value": "Compile a reference text into an operational style guide",
+          "line": 12
+        },
+        {
+          "kind": ".command",
+          "value": "import",
+          "line": 15
+        },
+        {
+          "kind": ".description",
+          "value": "Generate and import a Skill-based style guide into a book",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/translate.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "translate",
+          "line": 14
+        },
+        {
+          "kind": ".description",
+          "value": "Translate and localize novels/scripts across languages",
+          "line": 15
+        },
+        {
+          "kind": ".command",
+          "value": "init",
+          "line": 18
+        },
+        {
+          "kind": ".description",
+          "value": "Create a translation project from EPUB/PDF/TXT/Markdown",
+          "line": 19
+        },
+        {
+          "kind": ".command",
+          "value": "run",
+          "line": 59
+        },
+        {
+          "kind": ".description",
+          "value": "Translate pending segments and write a review report",
+          "line": 60
+        },
+        {
+          "kind": ".command",
+          "value": "export",
+          "line": 102
+        },
+        {
+          "kind": ".description",
+          "value": "Export translated text to Markdown/TXT/EPUB",
+          "line": 103
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/tui.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "tui",
+          "line": 9
+        },
+        {
+          "kind": ".description",
+          "value": "Open the InkOS project workspace TUI",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/update.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "update",
+          "line": 5
+        },
+        {
+          "kind": ".description",
+          "value": "Update InkOS to the latest version",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/work.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "work",
+          "line": 11
+        },
+        {
+          "kind": ".description",
+          "value": "Inspect creative Works, artifacts, revisions, and Episodes",
+          "line": 12
+        },
+        {
+          "kind": ".command",
+          "value": "migrate",
+          "line": 14
+        },
+        {
+          "kind": ".description",
+          "value": "Preview or copy legacy projects into the Work library",
+          "line": 15
+        },
+        {
+          "kind": ".command",
+          "value": "list",
+          "line": 29
+        },
+        {
+          "kind": ".description",
+          "value": "List every creative Work across all content types",
+          "line": 30
+        },
+        {
+          "kind": ".command",
+          "value": "show",
+          "line": 65
+        },
+        {
+          "kind": ".description",
+          "value": "Show one Work with artifact revisions and recent Episodes",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "source": "packages/cli/src/commands/write.ts",
+      "declarations": [
+        {
+          "kind": "new Command",
+          "value": "write",
+          "line": 26
+        },
+        {
+          "kind": ".description",
+          "value": "Write chapters",
+          "line": 27
+        },
+        {
+          "kind": ".command",
+          "value": "next",
+          "line": 30
+        },
+        {
+          "kind": ".description",
+          "value": "Write the next chapter for a book",
+          "line": 31
+        },
+        {
+          "kind": ".command",
+          "value": "rewrite",
+          "line": 132
+        },
+        {
+          "kind": ".description",
+          "value": "Re-generate a specific chapter: rewrite [book-id] <chapter>",
+          "line": 133
+        },
+        {
+          "kind": ".command",
+          "value": "sync",
+          "line": 287
+        },
+        {
+          "kind": ".description",
+          "value": "Rebuild truth files and SQLite indexes from the latest edited chapter body",
+          "line": 288
+        }
+      ]
+    }
+  ],
+  "uiRouteNames": [
+    "analytics",
+    "book",
+    "book-create",
+    "book-settings",
+    "chapter",
+    "chat",
+    "daemon",
+    "dashboard",
+    "doctor",
+    "film",
+    "film-author",
+    "film-studio",
+    "flow",
+    "import",
+    "logs",
+    "play",
+    "project-settings",
+    "radar",
+    "service-detail",
+    "services",
+    "style",
+    "translation",
+    "truth",
+    "work",
+    "work-chat"
+  ],
+  "builtInSkills": [
+    {
+      "id": "inkos-continuation-writing",
+      "source": "packages/core/skills/inkos-continuation-writing/SKILL.md",
+      "description": "从导入正文重建正典与运行时状态，并在原续写或系列新作边界内继续创作。"
+    },
+    {
+      "id": "inkos-fanfic-writing",
+      "source": "packages/core/skills/inkos-fanfic-writing/SKILL.md",
+      "description": "基于外部正典创作同人作品，管理正典边界、角色声音与允许偏离。"
+    },
+    {
+      "id": "inkos-imitation-writing",
+      "source": "packages/core/skills/inkos-imitation-writing/SKILL.md",
+      "description": "从参考文本提取可迁移的文体方法，为全新故事建立可执行风格指纹。"
+    },
+    {
+      "id": "inkos-interactive-film",
+      "source": "packages/core/skills/inkos-interactive-film/SKILL.md",
+      "description": "互动影游的剧情树、变量旗标、可拍节点、多结局与资产连续性方法。Used for creation and authoring of interactive-film projects."
+    },
+    {
+      "id": "inkos-long-market-research",
+      "source": "packages/core/skills/inkos-long-market-research/SKILL.md",
+      "description": "长篇网文市场、榜单、平台趋势与对标研究。Use for evidence-based long-form fiction market research, not for ordinary drafting."
+    },
+    {
+      "id": "inkos-long-story-analysis",
+      "source": "packages/core/skills/inkos-long-story-analysis/SKILL.md",
+      "description": "长篇小说拆稿、文风分析与可迁移机制提炼。Use when analyzing a full novel or long sample without copying its expression."
+    },
+    {
+      "id": "inkos-long-writing",
+      "source": "packages/core/skills/inkos-long-writing/SKILL.md",
+      "description": "长篇小说的场景构造、人物因果、信息释放与连载节奏。Used by InkOS long-form workers as their shared craft method."
+    },
+    {
+      "id": "inkos-play-illustration",
+      "source": "packages/core/skills/inkos-play-illustration/SKILL.md",
+      "description": "互动世界场景和实体的插画方法，保持画面与当前事实一致，避免把游戏规则画成虚构界面。"
+    },
+    {
+      "id": "inkos-play-world",
+      "source": "packages/core/skills/inkos-play-world/SKILL.md",
+      "description": "品类中立的开放世界与分支互动推进方法。Used by InkOS Play workers for coherent action, state, time, and scene progression."
+    },
+    {
+      "id": "inkos-script-writing",
+      "source": "packages/core/skills/inkos-script-writing/SKILL.md",
+      "description": "小说、创意与大纲到可演剧本的改编方法。Used for script and short-drama production."
+    },
+    {
+      "id": "inkos-short-market-research",
+      "source": "packages/core/skills/inkos-short-market-research/SKILL.md",
+      "description": "商业短篇市场、平台样本、标题与移动端阅读趋势研究。Use for evidence-based short-fiction market research."
+    },
+    {
+      "id": "inkos-short-story-analysis",
+      "source": "packages/core/skills/inkos-short-story-analysis/SKILL.md",
+      "description": "商业短篇拆稿、情绪链、证据链和反转机制分析。Use to deconstruct a short story into transferable craft."
+    },
+    {
+      "id": "inkos-short-writing",
+      "source": "packages/core/skills/inkos-short-writing/SKILL.md",
+      "description": "商业短篇的构思、一次写完、整篇审改与包装。Use for confirmed standalone short-fiction production."
+    },
+    {
+      "id": "inkos-spinoff-writing",
+      "source": "packages/core/skills/inkos-spinoff-writing/SKILL.md",
+      "description": "从既有 Work 正典派生番外，保持母本事实同时建立独立的侧篇弧线。"
+    },
+    {
+      "id": "inkos-story-cover",
+      "source": "packages/core/skills/inkos-story-cover/SKILL.md",
+      "description": "根据作品、平台与用户视觉要求设计或生成封面。Use for story-cover direction and confirmed cover generation."
+    },
+    {
+      "id": "inkos-story-deslop",
+      "source": "packages/core/skills/inkos-story-deslop/SKILL.md",
+      "description": "识别并修复空泛、模板化、总结腔和其他AI写作痕迹，同时保留作者声音。Use for semantic prose cleanup, not keyword deletion."
+    },
+    {
+      "id": "inkos-story-import",
+      "source": "packages/core/skills/inkos-story-import/SKILL.md",
+      "description": "导入已有小说、逆向重建设定与续写工程，并区分母本参考。Use for importing manuscripts or attaching external canon safely."
+    },
+    {
+      "id": "inkos-story-review",
+      "source": "packages/core/skills/inkos-story-review/SKILL.md",
+      "description": "按题材、目标读者和用户标准审稿，展示具体问题并协作修订。Use for chapter or manuscript review with transparent criteria."
+    },
+    {
+      "id": "inkos-storyboard",
+      "source": "packages/core/skills/inkos-storyboard/SKILL.md",
+      "description": "剧本与叙事文本到可拍、可画、可生图分镜的视觉拆解方法。Used for storyboard and image-prompt production."
+    },
+    {
+      "id": "inkos-translation",
+      "source": "packages/core/skills/inkos-translation/SKILL.md",
+      "description": "长文任意语言互译、术语一致性、分段续跑与章节审校方法。Used by InkOS translation workers."
+    }
+  ],
+  "providerEndpointModules": [
+    "ai360",
+    "anthropic",
+    "astronCodingPlan",
+    "baichuan",
+    "bailian",
+    "bailianCodingPlan",
+    "custom",
+    "deepseek",
+    "giteeai",
+    "githubCopilot",
+    "glmCodingPlan",
+    "google",
+    "hunyuan",
+    "infiniai",
+    "internlm",
+    "kimiCode",
+    "kimiCodingPlan",
+    "kkaiapi",
+    "lmstudio",
+    "longcat",
+    "minimax",
+    "minimaxCodingPlan",
+    "mistral",
+    "modelscope",
+    "moonshot",
+    "newapi",
+    "ollama",
+    "openai",
+    "opencodeCodingPlan",
+    "openrouter",
+    "ppio",
+    "qiniu",
+    "sensenova",
+    "siliconcloud",
+    "spark",
+    "stepfun",
+    "tencentcloud",
+    "volcengine",
+    "volcengineCodingPlan",
+    "wenxin",
+    "xai",
+    "xiaomimimo",
+    "zeroone",
+    "zhipu"
+  ],
+  "registeredProviderConstants": [
+    "ANTHROPIC",
+    "OPENAI",
+    "GOOGLE",
+    "DEEPSEEK",
+    "MINIMAX",
+    "MOONSHOT",
+    "ZHIPU",
+    "SILICONCLOUD",
+    "BAILIAN",
+    "VOLCENGINE",
+    "HUNYUAN",
+    "BAICHUAN",
+    "STEPFUN",
+    "WENXIN",
+    "SPARK",
+    "SENSENOVA",
+    "TENCENTCLOUD",
+    "XIAOMI_MIMO",
+    "LONGCAT",
+    "INTERNLM",
+    "ZEROONE",
+    "AI360",
+    "OLLAMA",
+    "LMSTUDIO",
+    "OPENROUTER",
+    "CUSTOM",
+    "MISTRAL",
+    "XAI",
+    "NEWAPI",
+    "GITHUB_COPILOT",
+    "KKAIAPI",
+    "KIMI_CODING_PLAN",
+    "KIMI_CODE",
+    "MINIMAX_CODING_PLAN",
+    "BAILIAN_CODING_PLAN",
+    "GLM_CODING_PLAN",
+    "VOLCENGINE_CODING_PLAN",
+    "OPENCODE_CODING_PLAN",
+    "ASTRON_CODING_PLAN"
+  ],
+  "apiRouteCounts": {
+    "static": 2,
+    "api": 120
+  }
+}

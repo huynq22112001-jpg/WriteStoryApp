@@ -1,0 +1,16 @@
+[project]
+name = "writestory-ai"
+version = "0.1.0"
+description = "WriteStoryApp – package AI: contracts, ports, providers, workflows, gói ngôn ngữ"
+requires-python = ">=3.14"
+dependencies = [
+    "pydantic>=2.11",
+    "httpx>=0.28",
+]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/writestory_ai"]

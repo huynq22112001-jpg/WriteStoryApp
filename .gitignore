@@ -1,0 +1,57 @@
+# Dữ liệu cá nhân/runtime không đưa vào source control.
+/data/*
+!/data/.gitkeep
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+.coverage
+.coverage.*
+htmlcov/
+
+# JS
+node_modules/
+fe/dist/
+*.tsbuildinfo
+.vite/
+coverage/
+npm-debug.log*
+pnpm-debug.log*
+
+# Log / DB / file tạm phát sinh ngoài /data
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.tmp
+
+# Desktop / đóng gói
+desktop/src-tauri/target/
+desktop/src-tauri/binaries/
+desktop/src-tauri/resources/backend/
+
+# Môi trường và secret cục bộ
+.env
+.env.local
+.env.*.local
+*.secret
+*.pem
+*.key
+
+# Claude Code: cấu hình cá nhân
+.claude/settings.local.json
+
+# Hệ điều hành / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+be/tests/conftest.py

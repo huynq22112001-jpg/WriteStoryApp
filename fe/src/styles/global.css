@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Font tiếng Việt đóng gói offline (Fontsource) sẽ thêm ở bước đầu của F05/F07 (UI §3). */
+@theme {
+  --font-sans: "Be Vietnam Pro", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Noto Serif", Georgia, serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-stone-50 text-stone-900 antialiased;
+  font-family: var(--font-sans);
+}

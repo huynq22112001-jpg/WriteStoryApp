@@ -1,0 +1,3 @@
+# F03 — AI
+
+Không áp dụng – lý do: onboarding và vault là phần cấu hình/bảo mật của BE và FE; không gọi model, không có prompt hay workflow. Package AI không đọc vault và không giữ API key: theo Arch §6–§7, BE (`be/src/writestory_be/infrastructure/ai/factory.py`, F04) tiêm vào adapter provider của AI một hàm lấy key (`Callable[[], Awaitable[str]]`) bọc `SecretStore.get` của F03, được gọi ngay trước mỗi request; `ai/` không import `writestory_be`, không cache key lâu hơn một request và không truy cập `data/secrets.enc`. Hình dạng chính xác của tham số này thuộc contract provider của F04. Việc kiểm tra kết nối và lấy danh sách model trong bước 3 của wizard thuộc F04.

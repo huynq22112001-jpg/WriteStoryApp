@@ -1,0 +1,39 @@
+[project]
+name = "writestory-workspace"
+version = "0.1.0"
+description = "WriteStoryApp – uv workspace gốc (không phải package phát hành)"
+requires-python = ">=3.14"
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["be", "ai"]
+
+[tool.uv.sources]
+writestory-ai = { workspace = true }
+writestory-be = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "writestory-be",
+    "writestory-ai",
+    "pytest>=8.4",
+    "pytest-asyncio>=1.2",
+    "httpx>=0.28",
+    "ruff>=0.13",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["ai/tests", "be/tests"]
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+src = ["be/src", "ai/src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "ASYNC", "RUF"]
