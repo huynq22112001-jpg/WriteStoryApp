@@ -10,8 +10,8 @@ Máy dev có đủ công cụ để build FE, BE, AI và desktop.
 
 - [x] Node ≥ 22.16 (đang có 24.15) và pnpm ≥ 10.
 - [x] Rust stable (đang có 1.98) – cần cho S07.
-- [ ] uv (quản lý Python, venv, lockfile).
-- [ ] CPython 3.14 bản GIL tiêu chuẩn do uv quản lý (Plan §2, §24).
+- [x] uv 0.12.22 (quản lý Python, venv, lockfile).
+- [x] CPython 3.14.8 bản GIL tiêu chuẩn do uv quản lý (Plan §2, §24).
 - [ ] Windows: Microsoft C++ Build Tools (Tauri/Rust) và WebView2 Runtime (có sẵn trên Windows 11).
 - [ ] macOS (khi build Mac): Xcode Command Line Tools.
 

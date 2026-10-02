@@ -14,7 +14,10 @@ class Message(BaseModel):
 
 
 class GenerationRequest(BaseModel):
-    """Một lời gọi sinh văn bản. `effort=None` = không gửi tham số, dùng mặc định provider (Plan §7.1)."""
+    """Một lời gọi sinh văn bản.
+
+    `effort=None` nghĩa là không gửi tham số và dùng mặc định provider (Plan §7.1).
+    """
 
     model: str
     messages: list[Message]

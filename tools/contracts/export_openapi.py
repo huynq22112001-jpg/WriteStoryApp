@@ -18,7 +18,7 @@ def main() -> None:
     OUTPUT.write_text(
         json.dumps(schema, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
-    print(f"Đã ghi {OUTPUT.relative_to(ROOT)}")
+    print(f"Exported {OUTPUT.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

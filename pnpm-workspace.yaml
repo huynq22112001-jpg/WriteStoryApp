@@ -1,2 +1,6 @@
 packages:
   - fe
+  - desktop
+
+overrides:
+  '@asamuzakjp/dom-selector': 9.2.2

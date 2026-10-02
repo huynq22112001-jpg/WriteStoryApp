@@ -1,6 +1,6 @@
 # S03 — Base package BE (`writestory-be`)
 
-Trạng thái: code-ready (chờ S00 để chạy test). Tính năng: F00 (bootstrap, bảo mật), F01 (lỗi, sự kiện), F02 (SQLite engine). Phụ thuộc: S01, S02.
+Trạng thái: done (38 test pass, Ruff pass). Tính năng: F00 (bootstrap, bảo mật), F01 (lỗi, sự kiện), F02 (SQLite engine). Phụ thuộc: S01, S02.
 
 ## Mục tiêu
 

@@ -6,7 +6,11 @@ from typing import TYPE_CHECKING, Any
 
 from writestory_be.bootstrap.protocol import BootstrapConfig
 from writestory_be.core.clock import utcnow_iso
+from writestory_be.infrastructure.secrets.secret_store import SecretStore
+from writestory_be.infrastructure.secrets.session_store import SessionSecretStore
+from writestory_be.infrastructure.secrets.vault import VaultService
 from writestory_be.jobs.events import EventBus
+from writestory_be.modules.vault.settings import VaultSettingsState, VaultSettingsStore
 
 if TYPE_CHECKING:
     import uvicorn
@@ -24,9 +28,23 @@ class Runtime:
     started_at: str = field(default_factory=utcnow_iso)
     pid: int = field(default_factory=os.getpid)
     port: int | None = None
+    schema_version: str | None = None
+    interrupted_jobs: list[str] = field(default_factory=list)
+    interrupted_job_count: int = 0
     shutting_down: bool = False
     server: uvicorn.Server | None = None
     background_tasks: set[asyncio.Task[Any]] = field(default_factory=set)
+    vault: VaultService = field(init=False)
+    session_secrets: SessionSecretStore = field(default_factory=SessionSecretStore)
+    secrets: SecretStore = field(init=False)
+    vault_settings_store: VaultSettingsStore = field(init=False)
+
+    def __post_init__(self) -> None:
+        self.vault = VaultService(self.config.data_root / "secrets.enc")
+        self.secrets = SecretStore(self.vault, self.session_secrets)
+        self.vault_settings_store = VaultSettingsStore(
+            self.config.data_root / "db" / "app.sqlite3", VaultSettingsState()
+        )
 
     @property
     def data_root(self) -> Path:

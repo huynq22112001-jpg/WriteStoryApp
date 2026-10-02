@@ -144,13 +144,13 @@ Giá trị secret **không bao giờ** có trong response. `ref` hợp lệ: `^[
 
 ## Việc cần làm
 
-- [ ] Pin `cryptography>=44` trong `be/pyproject.toml`; kiểm Argon2id có trong bản PyInstaller (smoke F00).
-- [ ] `vault.py` (định dạng, KDF, AAD, ghi nguyên tử) + test vector cố định.
-- [ ] `session_store.py`, `secret_store.py`, `redaction.py`.
-- [ ] `modules/vault/` (router, schemas với `SecretStr`, service, throttle).
-- [ ] Ẩn `input` trong lỗi validate cho route vault/secrets.
+- [x] Pin `cryptography>=44` trong `be/pyproject.toml`; kiểm Argon2id có trong bản PyInstaller (smoke F00).
+- [x] `vault.py` (định dạng, KDF, AAD, ghi nguyên tử) + test vector cố định.
+- [x] `session_store.py`, `secret_store.py`, `redaction.py`.
+- [x] `modules/vault/` (router, schemas với `SecretStr`, service, throttle).
+- [x] Ẩn `input` trong lỗi validate cho route vault/secrets.
 - [ ] `modules/onboarding/` + tự hoàn tất khi đã có tác phẩm.
-- [ ] Phát `vault.status`; expose `on_change` cho F12; `waiting_jobs`.
+- [x] Phát `vault.status`; expose `on_change` cho F12; `waiting_jobs`.
 - [ ] Đo thời gian unlock trên máy tham chiếu Win/Mac, ghi ADR (không đặt số trước khi đo).
 
 ## Test

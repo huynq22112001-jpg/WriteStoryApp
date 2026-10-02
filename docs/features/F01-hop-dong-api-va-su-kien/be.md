@@ -13,8 +13,8 @@ be/src/writestory_be/
   api/idempotency.py         Dependency idempotent(): đọc Idempotency-Key, lưu/trả lại response
   api/request_id.py          Middleware X-Request-Id (sinh nếu thiếu), gắn vào log và ErrorResponse
   api/streams.py             Route GET /v1/events, GET /v1/jobs/{id}/events (EventSourceResponse)
-  api/events_schema.py       EventEnvelope (union theo type) + payload models, EVENT_SCHEMA_VERSION = 1
-  api/openapi.py             custom_openapi(): operationId = route.name, chèn EventEnvelope vào components
+  api/events_schema.py       EventEnvelope + Pydantic payload models cho job/event stream, EVENT_SCHEMA_VERSION = 1
+  api/openapi.py             custom_openapi(): operationId = route.name, chèn EventEnvelope và payload vào components
   jobs/events.py             EventBus: publish/subscribe, watermark seq, flush token.delta, preview
   infrastructure/ai/progress_adapter.py   Triển khai ProgressSink (ai.md) → EventBus/job_steps
   infrastructure/db/repositories/job_events.py
@@ -149,15 +149,16 @@ F01 tự phát: `backend.notice` (`replay_gap`, `shutting_down`). Các type khá
 
 ## Việc cần làm
 
-- [ ] `core/ids.py`, `core/clock.py`, `core/errors.py` (`ErrorCode`, `ErrorAction`).
-- [ ] `api/errors.py` + handler cho `AppError`, `RequestValidationError`, `HTTPException`, `Exception`.
-- [ ] `api/conventions.py` (`Page[T]`, cursor), `api/request_id.py`, `api/idempotency.py`.
-- [ ] `api/events_schema.py` với union theo `type`; `api/openapi.py`.
-- [ ] `jobs/events.py` (`EventBus`: chế độ RAM cho R0, chế độ DB cho R1), flush `token.delta`, preview.
-- [ ] `api/streams.py` với `EventSourceResponse` (đối chiếu docs FastAPI ≥ 0.135 cho tên API).
-- [ ] Định nghĩa `job_events`, `idempotency_records` trong migration baseline F02; repository `job_events.py`.
+- [x] `core/ids.py`, `core/clock.py`, `core/errors.py` (`ErrorCode`, `ErrorAction`).
+- [x] `api/errors.py` + handler cho `AppError`, `RequestValidationError`, `HTTPException`, `Exception`.
+- [ ] `api/conventions.py` (`Page[T]`, cursor), `api/request_id.py`.
+- [x] `api/idempotency.py`: canonical request hash, scope key `(key, method, path)`, atomic store/replay, conflict khi body đổi.
+- [x] `api/events_schema.py` với payload models; `api/openapi.py`.
+- [x] `jobs/events.py` (`EventBus`: chế độ RAM cho R0, chế độ DB cho R1), replay và `stream.tail` (flush `token.delta` còn chờ).
+- [x] `api/streams.py` với `EventSourceResponse`, lọc sự kiện theo work/job và replay DB.
+- [x] Định nghĩa `job_events`, `idempotency_records` trong migration baseline F02; repository `job_events.py` còn chờ.
 - [ ] `infrastructure/ai/progress_adapter.py` triển khai `ProgressSink` (ai.md).
-- [ ] `tools/contracts/export_openapi.py`, `check_contracts.py`; job CI.
+- [x] `tools/contracts/export_openapi.py` (xuất OpenAPI sau P109); `check_contracts.py` và job CI còn chờ.
 - [ ] `contracts/examples/` cho lỗi và từng event type.
 
 ## Test
@@ -177,7 +178,7 @@ F01 tự phát: `backend.notice` (`replay_gap`, `shutting_down`). Các type khá
 - Bảng `idempotency_records` (các cột ở trên). Cột của `job_events`: `seq`, `v`, `ts`, `type`, `work_id`, `job_id`, `chapter_no`, `payload_json` (Plan §5 chỉ nêu tên bảng).
 - File: `core/ids.py`, `core/clock.py`, `core/errors.py`, `api/conventions.py`, `api/idempotency.py`, `api/request_id.py`, `api/events_schema.py`, `api/openapi.py`, `tools/contracts/export_openapi.py`, `tools/contracts/check_contracts.py`, repository `job_events.py`.
 - Kiểu: `ErrorResponse`, `ErrorCode`, `ErrorAction`, `AppError`, `Page[T]`, `EventEnvelope`, `EventBus`, `EVENT_SCHEMA_VERSION`.
-- Mã lỗi bổ sung ngoài Plan §23.1.D: `UNAUTHORIZED`, `FORBIDDEN_HOST`, `FORBIDDEN_ORIGIN`, `NOT_FOUND`, `IDEMPOTENCY_CONFLICT`, `DB_BUSY`, `BACKEND_SHUTTING_DOWN`, `INTERNAL`. Trường `request_id` trong envelope lỗi. Giá trị `ErrorAction` liệt kê ở mục B.
+- Mã lỗi bổ sung ngoài Plan §23.1.D: `UNAUTHORIZED`, `FORBIDDEN_HOST`, `FORBIDDEN_ORIGIN`, `NOT_FOUND`, `IDEMPOTENCY_CONFLICT`, `DB_BUSY`, `BACKEND_SHUTTING_DOWN`, `INTERNAL`, `PROVIDER_SERVER_ERROR` (HTTP 502, retryable). Trường `request_id` trong envelope lỗi. Giá trị `ErrorAction` liệt kê ở mục B.
 - Header `Idempotency-Key`, `X-Request-Id`; query `previews` của `/v1/events`.
 - `backend.notice` kind: `replay_gap`, `shutting_down`, `jobs_interrupted`, `migration_done`, `stream_error`. `token.delta` trường `mode`, `offset`, `tail`.
 - Tham số cấu hình: `token_flush_ms`, `subscriber_queue_max`, `replay_max`.

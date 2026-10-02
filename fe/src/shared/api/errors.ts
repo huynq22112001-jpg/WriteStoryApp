@@ -9,7 +9,11 @@ export class ApiError extends Error {
   readonly action: ErrorAction | null;
   readonly requestId: string | null;
 
-  constructor(body: ErrorResponse, status: number) {
+  constructor(
+    body: Pick<ErrorResponse, "message" | "retryable"> &
+      Partial<Omit<ErrorResponse, "message" | "retryable" | "code">> & { code: string },
+    status: number,
+  ) {
     super(body.message);
     this.name = "ApiError";
     this.code = body.code;
@@ -45,6 +49,8 @@ export async function toApiError(response: Response): Promise<ApiError> {
       code: "INTERNAL",
       message: `HTTP ${response.status}`,
       retryable: response.status >= 500,
+      action: null,
+      detail: null,
       request_id: response.headers.get("X-Request-Id"),
     },
     response.status,
@@ -53,7 +59,14 @@ export async function toApiError(response: Response): Promise<ApiError> {
 
 export function networkError(cause: unknown): ApiError {
   const error = new ApiError(
-    { code: "NETWORK", message: "Không kết nối được tới backend", retryable: true, action: "retry" },
+    {
+      code: "NETWORK",
+      message: "Không kết nối được tới backend",
+      retryable: true,
+      action: "retry",
+      detail: null,
+      request_id: null,
+    },
     0,
   );
   error.cause = cause;

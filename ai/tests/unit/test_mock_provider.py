@@ -56,7 +56,8 @@ async def test_truncation_sets_max_tokens():
 
 
 async def test_disconnect_mid_stream():
-    provider = MockTextProvider(MockScenario(text="x" * 40, chunk_chars=8, disconnect_after_chars=16))
+    scenario = MockScenario(text="x" * 40, chunk_chars=8, disconnect_after_chars=16)
+    provider = MockTextProvider(scenario)
     with pytest.raises(ProviderUnreachableError):
         await collect(provider, make_request())
 

@@ -55,3 +55,4 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 be/tests/conftest.py
+uv.lock

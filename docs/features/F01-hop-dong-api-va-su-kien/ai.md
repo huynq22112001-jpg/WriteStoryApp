@@ -90,7 +90,7 @@ Không áp dụng (F01 không có prompt).
 
 ## Việc cần làm
 
-- [ ] `contracts/events.py`, `contracts/errors.py`, `ports/progress.py`.
+- [x] `contracts/events.py`, `contracts/errors.py`, `ports/progress.py`.
 - [ ] `testing/sinks.py` (recording sink cho test workflow).
 - [ ] Helper `assert_progress_protocol(events)` dùng lại trong test F10.
 - [ ] Đồng bộ danh sách `AIError.code` với `ErrorCode` của BE (test contract phía BE).

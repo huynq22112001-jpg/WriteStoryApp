@@ -20,9 +20,13 @@ async def running_server(make_runtime, *, dev: bool = False):
     )
     runtime.server = server
     task = asyncio.create_task(server.serve(sockets=[sock]))
-    while not server.started:
-        await asyncio.sleep(0.02)
     try:
+        for _ in range(500):
+            if server.started:
+                break
+            await asyncio.sleep(0.02)
+        else:
+            raise TimeoutError("uvicorn did not start")
         yield runtime, f"http://127.0.0.1:{runtime.port}"
     finally:
         runtime.event_bus.close_all()
@@ -66,8 +70,9 @@ async def test_replay_and_live_events(make_runtime, token):
                     await asyncio.sleep(0.2)
                     bus.publish("chapter.committed", {"chapter_no": 1}, work_id="w1")
 
-                asyncio.create_task(publish_later())
+                publish_task = asyncio.create_task(publish_later())
                 events = await asyncio.wait_for(read_events(resp, 2), 5)
+                await publish_task
 
     assert [e["event"] for e in events] == ["job.state", "chapter.committed"]
     assert [e["id"] for e in events] == ["2", "3"]
@@ -99,8 +104,9 @@ async def test_token_delta_only_for_watched_work(make_runtime, token):
                     bus.publish_transient("token.delta", {"text": "nhận"}, work_id="w2")
                     bus.publish("job.state", {"status": "succeeded"}, work_id="w1")
 
-                asyncio.create_task(publish_later())
+                publish_task = asyncio.create_task(publish_later())
                 events = await asyncio.wait_for(read_events(resp, 2), 5)
+                await publish_task
 
     assert events[0]["event"] == "token.delta"
     assert events[0]["data"]["payload"]["text"] == "nhận"
@@ -122,7 +128,7 @@ async def test_replay_gap_notice(make_runtime, token):
 
 
 async def test_mock_runs_stream_tokens_for_several_works(make_runtime, token):
-    async with running_server(make_runtime, dev=True) as (runtime, url):
+    async with running_server(make_runtime, dev=True) as (_runtime, url):
         headers = {"Authorization": f"Bearer {token}"}
         async with httpx.AsyncClient(timeout=10) as client:
             async with client.stream(

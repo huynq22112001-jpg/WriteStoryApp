@@ -1,6 +1,6 @@
 # S07 — Desktop Tauri 2
 
-Trạng thái: todo. Tính năng: F00. Phụ thuộc: S03, S04, S06.
+Trạng thái: partial (P009 scaffold và P010 data-root/instance lock hoàn thành; vòng đời backend và FE boot gate còn lại). Tính năng: F00. Phụ thuộc: S03, S04, S06.
 
 ## Mục tiêu
 
@@ -8,10 +8,10 @@ Cửa sổ desktop mở FE, tự khởi động backend Python, quản lý data-
 
 ## Việc cần làm
 
-- [ ] Scaffold `desktop/` (pnpm workspace member, `@tauri-apps/cli`), `src-tauri/tauri.conf.json`: `frontendDist: ../../fe/dist`, `devUrl: http://localhost:5173`, CSP và capability tối thiểu (F00 be.md §C).
-- [ ] Plugin single-instance đăng ký đầu tiên.
-- [ ] `data_root.rs`: Windows cạnh `.exe` / con trỏ `%APPDATA%` (D20); macOS con trỏ + phát hiện `/AppTranslocation/` (Plan §3.1); kiểm tra ghi, ổ mạng, cloud sync; marker `.writestory-data.json`.
-- [ ] `instance_lock.rs`: khóa `data/.instance.lock` (D24).
+- [x] Scaffold `desktop/` (pnpm workspace member, `@tauri-apps/cli`), `src-tauri/tauri.conf.json`: `frontendDist: ../../fe/dist`, `devUrl: http://localhost:5173`, CSP và capability tối thiểu (F00 be.md §C).
+- [x] Plugin single-instance đăng ký đầu tiên.
+- [x] `data_root.rs`: Windows cạnh `.exe` / con trỏ `%APPDATA%` (D20); macOS con trỏ + phát hiện `/AppTranslocation/` (Plan §3.1); kiểm tra ghi, ổ mạng (Windows và macOS), cloud sync; marker `.writestory-data.json`.
+- [x] `instance_lock.rs`: khóa `data/.instance.lock` (D24).
 - [ ] `backend.rs`: spawn backend (dev: `uv run python -m writestory_be`; release: onedir trong resources – D22), gửi `BootstrapConfig` qua stdin, đọc NDJSON `ready`/`progress`/`fatal`, drain stderr, health check.
 - [ ] `win_job.rs`: Job Object kill-on-close.
 - [ ] Xử lý `RunEvent::ExitRequested` + `RunEvent::Exit` → `POST /v1/system/shutdown`, chờ, kill.

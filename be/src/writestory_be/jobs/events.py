@@ -5,14 +5,31 @@ Giao diện publish/subscribe/replay giữ nguyên để route SSE không phải
 """
 
 import asyncio
+import json
+import sqlite3
 from collections import deque
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 from writestory_be.api.events_schema import EVENT_SCHEMA_VERSION, EventEnvelope, EventType
 from writestory_be.core.clock import utcnow_iso
 
 _CLOSED = object()
+
+
+def _event_bounds(connection: sqlite3.Connection) -> tuple[int | None, int]:
+    oldest = connection.execute("SELECT min(seq) FROM job_events").fetchone()[0]
+    try:
+        latest = connection.execute(
+            "SELECT max(coalesce((SELECT max(seq) FROM job_events), 0), "
+            "coalesce((SELECT seq FROM sqlite_sequence WHERE name='job_events'), 0))"
+        ).fetchone()[0]
+    except sqlite3.OperationalError as exc:
+        if "sqlite_sequence" not in str(exc):
+            raise
+        latest = connection.execute("SELECT coalesce(max(seq), 0) FROM job_events").fetchone()[0]
+    return oldest, int(latest or 0)
 
 
 @dataclass(eq=False)
@@ -31,12 +48,100 @@ class Subscriber:
 
 
 class EventBus:
-    def __init__(self, capacity: int = 1000, subscriber_queue_max: int = 1000) -> None:
+    def __init__(
+        self,
+        capacity: int = 1000,
+        subscriber_queue_max: int = 1000,
+        *,
+        database_path: Path | None = None,
+        replay_max: int = 5000,
+    ) -> None:
         self._buffer: deque[EventEnvelope] = deque(maxlen=capacity)
         self._seq = 0
         self._subscribers: set[Subscriber] = set()
         self._queue_max = subscriber_queue_max
         self._closed = False
+        self.database_path = database_path
+        self.replay_max = replay_max
+        self._db_oldest_seq: int | None = None
+        self._tail_last_sent: dict[tuple[str | None, str], float] = {}
+
+    async def initialize(self) -> None:
+        if self.database_path is None or not self.database_path.exists():
+            return
+
+        def read_watermark() -> tuple[int | None, int]:
+            with sqlite3.connect(self.database_path) as connection:
+                return _event_bounds(connection)
+
+        self._db_oldest_seq, latest = await asyncio.to_thread(read_watermark)
+        self._seq = max(self._seq, latest)
+
+    async def has_job(self, job_id: str) -> bool:
+        if self.database_path is None or not self.database_path.exists():
+            return False
+
+        def read_job() -> bool:
+            with sqlite3.connect(self.database_path) as connection:
+                return connection.execute(
+                    "SELECT 1 FROM jobs WHERE id = ?", (job_id,)
+                ).fetchone() is not None
+
+        return await asyncio.to_thread(read_job)
+
+    async def replay_async(
+        self, since: int, *, watermark: int | None = None, job_id: str | None = None
+    ) -> list[EventEnvelope] | None:
+        """Replay from durable storage when configured, otherwise from the R0 ring buffer."""
+        if self.database_path is None:
+            replayed = self.replay(since)
+            return (
+                [event for event in replayed if event.job_id == job_id]
+                if replayed is not None and job_id is not None
+                else replayed
+            )
+        upper_bound = self._seq if watermark is None else watermark
+
+        def read_rows() -> tuple[int | None, int, list[tuple]]:
+            with sqlite3.connect(self.database_path) as connection:
+                oldest, latest = _event_bounds(connection)
+                job_filter = " AND job_id = ?" if job_id is not None else ""
+                params = [since, upper_bound]
+                if job_id is not None:
+                    params.append(job_id)
+                params.append(self.replay_max + 1)
+                rows = connection.execute(
+                    "SELECT seq, v, ts, type, work_id, job_id, chapter_no, payload_json "
+                    "FROM job_events WHERE seq > ? AND seq <= ?"
+                    + job_filter
+                    + " ORDER BY seq LIMIT ?",
+                    params,
+                ).fetchall()
+                return oldest, latest, rows
+
+        oldest, latest, rows = await asyncio.to_thread(read_rows)
+        self._db_oldest_seq = oldest
+        if (
+            (oldest is not None and since < oldest - 1)
+            or (oldest is None and since < latest)
+            or since > latest
+            or len(rows) > self.replay_max
+        ):
+            return None
+        return [
+            EventEnvelope(
+                seq=row[0],
+                v=row[1],
+                ts=row[2],
+                type=row[3],
+                work_id=row[4],
+                job_id=row[5],
+                chapter_no=row[6],
+                payload=json.loads(row[7]),
+                persisted=True,
+            )
+            for row in rows
+        ]
 
     @property
     def watermark(self) -> int:
@@ -44,7 +149,7 @@ class EventBus:
 
     @property
     def oldest_seq(self) -> int | None:
-        return self._buffer[0].seq if self._buffer else None
+        return self._db_oldest_seq or (self._buffer[0].seq if self._buffer else None)
 
     def subscribe(self) -> Subscriber:
         sub = Subscriber(queue=asyncio.Queue(maxsize=self._queue_max + 1))
@@ -65,13 +170,15 @@ class EventBus:
         work_id: str | None = None,
         job_id: str | None = None,
         chapter_no: int | None = None,
+        seq: int | None = None,
+        ts: str | None = None,
     ) -> EventEnvelope:
         """Event được lưu (có `seq` riêng, replay được)."""
-        self._seq += 1
+        self._seq = max(self._seq + (seq is None), seq or 0)
         envelope = EventEnvelope(
             v=EVENT_SCHEMA_VERSION,
-            seq=self._seq,
-            ts=utcnow_iso(),
+            seq=self._seq if seq is None else seq,
+            ts=ts or utcnow_iso(),
             type=type,
             work_id=work_id,
             job_id=job_id,
@@ -98,6 +205,28 @@ class EventBus:
         )
         self._fan_out(envelope)
         return envelope
+
+    def publish_tail(
+        self,
+        *,
+        work_id: str | None,
+        job_id: str,
+        candidate_id: str,
+        step: str,
+        tail: str,
+        interval_s: float = 0.25,
+    ) -> EventEnvelope | None:
+        now = asyncio.get_running_loop().time()
+        key = (work_id, job_id)
+        if now - self._tail_last_sent.get(key, 0) < interval_s:
+            return None
+        self._tail_last_sent[key] = now
+        return self.publish_transient(
+            "stream.tail",
+            {"candidate_id": candidate_id, "step": step, "tail": tail[-200:]},
+            work_id=work_id,
+            job_id=job_id,
+        )
 
     def make_transient(
         self,

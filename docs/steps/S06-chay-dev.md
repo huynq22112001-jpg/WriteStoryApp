@@ -1,6 +1,6 @@
 # S06 — Chạy dev BE + FE
 
-Trạng thái: todo (chờ S00). Tính năng: F00. Phụ thuộc: S03, S04.
+Trạng thái: done. Tính năng: F00. Phụ thuộc: S03, S04.
 
 ## Mục tiêu
 
@@ -10,7 +10,7 @@ Phát triển FE trong trình duyệt với backend thật, chưa cần Tauri.
 
 - [x] BE `--dev`: data-root `WRITESTORY_DATA_ROOT` hoặc `./data`, cổng `8765`, token `WRITESTORY_DEV_TOKEN` (mặc định `dev-token`), origin cho phép `http://localhost:5173`, bật `/docs`.
 - [x] FE `.env.development`: `VITE_DEV_BACKEND_URL=http://127.0.0.1:8765`, `VITE_DEV_BACKEND_TOKEN=dev-token`.
-- [ ] Script gốc `pnpm dev` chạy song song BE và FE (`tools/dev/run_dev.py` hoặc `concurrently`).
+- [x] Script gốc `pnpm dev` chạy song song BE và FE (`tools/dev/run_dev.py`).
 
 ## Lệnh
 

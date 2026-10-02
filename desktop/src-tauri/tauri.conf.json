@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "WriteStoryApp",
+  "version": "0.1.0",
+  "identifier": "com.writestory.app",
+  "build": {
+    "beforeDevCommand": "pnpm --filter fe dev",
+    "devUrl": "http://localhost:5173",
+    "beforeBuildCommand": "pnpm --filter fe build",
+    "frontendDist": "../../fe/dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "WriteStoryApp",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 960,
+        "minHeight": 640
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self' ipc: http://ipc.localhost http://127.0.0.1:*",
+      "capabilities": ["main"]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "dmg"]
+  }
+}

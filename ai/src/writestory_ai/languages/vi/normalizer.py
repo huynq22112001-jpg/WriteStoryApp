@@ -15,7 +15,7 @@ def normalize_text(text: str) -> str:
     - Xuống dòng về `\\n`; bỏ ký tự zero-width; khoảng trắng đặc biệt thành dấu cách thường.
     - Bỏ khoảng trắng cuối dòng.
 
-    Không đổi kiểu bỏ dấu (hoà/hòa) – đó là quyết định theo `style_profile` (F08).
+    Không đổi kiểu bỏ dấu (hoà/hòa); đó là quyết định theo `style_profile` (F08).
     """
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     text = _ZERO_WIDTH.sub("", text)

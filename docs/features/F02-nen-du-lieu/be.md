@@ -8,7 +8,8 @@ be/
   migrations/
     env.py                         Engine sync (pysqlite) riêng cho migration; render_as_batch=True; include_object loại FTS
     versions/0001_baseline.py      settings, jobs, job_steps, job_events, idempotency_records, work_locks, assets
-    versions/0002_search.py        search_documents, search_fts (+ trigger), search_trigram (tùy chọn, tạo sau)
+    versions/0002_f02_work_locks.py no-op; work_locks đã có trong baseline theo spec
+    versions/0003_f02_search.py    search_documents, search_fts, search_trigram + triggers
   src/writestory_be/
     infrastructure/db/
       engine.py                    create_engines(data_root) → write_engine, read_engine; pragma; BEGIN tường minh
@@ -42,7 +43,7 @@ be/
 | `search_fts` (FTS5) | `title_norm`, `body_norm` | `content='search_documents'`, `content_rowid='id'`, `tokenize="unicode61 remove_diacritics 2"`; trigger AFTER INSERT/DELETE/UPDATE trên `search_documents` theo mẫu external content của FTS5 | Không tự chứa văn bản |
 | `search_trigram` (FTS5, tùy chọn) | `title_norm` | `tokenize='trigram'`, external content; trigger có `WHEN source_type IN ('character','location')` | Chỉ tạo khi setting `search.trigram_enabled=true`; chuỗi < 3 ký tự không khớp |
 
-Migration: `0001_baseline.py`, `0002_search.py` (FTS và trigger viết bằng `op.execute` SQL thô). Không có dữ liệu cũ. Quy tắc cho mọi migration của dự án: không sửa migration đã phát hành; thay đổi cột trên SQLite dùng `op.batch_alter_table`; migration dữ liệu phải chạy lại được an toàn; sau migration có đụng FK chạy `PRAGMA foreign_key_check`.
+Migration: `0001_baseline.py`, `0002_f02_work_locks.py` (no-op vì bảng đã nằm trong baseline theo spec), `0003_f02_search.py` (FTS và trigger viết bằng `op.execute` SQL thô). Không có dữ liệu cũ. Quy tắc cho mọi migration của dự án: không sửa migration đã phát hành; thay đổi cột trên SQLite dùng `op.batch_alter_table`; migration dữ liệu phải chạy lại được an toàn; sau migration có đụng FK chạy `PRAGMA foreign_key_check`.
 
 ## API
 
@@ -141,14 +142,14 @@ Rebuild ở R1 chạy như tác vụ nền nội bộ (không bền); khi superv
 ## Việc cần làm
 
 - [ ] `engine.py` với pragma, `isolation_level=None`, sự kiện `begin`; test xác nhận pragma trên mọi connection.
-- [ ] `base.py` naming convention; `models/system.py`.
-- [ ] `writer.py`, `unit_of_work.py`, `guards.py`.
-- [ ] `migrations/env.py` (batch mode, loại FTS khỏi autogenerate), `0001_baseline.py`, `0002_search.py`.
-- [ ] `migrations.prepare_database()` + mã `fatal` cho F00.
-- [ ] `jobs/locks.py` (acquire/heartbeat/release/assert_held).
-- [ ] `fts.py` + bộ test tiếng Việt Review §7.3.
+- [x] `base.py` naming convention; `models/system.py`.
+- [x] `writer.py`, `unit_of_work.py`, `guards.py`.
+- [x] `migrations/env.py` (batch mode, loại FTS khỏi autogenerate), `0001_baseline.py`, `0002_f02_work_locks.py`, `0003_f02_search.py`.
+- [x] `migrations.prepare_database()` + mã `fatal` cho F00.
+- [x] `jobs/locks.py` (acquire/heartbeat/release/assert_held).
+- [x] `fts.py` + bộ test tiếng Việt Review §7.3.
 - [ ] `files/storage.py` + dọn mồ côi.
-- [ ] `jobs/recovery.py`, `retention.py`; hook shutdown.
+- [x] `jobs/recovery.py`, `retention.py` (hook shutdown vẫn chờ phần quản lý engine).
 - [ ] `repositories/settings.py`, `repositories/jobs.py`.
 - [ ] `GET /v1/system/info`, `POST /v1/system/search-index/rebuild`.
 - [ ] Đo ở R1 (ghi ADR): thời gian commit p50/p95 khi 5 writer song song, kích thước WAL, thời gian `VACUUM INTO` với DB thử nghiệm.
@@ -171,7 +172,7 @@ Rebuild ở R1 chạy như tác vụ nền nội bộ (không bền); khi superv
 ## Tên mới đề xuất
 
 - Bảng: `search_documents`, `search_fts`, `search_trigram`; cột chi tiết của `settings`, `jobs` (gồm `wait_reason`, `pinned_json`, `interrupted_at`, `revision`), `job_steps`, `work_locks` (`owner_id`, `lease_expires_at`), `assets` (`rel_path`, `sha256`, `status`) — Plan §5 chỉ nêu tên bảng.
-- Migration: `0001_baseline.py`, `0002_search.py`. Thư mục backup `data/backups/pre-migrate/`.
+- Migration: `0001_baseline.py`, `0002_f02_work_locks.py`, `0003_f02_search.py`. Thư mục backup `data/backups/pre-migrate/`.
 - File: `infrastructure/db/base.py`, `models/system.py`, `writer.py`, `guards.py`, `migrations.py`, `retention.py`, `repositories/settings.py`, `repositories/jobs.py`.
 - Kiểu/hàm: `UnitOfWork`, `WriteContext` (`add_event`, `after_commit`), `WriterQueue`, `assert_not_in_write_txn`, `prepare_database`, `WorkLockManager`, `LockLost`, `register_reconciler`, `run_startup_reconcile`, `register_search_indexer`, `normalize_for_search`, `build_match_query`, `put_asset`, `FTS_INDEX_VERSION`.
 - API: `GET /v1/system/info`, `POST /v1/system/search-index/rebuild`.

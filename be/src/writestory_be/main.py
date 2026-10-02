@@ -8,11 +8,13 @@ from fastapi.routing import APIRoute
 from writestory_be import __version__
 from writestory_be.api import streams
 from writestory_be.api.errors import ErrorResponse, install_exception_handlers
+from writestory_be.api.openapi import custom_openapi
 from writestory_be.api.request_id import RequestIdMiddleware
 from writestory_be.api.security import LocalSecurityMiddleware
 from writestory_be.bootstrap.context import Runtime
 from writestory_be.modules.dev import router as dev_router
 from writestory_be.modules.system import router as system_router
+from writestory_be.modules.vault import router as vault_router
 
 _ERROR_RESPONSES: dict[int | str, dict] = {"default": {"model": ErrorResponse}}
 
@@ -35,8 +37,11 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
     )
     app.state.runtime = runtime
 
+    app.openapi = lambda: custom_openapi(app)
+
     install_exception_handlers(app)
     app.include_router(system_router.router, responses=_ERROR_RESPONSES)
+    app.include_router(vault_router.router, responses=_ERROR_RESPONSES)
     app.include_router(streams.router, responses=_ERROR_RESPONSES)
     if dev:
         app.include_router(dev_router.router, responses=_ERROR_RESPONSES)

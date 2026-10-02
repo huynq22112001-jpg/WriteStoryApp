@@ -163,9 +163,9 @@ Thread chờ `child.wait()`: nếu thoát khi `phase=ready` và không có yêu 
 
 ## Việc cần làm
 
-- [ ] Scaffold `desktop/` (pnpm workspace member), `tauri.conf.json` trỏ `frontendDist: ../../fe/dist`, `devUrl` Vite.
-- [ ] `data_root.rs` + unit test các nhánh Windows/macOS (trừu tượng hóa FS và `current_exe`).
-- [ ] `instance_lock.rs` (fs4) + single-instance plugin.
+- [x] Scaffold `desktop/` (pnpm workspace member), `tauri.conf.json` trỏ `frontendDist: ../../fe/dist`, `devUrl` Vite.
+- [x] `data_root.rs`: phân giải data-root Windows/macOS, kiểm tra ghi, marker/con trỏ, cloud sync, ổ mạng, translocation; unit test writable/unwritable, mismatch, translocation, UNC và cloud sync.
+- [x] Plugin single-instance Tauri đăng ký đầu tiên; `instance_lock.rs` khóa độc quyền bằng fs4.
 - [ ] `backend.rs`: spawn, bootstrap JSON, đọc stdout NDJSON, drain stderr, health check, giám sát exit, restart.
 - [ ] `win_job.rs` (crate `windows`), test kill-on-close.
 - [ ] Xử lý `ExitRequested` + `Exit`; test Cmd+Q trên macOS.

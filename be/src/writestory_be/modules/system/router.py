@@ -36,6 +36,7 @@ async def health(runtime: RuntimeDep) -> HealthResponse:
     return HealthResponse(
         protocol_version=BACKEND_PROTOCOL_VERSION,
         app_version=runtime.config.app_version,
+        schema_version=runtime.schema_version,
         data_id=runtime.config.data_id,
         started_at=runtime.started_at,
         pid=runtime.pid,

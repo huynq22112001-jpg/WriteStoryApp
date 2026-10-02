@@ -25,7 +25,7 @@ class BackendLock:
 
     def acquire(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        fh = open(self.path, "a+b")  # noqa: SIM115 – giữ mở suốt vòng đời backend
+        fh = open(self.path, "a+b")
         try:
             if sys.platform == "win32":
                 import msvcrt
@@ -85,7 +85,7 @@ def watch_stdin_eof(loop: asyncio.AbstractEventLoop, on_eof) -> threading.Thread
             except (OSError, ValueError):
                 line = b""
             if not line:
-                log.info("stdin EOF – yêu cầu tắt backend")
+                log.info("stdin EOF: yêu cầu tắt backend")
                 loop.call_soon_threadsafe(on_eof)
                 return
 

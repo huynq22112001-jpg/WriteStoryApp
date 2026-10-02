@@ -1,6 +1,6 @@
 # S02 — Base package AI (`writestory-ai`)
 
-Trạng thái: code-ready (chờ S00 để chạy test). Tính năng: F01 (port tiến độ), F08 (gói `vi` cơ bản), F10 (mock provider dùng cho spike). Phụ thuộc: S01.
+Trạng thái: done (25 test pass, Ruff pass, ranh giới AI kiểm tra). Tính năng: F01 (port tiến độ), F08 (gói `vi` cơ bản), F10 (mock provider dùng cho spike). Phụ thuộc: S01.
 
 ## Mục tiêu
 

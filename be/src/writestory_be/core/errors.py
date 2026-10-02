@@ -14,8 +14,15 @@ class ErrorCode(StrEnum):
     WORK_BUSY_QUEUED = "WORK_BUSY_QUEUED"
     CHAPTER_RANGE_CONFLICT = "CHAPTER_RANGE_CONFLICT"
     VAULT_LOCKED = "VAULT_LOCKED"
+    VAULT_PASSWORD_INVALID = "VAULT_PASSWORD_INVALID"
+    VAULT_UNLOCK_THROTTLED = "VAULT_UNLOCK_THROTTLED"
+    VAULT_ALREADY_EXISTS = "VAULT_ALREADY_EXISTS"
+    VAULT_NOT_FOUND = "VAULT_NOT_FOUND"
+    VAULT_CORRUPT = "VAULT_CORRUPT"
+    SECRET_MISSING = "SECRET_MISSING"
     PROVIDER_AUTH = "PROVIDER_AUTH"
     PROVIDER_UNREACHABLE = "PROVIDER_UNREACHABLE"
+    PROVIDER_SERVER_ERROR = "PROVIDER_SERVER_ERROR"
     PROVIDER_RATE_LIMIT = "PROVIDER_RATE_LIMIT"
     PROVIDER_REFUSAL = "PROVIDER_REFUSAL"
     OUTPUT_TRUNCATED = "OUTPUT_TRUNCATED"
@@ -52,20 +59,42 @@ _SPEC: dict[ErrorCode, tuple[int, bool, ErrorAction | None, str]] = {
         409, False, ErrorAction.VIEW_DIFF, "Nội dung đã thay đổi ở nơi khác; hãy xem so sánh."
     ),
     ErrorCode.WORK_BLOCKED: (
-        409, False, ErrorAction.OPEN_RESYNC, "Mạch truyện đang bị chặn, cần xử lý trước khi viết tiếp."
+        409,
+        False,
+        ErrorAction.OPEN_RESYNC,
+        "Mạch truyện đang bị chặn, cần xử lý trước khi viết tiếp.",
     ),
-    ErrorCode.WORK_BUSY_QUEUED: (409, True, ErrorAction.WAIT, "Truyện đang có tác vụ khác; đã xếp hàng."),
+    ErrorCode.WORK_BUSY_QUEUED: (
+        409,
+        True,
+        ErrorAction.WAIT,
+        "Truyện đang có tác vụ khác; đã xếp hàng.",
+    ),
     ErrorCode.CHAPTER_RANGE_CONFLICT: (
         409, False, None, "Không thể thay đổi thứ tự chương khi truyện đang chạy."
     ),
     ErrorCode.VAULT_LOCKED: (423, True, ErrorAction.UNLOCK_VAULT, "Kho khóa API đang khóa."),
+    ErrorCode.VAULT_PASSWORD_INVALID: (422, False, None, "Mật khẩu vault không đúng."),
+    ErrorCode.VAULT_UNLOCK_THROTTLED: (429, True, ErrorAction.WAIT, "Thử mở vault quá nhiều lần."),
+    ErrorCode.VAULT_ALREADY_EXISTS: (409, False, None, "Vault đã tồn tại."),
+    ErrorCode.VAULT_NOT_FOUND: (404, False, None, "Chưa có vault."),
+    ErrorCode.VAULT_CORRUPT: (500, False, ErrorAction.RELOAD, "Không thể đọc vault."),
+    ErrorCode.SECRET_MISSING: (409, False, ErrorAction.OPEN_PROVIDER_SETTINGS, "Chưa lưu API key."),
     ErrorCode.PROVIDER_AUTH: (
         502, False, ErrorAction.OPEN_PROVIDER_SETTINGS, "Nhà cung cấp AI từ chối API key."
     ),
     ErrorCode.PROVIDER_UNREACHABLE: (
         503, True, ErrorAction.RETRY, "Không kết nối được tới nhà cung cấp AI."
     ),
-    ErrorCode.PROVIDER_RATE_LIMIT: (429, True, ErrorAction.WAIT, "Nhà cung cấp AI đang giới hạn tốc độ."),
+    ErrorCode.PROVIDER_SERVER_ERROR: (
+        502, True, ErrorAction.RETRY, "Nhà cung cấp AI gặp lỗi máy chủ."
+    ),
+    ErrorCode.PROVIDER_RATE_LIMIT: (
+        429,
+        True,
+        ErrorAction.WAIT,
+        "Nhà cung cấp AI đang giới hạn tốc độ.",
+    ),
     ErrorCode.PROVIDER_REFUSAL: (
         422, False, ErrorAction.EDIT_INSTRUCTION, "Model từ chối viết nội dung này."
     ),

@@ -6,7 +6,7 @@ Migration (Alembic) và writer queue thêm ở bước F02 (R1).
 
 from pathlib import Path
 
-from sqlalchemy import event
+from sqlalchemy import URL, event
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
 BUSY_TIMEOUT_MS = 5000
@@ -25,7 +25,8 @@ def database_path(data_root: Path) -> Path:
 
 def create_engine(db_path: Path) -> AsyncEngine:
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    engine = create_async_engine(f"sqlite+aiosqlite:///{db_path.as_posix()}")
+    url = URL.create("sqlite+aiosqlite", database=str(db_path.resolve()))
+    engine = create_async_engine(url)
 
     @event.listens_for(engine.sync_engine, "connect")
     def _apply_pragmas(dbapi_connection, _record) -> None:

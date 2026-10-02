@@ -6,6 +6,7 @@
     "node": ">=22.16.0"
   },
   "scripts": {
+    "dev": "node tools/dev/start_dev.mjs",
     "dev:fe": "pnpm --filter fe dev",
     "build:fe": "pnpm --filter fe build",
     "test:fe": "pnpm --filter fe test",

@@ -8,7 +8,7 @@ from fastapi import APIRouter, Header, Query
 from fastapi.sse import EventSourceResponse, ServerSentEvent
 
 from writestory_be.api.dependencies import RuntimeDep
-from writestory_be.api.events_schema import TRANSIENT_TYPES, EventEnvelope
+from writestory_be.api.events_schema import EventEnvelope
 from writestory_be.core.errors import AppError, ErrorCode
 
 log = logging.getLogger(__name__)
@@ -41,47 +41,103 @@ async def stream_events(
     runtime: RuntimeDep,
     since: Annotated[int | None, Query(ge=0)] = None,
     works: Annotated[str | None, Query(description="work_id cách nhau dấu phẩy")] = None,
+    previews: Annotated[int, Query(ge=0, le=1)] = 1,
     last_event_id: Annotated[str | None, Header()] = None,
+) -> AsyncIterable[ServerSentEvent]:
+    async for event in _stream(
+        runtime,
+        since=since,
+        works=works,
+        previews=bool(previews),
+        last_event_id=last_event_id,
+    ):
+        yield event
+
+
+@router.get(
+    "/v1/jobs/{job_id}/events",
+    response_class=EventSourceResponse,
+    name="stream_job_events",
+)
+async def stream_job_events(
+    job_id: str,
+    runtime: RuntimeDep,
+    since: Annotated[int | None, Query(ge=0)] = None,
+    last_event_id: Annotated[str | None, Header()] = None,
+) -> AsyncIterable[ServerSentEvent]:
+    if not await runtime.event_bus.has_job(job_id):
+        raise AppError(ErrorCode.NOT_FOUND, detail={"job_id": job_id})
+    async for event in _stream(
+        runtime,
+        since=since,
+        works=None,
+        previews=False,
+        last_event_id=last_event_id,
+        job_id=job_id,
+    ):
+        yield event
+
+
+async def _stream(
+    runtime,
+    *,
+    since: int | None,
+    works: str | None,
+    previews: bool,
+    last_event_id: str | None,
+    job_id: str | None = None,
 ) -> AsyncIterable[ServerSentEvent]:
     watched = {w for w in (works or "").split(",") if w}
     if len(watched) > MAX_WATCHED_WORKS:
         raise AppError(ErrorCode.VALIDATION, detail={"field": "works", "max": MAX_WATCHED_WORKS})
 
     bus = runtime.event_bus
-    # Đăng ký trước rồi mới replay để không sót event phát ra giữa hai bước.
+    cursor = _parse_cursor(last_event_id, since)
+    start_watermark = bus.watermark
     sub = bus.subscribe()
     try:
-        cursor = _parse_cursor(last_event_id, since)
-        last_sent = bus.watermark if cursor is None else cursor
-
-        if cursor is not None:
-            replayed = bus.replay(cursor)
-            if replayed is None:
-                yield _to_sse(
-                    bus.make_transient(
-                        "backend.notice",
-                        {
-                            "kind": "replay_gap",
-                            "detail": {"oldest_seq": bus.oldest_seq, "latest_seq": bus.watermark},
-                        },
-                    )
+        watermark_at_subscribe = bus.watermark
+        if cursor is None:
+            cursor = start_watermark
+        last_sent = cursor
+        replayed = await bus.replay_async(
+            cursor, watermark=watermark_at_subscribe, job_id=job_id
+        )
+        if replayed is None:
+            yield _to_sse(
+                bus.make_transient(
+                    "backend.notice",
+                    {
+                        "kind": "replay_gap",
+                        "detail": {"oldest_seq": bus.oldest_seq, "latest_seq": bus.watermark},
+                    },
                 )
-                last_sent = bus.watermark
-            else:
-                for envelope in replayed:
-                    yield _to_sse(envelope)
-                    last_sent = envelope.seq
+            )
+            last_sent = watermark_at_subscribe
+        else:
+            for envelope in replayed:
+                yield _to_sse(envelope)
+                last_sent = max(last_sent, envelope.seq)
 
         while True:
             envelope = await sub.next()
             if envelope is None:
                 return
+            if job_id is not None and envelope.job_id != job_id:
+                continue
             if envelope.persisted:
                 if envelope.seq <= last_sent:
                     continue  # đã gửi trong phần replay
                 last_sent = envelope.seq
-            elif envelope.type in TRANSIENT_TYPES and envelope.work_id not in watched:
-                continue
+            elif envelope.type == "token.delta":
+                mode = envelope.payload.get("mode")
+                if mode == "preview" and (not previews or envelope.work_id in watched):
+                    continue
+                if mode != "preview" and envelope.work_id not in watched:
+                    continue
+            elif envelope.type == "stream.tail":
+                if not previews or envelope.work_id in watched:
+                    continue
             yield _to_sse(envelope)
     finally:
         bus.unsubscribe(sub)

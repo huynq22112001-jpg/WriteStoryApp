@@ -46,7 +46,7 @@ export function useEventStream(works: string[] = []) {
       onEvent: (envelope) => {
         if (envelope.type === "token.delta" && envelope.work_id) {
           const workId = envelope.work_id;
-          const text = String(envelope.payload.text ?? "");
+          const text = String(envelope.payload?.text ?? "");
           setTexts((prev) => ({ ...prev, [workId]: (prev[workId] ?? "") + text }));
           return;
         }

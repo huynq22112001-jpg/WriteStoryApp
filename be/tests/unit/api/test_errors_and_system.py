@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from writestory_be.core.errors import AppError, ErrorCode, http_status
+from writestory_be.core.errors import AppError, ErrorCode, default_retryable, http_status
 from writestory_be.main import create_app
 
 
@@ -65,9 +65,17 @@ def test_every_error_code_has_http_status():
         assert 400 <= http_status(code) <= 599
 
 
+def test_provider_server_error_is_retryable_bad_gateway():
+    assert http_status(ErrorCode.PROVIDER_SERVER_ERROR) == 502
+    assert default_retryable(ErrorCode.PROVIDER_SERVER_ERROR)
+
+
 async def test_shutdown_request_marks_runtime(client, runtime):
     events = runtime.event_bus.subscribe()
-    resp = await client.post("/v1/system/shutdown", json={"reason": "app_exit", "deadline_ms": 1000})
+    resp = await client.post(
+        "/v1/system/shutdown",
+        json={"reason": "app_exit", "deadline_ms": 1000},
+    )
     assert resp.status_code == 202
     assert resp.json() == {"accepted": True, "deadline_ms": 1000}
     assert runtime.shutting_down

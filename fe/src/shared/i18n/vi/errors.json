@@ -7,6 +7,7 @@
   "CHAPTER_RANGE_CONFLICT": "Không thể thay đổi thứ tự chương khi truyện đang chạy.",
   "VAULT_LOCKED": "Kho khóa API đang khóa.",
   "PROVIDER_AUTH": "Nhà cung cấp AI từ chối API key.",
+  "PROVIDER_SERVER_ERROR": "Nhà cung cấp AI gặp lỗi máy chủ.",
   "PROVIDER_UNREACHABLE": "Không kết nối được tới nhà cung cấp AI.",
   "PROVIDER_RATE_LIMIT": "Nhà cung cấp AI đang giới hạn tốc độ.",
   "PROVIDER_REFUSAL": "Model từ chối viết nội dung này.",

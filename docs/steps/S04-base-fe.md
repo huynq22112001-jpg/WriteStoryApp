@@ -1,6 +1,6 @@
 # S04 — Base FE (`fe/`)
 
-Trạng thái: done khi `pnpm --filter fe build` và `test` pass. Tính năng: F00 (màn kiểm tra backend), F01 (API client, SSE client). Phụ thuộc: S01.
+Trạng thái: done. Tính năng: F00 (màn kiểm tra backend), F01 (API client, SSE client). Phụ thuộc: S01.
 
 ## Mục tiêu
 

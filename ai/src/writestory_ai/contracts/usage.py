@@ -2,7 +2,10 @@ from pydantic import BaseModel
 
 
 class Usage(BaseModel):
-    """Token thực nhận từ provider. `reported=False` khi provider không trả usage (không suy diễn)."""
+    """Token thực nhận từ provider.
+
+    `reported=False` khi provider không trả usage (không suy diễn).
+    """
 
     input_tokens: int = 0
     output_tokens: int = 0

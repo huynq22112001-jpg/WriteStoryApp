@@ -49,16 +49,16 @@ Trạng thái: `todo` · `doing` · `done` · `blocked (lý do)`.
 
 | Prompt | Làn | Tính năng | Phụ thuộc | Trạng thái |
 |---|---|---|---|---|
-| [P001](./P001-cai-moi-truong-uv-python.md) Cài uv + Python 3.14 và uv sync | Tất cả | S00 | — | todo |
-| [P002](./P002-kiem-chung-ai-base.md) Kiểm chứng code base AI | AI | S02 | P001 | todo |
-| [P003](./P003-kiem-chung-be-base.md) Kiểm chứng code base BE | BE | S03 | P001 | todo |
-| [P004](./P004-kiem-chung-fe-base.md) Kiểm chứng code base FE | FE | S04 | — | todo |
-| [P005](./P005-chay-thu-dev-health.md) Chạy thử backend dev + health | BE | S06 | P003 | todo |
-| [P006](./P006-xuat-openapi.md) Xuất OpenAPI có ErrorResponse + EventEnvelope | BE | F01 / S05 | P003 | todo |
-| [P007](./P007-sinh-types-ts.md) Sinh types TS từ OpenAPI + check_contracts | FE | F01 / S05 | P006, P004 | todo |
-| [P008](./P008-script-dev-va-readme.md) Script chạy dev BE+FE và README gốc | Tất cả | S06 | P005, P004 | todo |
-| [P009](./P009-tauri-scaffold.md) Scaffold desktop Tauri 2 | DESKTOP | F00 / S07 | P004 | todo |
-| [P010](./P010-rust-data-root-lock.md) Rust: data-root + khóa instance | DESKTOP | F00 | P009 | todo |
+| [P001](./P001-cai-moi-truong-uv-python.md) Cài uv + Python 3.14 và uv sync | Tất cả | S00 | — | done |
+| [P002](./P002-kiem-chung-ai-base.md) Kiểm chứng code base AI | AI | S02 | P001 | done |
+| [P003](./P003-kiem-chung-be-base.md) Kiểm chứng code base BE | BE | S03 | P001 | done |
+| [P004](./P004-kiem-chung-fe-base.md) Kiểm chứng code base FE | FE | S04 | — | done |
+| [P005](./P005-chay-thu-dev-health.md) Chạy thử backend dev + health | BE | S06 | P003 | done |
+| [P006](./P006-xuat-openapi.md) Xuất OpenAPI có ErrorResponse + EventEnvelope | BE | F01 / S05 | P003 | done |
+| [P007](./P007-sinh-types-ts.md) Sinh types TS từ OpenAPI + check_contracts | FE | F01 / S05 | P006, P004 | done |
+| [P008](./P008-script-dev-va-readme.md) Script chạy dev BE+FE và README gốc | Tất cả | S06 | P005, P004 | done |
+| [P009](./P009-tauri-scaffold.md) Scaffold desktop Tauri 2 | DESKTOP | F00 / S07 | P004 | done |
+| [P010](./P010-rust-data-root-lock.md) Rust: data-root + khóa instance | DESKTOP | F00 | P009 | done |
 | [P011](./P011-rust-spawn-backend.md) Rust: spawn backend + readiness | DESKTOP | F00 | P010, P003 | todo |
 | [P012](./P012-rust-shutdown-commands.md) Rust: tắt sạch + commands cho FE | DESKTOP | F00 | P011 | todo |
 | [P013](./P013-fe-boot-gate.md) FE: BootGate và màn khởi động | FE | F00 | P012, P004 | todo |
@@ -74,19 +74,19 @@ Trạng thái: `todo` · `doing` · `done` · `blocked (lý do)`.
 
 | Prompt | Làn | Tính năng | Phụ thuộc | Trạng thái |
 |---|---|---|---|---|
-| [P101](./P101-alembic-setup.md) Cài đặt Alembic async | BE | F02 | P003 | todo |
-| [P102](./P102-migration-baseline.md) Migration baseline: settings, jobs, events | BE | F02 / F01 | P101 | todo |
-| [P103](./P103-prepare-database.md) Hook prepare_database khi khởi động | BE | F02 | P102 | todo |
-| [P104](./P104-writer-queue-uow.md) Writer queue + UnitOfWork | BE | F02 | P102 | todo |
-| [P105](./P105-work-locks.md) Khóa truyện có lease + heartbeat | BE | F02 | P104 | todo |
-| [P106](./P106-reconcile-retention.md) Reconcile khi khởi động + retention | BE | F02 | P105 | todo |
-| [P107](./P107-fts-tim-kiem.md) Hạ tầng tìm kiếm FTS5 tiếng Việt | BE | F02 | P102 | todo |
-| [P108](./P108-eventbus-db.md) EventBus lưu DB + replay | BE | F01 | P104 | todo |
-| [P109](./P109-stream-tail-payload.md) stream.tail, jobs/{id}/events, payload có kiểu | BE | F01 | P108 | todo |
-| [P110](./P110-idempotency.md) Idempotency-Key cho POST | BE | F01 | P104 | todo |
-| [P111](./P111-vault-crypto.md) Vault: mã hóa file secrets.enc | BE | F03 | P003 | todo |
-| [P112](./P112-secret-store.md) SecretStore + key theo phiên + che log | BE | F03 | P111 | todo |
-| [P113](./P113-vault-api.md) API vault + secrets + event vault.status | BE | F03 | P112, P108 | todo |
+| [P101](./P101-alembic-setup.md) Cài đặt Alembic async | BE | F02 | P003 | done |
+| [P102](./P102-migration-baseline.md) Migration baseline: settings, jobs, events | BE | F02 / F01 | P101 | done |
+| [P103](./P103-prepare-database.md) Hook prepare_database khi khởi động | BE | F02 | P102 | done |
+| [P104](./P104-writer-queue-uow.md) Writer queue + UnitOfWork | BE | F02 | P102 | done |
+| [P105](./P105-work-locks.md) Khóa truyện có lease + heartbeat | BE | F02 | P104 | done |
+| [P106](./P106-reconcile-retention.md) Reconcile khi khởi động + retention | BE | F02 | P105 | done |
+| [P107](./P107-fts-tim-kiem.md) Hạ tầng tìm kiếm FTS5 tiếng Việt | BE | F02 | P102 | done |
+| [P108](./P108-eventbus-db.md) EventBus lưu DB + replay | BE | F01 | P104 | done |
+| [P109](./P109-stream-tail-payload.md) stream.tail, jobs/{id}/events, payload có kiểu | BE | F01 | P108 | done |
+| [P110](./P110-idempotency.md) Idempotency-Key cho POST | BE | F01 | P104 | done |
+| [P111](./P111-vault-crypto.md) Vault: mã hóa file secrets.enc | BE | F03 | P003 | done |
+| [P112](./P112-secret-store.md) SecretStore + key theo phiên + che log | BE | F03 | P111 | done |
+| [P113](./P113-vault-api.md) API vault + secrets + event vault.status | BE | F03 | P112, P108 | done |
 | [P114](./P114-onboarding-api.md) API trạng thái onboarding | BE | F03 | P102 | todo |
 | [P115](./P115-works-crud.md) Bảng works + CRUD tác phẩm | BE | F05 | P104 | todo |
 | [P116](./P116-style-profile-languages.md) Style profile + ngôn ngữ + thể loại | BE | F05 | P115 | todo |

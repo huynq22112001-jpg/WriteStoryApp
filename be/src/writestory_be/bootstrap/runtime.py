@@ -33,6 +33,10 @@ from writestory_be.bootstrap.protocol import (
     ReadyMessage,
     parse_bootstrap_line,
 )
+from writestory_be.infrastructure.db.engine import database_path
+from writestory_be.infrastructure.db.migrations import DatabaseStartupError, prepare_database
+from writestory_be.infrastructure.db.retention import retention_loop
+from writestory_be.jobs.events import EventBus
 from writestory_be.main import create_app
 
 log = logging.getLogger(__name__)
@@ -72,6 +76,8 @@ def bind_socket(host: str, port: int) -> socket.socket:
 
 async def serve(runtime: Runtime, sock: socket.socket, emit_ready) -> None:
     app = create_app(runtime)
+    await runtime.event_bus.initialize()
+    runtime.spawn(retention_loop(runtime.data_root))
     config = uvicorn.Config(
         app,
         lifespan="on",
@@ -139,6 +145,19 @@ def main(argv: list[str]) -> int:
         return EXIT_STARTUP
 
     try:
+        try:
+            reconcile_result = {}
+            schema_version = prepare_database(
+                data_root,
+                lambda stage: channel.emit(ProgressMessage(stage=stage).model_dump_json()),
+                data_id=config.data_id,
+                reconcile_cb=lambda result: reconcile_result.update(
+                    count=result.interrupted_count, job_ids=result.interrupted_job_ids
+                ),
+            )
+        except DatabaseStartupError as exc:
+            fatal(exc.code, str(exc), **exc.detail)
+            return EXIT_STARTUP
         channel.emit(ProgressMessage(stage="binding").model_dump_json())
         try:
             sock = bind_socket(config.host, config.port)
@@ -146,10 +165,28 @@ def main(argv: list[str]) -> int:
             fatal("PORT_UNAVAILABLE", str(exc), port=config.port)
             return EXIT_STARTUP
 
-        runtime = Runtime(config=config, port=sock.getsockname()[1])
+        runtime = Runtime(
+            config=config,
+            port=sock.getsockname()[1],
+            schema_version=schema_version,
+            event_bus=EventBus(database_path=database_path(data_root)),
+            interrupted_jobs=reconcile_result.get("job_ids", []),
+            interrupted_job_count=reconcile_result.get("count", 0),
+        )
 
         def emit_ready() -> None:
             channel.emit(ReadyMessage(port=runtime.port, pid=runtime.pid).model_dump_json())
+            if runtime.interrupted_job_count:
+                runtime.event_bus.publish(
+                    "backend.notice",
+                    {
+                        "kind": "jobs_interrupted",
+                        "detail": {
+                            "count": runtime.interrupted_job_count,
+                            "job_ids": runtime.interrupted_jobs[:50],
+                        },
+                    },
+                )
             log.info("Backend sẵn sàng trên 127.0.0.1:%s (dev=%s)", runtime.port, args.dev)
 
         async def run() -> None:

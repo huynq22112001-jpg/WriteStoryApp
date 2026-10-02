@@ -1,0 +1,1 @@
+"""Local secret vault API."""

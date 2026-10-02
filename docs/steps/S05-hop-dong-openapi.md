@@ -1,6 +1,6 @@
 # S05 — Hợp đồng OpenAPI → TypeScript
 
-Trạng thái: todo (script đã có, chờ S00 để chạy). Tính năng: F01. Phụ thuộc: S03, S04.
+Trạng thái: done. Tính năng: F01. Phụ thuộc: S03, S04.
 
 ## Mục tiêu
 
@@ -10,9 +10,9 @@ FE dùng type sinh từ BE, không tự khai báo DTO trùng lặp (Plan §8, Ar
 
 - [x] `tools/contracts/export_openapi.py`: gọi `create_app(None)` (không side effect), ghi `contracts/openapi.json` (sort keys, indent 2).
 - [x] Script FE `gen:api` = `openapi-typescript ../contracts/openapi.json -o src/shared/api/generated/schema.d.ts`.
-- [ ] Chạy lần đầu, commit `contracts/openapi.json` và file generated.
-- [ ] `tools/contracts/check_contracts.py`: export + gen, fail nếu `git diff` khác rỗng (CI).
-- [ ] Chèn `EventEnvelope` và `ErrorResponse` vào `components.schemas` (F01 be.md §D).
+- [x] Chạy lần đầu, tạo `contracts/openapi.json` và file generated.
+- [x] `tools/contracts/check_contracts.py`: export + gen, fail khi artifact thay đổi sau khi tái sinh.
+- [x] Chèn `EventEnvelope` và `ErrorResponse` vào `components.schemas` (F01 be.md §D).
 
 ## Lệnh
 

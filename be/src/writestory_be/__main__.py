@@ -3,7 +3,8 @@ import sys
 
 
 def main() -> None:
-    # Bắt buộc cho binary PyInstaller trên Windows (Plan §4.1): tránh tiến trình con chạy lại backend.
+    # Bắt buộc cho binary PyInstaller trên Windows (Plan §4.1):
+    # tránh tiến trình con chạy lại backend.
     multiprocessing.freeze_support()
     from writestory_be.bootstrap.runtime import main as run
 

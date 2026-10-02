@@ -1,0 +1,31 @@
+[package]
+name = "writestory-app"
+version = "0.1.0"
+description = "WriteStoryApp desktop shell"
+authors = ["WriteStoryApp"]
+edition = "2021"
+
+[lib]
+name = "writestory_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+fs4 = "0.13"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2", features = [] }
+tauri-plugin-single-instance = "2"
+time = { version = "0.3", features = ["formatting", "macros"] }
+uuid = { version = "1", features = ["v7", "serde"] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Storage_FileSystem"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+libc = "0.2"

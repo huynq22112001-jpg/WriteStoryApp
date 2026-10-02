@@ -6,10 +6,10 @@ kiểm tra Phòng viết/editor không bị chặn trước khi có pipeline th�
 
 from fastapi import APIRouter, status
 from pydantic import BaseModel, Field
+
 from writestory_ai.contracts.errors import AIError
 from writestory_ai.contracts.generation import GenerationRequest, Message, StreamDone, TextDelta
 from writestory_ai.providers.mock import MockScenario, MockTextProvider
-
 from writestory_be.api.dependencies import RuntimeDep
 from writestory_be.bootstrap.context import Runtime
 from writestory_be.core.ids import new_id

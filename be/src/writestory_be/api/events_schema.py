@@ -31,7 +31,69 @@ EventType = Literal[
 ]
 
 # Event không lưu, không replay; chỉ gửi cho client đăng ký truyện tương ứng.
-TRANSIENT_TYPES: frozenset[str] = frozenset({"token.delta"})
+TRANSIENT_TYPES: frozenset[str] = frozenset({"token.delta", "stream.tail"})
+
+
+class JobQueuedPayload(BaseModel):
+    job_type: str
+    priority: int = 0
+    queue_position: int | None = None
+
+
+class JobStatePayload(BaseModel):
+    status: str
+    wait_reason: str | None = None
+    error: dict[str, Any] | None = None
+    retry_at: str | None = None
+
+
+class JobStepPayload(BaseModel):
+    step: str
+    attempt: int
+    round: int | None = None
+    max_rounds: int | None = None
+    progress: float | None = Field(default=None, ge=0, le=1)
+
+
+class TokenDeltaPayload(BaseModel):
+    candidate_id: str
+    step: str
+    mode: Literal["full", "preview"]
+    offset: int | None = None
+    text: str | None = None
+    tail: str | None = None
+
+
+class StreamTailPayload(BaseModel):
+    candidate_id: str
+    step: str
+    tail: str = Field(max_length=200)
+
+
+class BackendNoticePayload(BaseModel):
+    kind: str
+    detail: dict[str, Any] = Field(default_factory=dict)
+
+
+class VaultStatusPayload(BaseModel):
+    state: Literal["absent", "locked", "unlocked"]
+    mode: Literal["undecided", "vault", "session_only"]
+
+
+PAYLOAD_MODELS: dict[str, type[BaseModel]] = {
+    "job.queued": JobQueuedPayload,
+    "job.state": JobStatePayload,
+    "job.step": JobStepPayload,
+    "token.delta": TokenDeltaPayload,
+    "stream.tail": StreamTailPayload,
+    "backend.notice": BackendNoticePayload,
+    "vault.status": VaultStatusPayload,
+}
+
+
+def validate_event_payload(event_type: str, payload: dict[str, Any]) -> BaseModel | dict[str, Any]:
+    model = PAYLOAD_MODELS.get(event_type)
+    return model.model_validate(payload) if model is not None else payload
 
 
 class EventEnvelope(BaseModel):

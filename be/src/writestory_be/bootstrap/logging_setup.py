@@ -1,6 +1,16 @@
 import logging
+import threading
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
+
+_secret_values: set[str] = set()
+_secret_values_lock = threading.Lock()
+
+
+def register_secret(value: str) -> None:
+    if value:
+        with _secret_values_lock:
+            _secret_values.add(value)
 
 
 class RedactFilter(logging.Filter):
@@ -8,12 +18,15 @@ class RedactFilter(logging.Filter):
 
     def __init__(self, secrets: list[str]) -> None:
         super().__init__()
-        self._secrets = [s for s in secrets if s]
+        for secret in secrets:
+            register_secret(secret)
 
     def filter(self, record: logging.LogRecord) -> bool:
         message = record.getMessage()
         redacted = message
-        for secret in self._secrets:
+        with _secret_values_lock:
+            secrets = tuple(_secret_values)
+        for secret in secrets:
             redacted = redacted.replace(secret, "***")
         if redacted != message:
             record.msg, record.args = redacted, None

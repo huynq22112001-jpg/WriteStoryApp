@@ -19,7 +19,7 @@ def test_replay_reports_gap_when_events_evicted():
     for i in range(5):
         bus.publish("job.step", {"i": i})
     assert bus.oldest_seq == 3
-    assert bus.replay(0) is None  # seq 1–2 đã mất → cần replay_gap
+    assert bus.replay(0) is None  # seq 1 và 2 đã mất, cần replay_gap
     assert [e.seq for e in bus.replay(2)] == [3, 4, 5]
 
 
@@ -57,3 +57,24 @@ async def test_subscribe_after_close_returns_closed():
     bus = EventBus()
     bus.close_all()
     assert await bus.subscribe().next() is None
+
+
+async def test_stream_tail_is_rate_limited_and_bounded():
+    bus = EventBus()
+    tail = bus.publish_tail(
+        work_id="work",
+        job_id="job",
+        candidate_id="candidate",
+        step="writer",
+        tail="x" * 240,
+    )
+    assert tail is not None
+    assert tail.type == "stream.tail"
+    assert len(tail.payload["tail"]) == 200
+    assert bus.publish_tail(
+        work_id="work",
+        job_id="job",
+        candidate_id="candidate",
+        step="writer",
+        tail="new tail",
+    ) is None
