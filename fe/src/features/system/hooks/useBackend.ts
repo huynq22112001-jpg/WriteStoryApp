@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 
 import { createApiClient } from "@/shared/api/client";
-import { connectEvents, type StreamStatus } from "@/shared/api/sse";
+import { subscribeEventBus } from "@/shared/api/eventBus";
+import type { StreamStatus } from "@/shared/api/sse";
 import type { EventEnvelope, HealthResponse } from "@/shared/api/types";
 import { getBackendSession } from "@/shared/desktop/bridge";
 
@@ -37,23 +38,17 @@ export function useEventStream(works: string[] = []) {
 
   useEffect(() => {
     if (!session) return;
-    const controller = new AbortController();
-    void connectEvents({
-      session,
-      works: worksKey ? worksKey.split(",") : [],
-      signal: controller.signal,
-      onStatus: setStatus,
-      onEvent: (envelope) => {
+    return subscribeEventBus((envelope) => {
         if (envelope.type === "token.delta" && envelope.work_id) {
           const workId = envelope.work_id;
+          const selectedWorks = worksKey ? worksKey.split(",") : [];
+          if (selectedWorks.length && !selectedWorks.includes(workId)) return;
           const text = String(envelope.payload?.text ?? "");
           setTexts((prev) => ({ ...prev, [workId]: (prev[workId] ?? "") + text }));
           return;
         }
         setEvents((prev) => [envelope, ...prev].slice(0, MAX_EVENTS));
-      },
-    });
-    return () => controller.abort();
+      }, setStatus);
   }, [session, worksKey]);
 
   return { status, events, texts };

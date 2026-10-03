@@ -313,13 +313,13 @@ Tất cả tiếng Việt, đăng ký trong manifest F08; đoạn văn render d�
 ## Việc cần làm
 
 - [ ] Contract `generation.py`, `longform.py`, `paragraphs.py` (`apply_ops` dùng chung BE).
-- [ ] `pipeline.py` + `ResumePoint`; hủy truyền xuống provider.
+- [x] `pipeline.py` điều phối 11 bước, checkpoint/resume, cancel và limiter; phần persistence thuộc host.
 - [ ] `planner.py` + kiểm tra plan + `input_hash`.
 - [ ] `writer.py`: stream, tách đoạn, viết tiếp, lọc meta, chuẩn hóa.
 - [ ] `evaluators/deterministic.py` (độ dài, tên, nhân vật chết, n-gram, kết truyện, meta) + nối F08.
-- [ ] `settlement.py`, `reviewer.py` (validator LLM + review, xác minh trích dẫn), `seam_check.py`.
-- [ ] `repair.py` + giới hạn vòng/token/phạm vi.
-- [ ] `pacing.py`, `outline_review.py`, chọn style anchor.
+- [x] `settlement.py`, `reviewer.py` (validator LLM + review, xác minh trích dẫn), `seam_check.py`.
+- [x] `repair.py` + giới hạn vòng/token/phạm vi.
+- [x] `pacing.py`, `outline_review.py` (chọn style anchor còn mở).
 - [ ] `evaluators/structured_output.py` + fallback.
 - [ ] 10 template `longform.*` + snapshot test.
 - [ ] Kịch bản mock provider cho T05/T06/T15 và bộ chỉ số §9.
@@ -352,3 +352,4 @@ Luồng: [T05](../../tests/flows/T05-viet-mot-chuong.md), [T06](../../tests/flow
 - Cấu hình: các khóa `WriteSettings` ngoài Plan (`length_tolerance`, `length_hard_floor_ratio`, `repair_token_cap`, `repair_max_changed_ratio`, `repair_include_major`, `max_continuations`, `seam_opening_window_units`, `ngram_n`, `ngram_max_overlap`, `verbatim_run_units`, `hooks_due_lookahead`, `strict_new_characters`).
 - Template: `longform.writer_continue`, `longform.validator`, `longform.repair`, `longform.outline_review` (ngoài các vai trò Plan nêu).
 - Thành phần mở rộng của `input_hash`: `story_events_revision`, `bible_revision`, `brief_hash`, `prompt_version`.
+- `GenerationRequest.response_schema` và `GenerationRequest.json_mode` chuyển schema JSON khi provider hỗ trợ hoặc bật JSON mode khi fallback.

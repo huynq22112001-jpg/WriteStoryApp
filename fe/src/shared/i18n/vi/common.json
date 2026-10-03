@@ -2,8 +2,16 @@
   "appName": "WriteStoryApp",
   "nav": {
     "library": "Thư viện",
-    "system": "Trạng thái hệ thống"
+    "system": "Trạng thái hệ thống",
+    "writingRoom": "Phòng viết",
+    "settings": "Cài đặt",
+    "logs": "Nhật ký",
+    "primary": "Điều hướng chính"
   },
+  "command": { "open": "Tìm/lệnh", "placeholder": "Tìm trang hoặc lệnh…", "empty": "Không tìm thấy kết quả.", "navigation": "Điều hướng" },
+  "header": { "running": "{{count}} truyện đang chạy", "cost": "Hôm nay: ${{cost}}" },
+  "wizard": { "title": "Tạo truyện mới" },
+  "workspace": { "title": "Không gian truyện", "hint": "Cây chương và trình soạn thảo sẽ xuất hiện tại đây." },
   "connection": {
     "connecting": "Đang kết nối…",
     "open": "Đã kết nối",

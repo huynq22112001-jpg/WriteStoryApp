@@ -1,0 +1,19 @@
+{
+  "bootState": {
+    "phase": "ready",
+    "platform": "windows",
+    "data_root": "C:\\Users\\Author\\WriteStoryApp\\data",
+    "data_id": "0199f1f6-7a2c-7f20-a627-8e4c85f2a509",
+    "backend": {
+      "base_url": "http://127.0.0.1:54321",
+      "protocol_version": 1,
+      "pid": 1234
+    },
+    "restart_count": 0
+  },
+  "backendSession": {
+    "base_url": "http://127.0.0.1:54321",
+    "token": "fixture-token",
+    "protocol_version": 1
+  }
+}

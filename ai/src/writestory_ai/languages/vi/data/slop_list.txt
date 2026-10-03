@@ -1,0 +1,4 @@
+# Danh sách khởi tạo do dự án biên soạn; tác giả có thể bổ sung ở style profile.
+opening.moment|Trong khoảnh khắc ấy|true|paragraph_start|0|Mở đoạn sáo
+cannot.help|không khỏi|false|anywhere|8|Cụm dùng quá dày
+in.a.way|một cách|false|anywhere|15|Cụm dùng quá dày

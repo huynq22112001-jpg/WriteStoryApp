@@ -1,0 +1,53 @@
+{
+  "starting": {
+    "title": "Đang khởi động WriteStoryApp…",
+    "closing": "Đang đóng WriteStoryApp…",
+    "stage": {
+      "default": "Vui lòng chờ trong khi ứng dụng chuẩn bị dữ liệu.",
+      "migrating": "Đang nâng cấp dữ liệu…",
+      "reconciling": "Đang kiểm tra tác vụ dở dang…",
+      "binding": "Đang mở backend…",
+      "starting": "Đang khởi động backend…"
+    },
+    "longWait": "Lần đầu khởi động hoặc sau khi nâng cấp có thể mất thêm thời gian."
+  },
+  "dataRoot": {
+    "title": "Chọn thư mục dữ liệu",
+    "body": "WriteStoryApp cần một thư mục riêng để lưu truyện và dữ liệu ứng dụng.",
+    "choose": "Chọn thư mục khác…",
+    "useThis": "Dùng thư mục này",
+    "working": "Đang kiểm tra…",
+    "storageNote": "Không chọn ổ mạng hoặc thư mục đang đồng bộ đám mây. Dữ liệu sẽ nằm toàn bộ trong thư mục này.",
+    "cloudSyncConfirm": "Thư mục này có vẻ đang được đồng bộ đám mây. Tiếp tục có thể gây mất hoặc hỏng dữ liệu. Bạn có muốn tiếp tục không?"
+  },
+  "translocated": {
+    "title": "Di chuyển ứng dụng vào Applications",
+    "body": "macOS đang mở ứng dụng từ vị trí tạm. Hãy kéo WriteStoryApp vào thư mục Applications rồi mở lại."
+  },
+  "error": {
+    "title": "Không thể khởi động backend",
+    "lockedTitle": "Dữ liệu đang được ứng dụng khác sử dụng",
+    "body": "Đã xảy ra lỗi khi khởi động. Hãy xem nhật ký để biết thêm chi tiết.",
+    "openLogs": "Mở thư mục log"
+  },
+  "crashed": {
+    "title": "Backend đã dừng bất ngờ",
+    "body": "Ứng dụng có thể khởi động lại backend để tiếp tục.",
+    "restart": "Khởi động lại",
+    "count": "Số lần khởi động lại trong phiên: {{count}}",
+    "logs": "20 dòng stderr gần nhất"
+  },
+  "banner": {
+    "reconnecting": "Mất kết nối tới backend, đang nối lại…"
+  },
+  "status": {
+    "connected": "Backend đã kết nối",
+    "reconnecting": "Backend đang kết nối lại",
+    "starting": "Backend đang khởi động"
+  },
+  "actions": {
+    "retry": "Thử lại",
+    "working": "Đang xử lý…",
+    "quit": "Thoát"
+  }
+}

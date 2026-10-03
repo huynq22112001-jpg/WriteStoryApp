@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "terms": [
+    {"text": "ta", "role": "both"}, {"text": "ngươi", "role": "address"},
+    {"text": "tôi", "role": "both"}, {"text": "anh", "role": "both"},
+    {"text": "em", "role": "both"}, {"text": "chị", "role": "both"},
+    {"text": "cô", "role": "both"}, {"text": "chú", "role": "both"},
+    {"text": "bác", "role": "both"}, {"text": "con", "role": "both"},
+    {"text": "cháu", "role": "both"}, {"text": "huynh", "role": "both"},
+    {"text": "muội", "role": "both"}, {"text": "sư huynh", "role": "address"},
+    {"text": "sư muội", "role": "address"}, {"text": "bổn tọa", "role": "self"},
+    {"text": "ông ấy", "role": "third_person"}, {"text": "bà ta", "role": "third_person"}
+  ]
+}

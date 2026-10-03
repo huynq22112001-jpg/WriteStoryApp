@@ -1,0 +1,8 @@
+import { useAppearanceStore } from "@/app/appearanceStore";
+import { Label } from "@/components/ui/label";
+import { Link } from "@tanstack/react-router";
+
+export function AppearancePage() {
+  const { theme, fontScale, setTheme, setFontScale } = useAppearanceStore();
+  return <section className="mx-auto max-w-3xl p-8"><h1 className="text-2xl font-semibold">Giao diện & font chữ</h1><p className="mt-1 text-sm text-stone-500">Tùy chỉnh cách đọc và hiển thị WriteStoryApp.</p><div className="mt-6 space-y-6 rounded-xl border border-stone-200 bg-white p-6"><div className="grid gap-2"><Label htmlFor="theme">Giao diện</Label><select id="theme" value={theme} onChange={(event) => setTheme(event.target.value as typeof theme)} className="h-9 max-w-sm rounded-md border border-stone-300 bg-white px-3"><option value="system">Theo hệ thống</option><option value="light">Sáng</option><option value="dark">Tối</option></select></div><div className="grid gap-2"><Label htmlFor="font-scale">Cỡ chữ giao diện</Label><div className="flex max-w-sm items-center gap-3"><input id="font-scale" type="range" min="0.85" max="1.3" step="0.05" value={fontScale} onChange={(event) => setFontScale(Number(event.target.value))} className="w-full accent-emerald-700"/><output className="w-12 text-sm">{Math.round(fontScale * 100)}%</output></div></div><p className="text-xs text-stone-500">Phông Be Vietnam Pro và Noto Serif được đóng gói trong ứng dụng, dùng được khi ngoại tuyến.</p></div><nav className="mt-5 flex flex-wrap gap-3 text-sm"><Link to="/settings/models" className="text-emerald-800 underline">Mô hình AI</Link><Link to="/settings/security" className="text-emerald-800 underline">Bảo mật & API key</Link></nav></section>;
+}

@@ -76,20 +76,20 @@ Namespace `boot`, ví dụ khóa: `boot.starting.title`, `boot.starting.stage.mi
 
 ## Việc cần làm
 
-- [ ] `shared/desktop/types.ts` khớp struct `BootState`/`BackendSession` của Rust (viết tay, có test so khớp với fixture JSON do Rust xuất).
-- [ ] `bridge.ts` + `bridge.mock.ts` (web-dev, Playwright).
-- [ ] `useBootState` + `useBootStore`; xử lý event đến trước khi `get_boot_state` trả về (lấy bản có thứ tự mới hơn).
-- [ ] `BootGate` nối `shared/api/client.setSession` và vòng đời event bus F01.
-- [ ] Năm màn trạng thái + `ConnectionBanner`.
-- [ ] Status bar hiển thị trạng thái backend (component do `app/layouts` sở hữu, F00 cung cấp hook `useBackendHealth`).
-- [ ] Resource i18n `boot` tĩnh.
+- [x] `shared/desktop/types.ts` khớp struct `BootState`/`BackendSession` của Rust; kiểm tra fixture JSON.
+- [x] `bridge.ts` + `bridge.mock.ts` (web-dev, test không lưu token vào storage).
+- [x] `useBootState` + `useBootStore`; đăng ký event trước snapshot và giữ event mới hơn.
+- [x] `BootGate` nối `shared/api/client.setSession` và vòng đời event bus dùng chung.
+- [x] Năm màn trạng thái + `ConnectionBanner`.
+- [x] Status bar hiển thị trạng thái backend qua hook `useBackendHealth`.
+- [x] Resource i18n `boot` tĩnh.
 
 ## Test
 
 | Loại | Nội dung | File dự kiến |
 |---|---|---|
 | component | `BootGate` chọn đúng màn theo từng phase; chuyển `ready → backend_crashed → ready` gọi `clearSession`/`setSession` và invalidate query | `fe/src/app/boot/BootGate.test.tsx` |
-| component | `DataRootScreen`: lỗi cloud sync → hộp thoại xác nhận → gọi lại với cờ | `fe/src/app/boot/DataRootScreen.test.tsx` |
+| component | `DataRootScreen`: lỗi cloud sync → hộp thoại xác nhận → gọi lại với cờ | `fe/src/app/boot/Screens.test.tsx` |
 | component | `ConnectionBanner` chỉ hiện sau 2 giây reconnecting, ẩn khi open | `fe/src/app/boot/ConnectionBanner.test.tsx` |
 | unit | `bridge.ts` chọn mock khi không có Tauri; không ghi token vào storage | `fe/src/shared/desktop/bridge.test.ts` |
 | e2e (mock backend) | Mock bridge phát chuỗi phase starting → ready → crashed → restart → ready; app trở lại route cũ | `fe/tests/e2e/boot-lifecycle.spec.ts` |

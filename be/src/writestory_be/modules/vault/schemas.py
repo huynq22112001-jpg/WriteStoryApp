@@ -11,6 +11,7 @@ class VaultStatus(BaseModel):
     updated_at: str | None = None
     waiting_jobs: int = 0
     throttle_ms: int = 0
+    revision: int = Field(default=1, ge=1)
 
 
 class CreateVaultRequest(BaseModel):

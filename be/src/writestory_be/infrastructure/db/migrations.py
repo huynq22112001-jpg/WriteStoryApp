@@ -1,9 +1,11 @@
 """Prepare and safely upgrade the user's SQLite database before serving requests."""
+
 from __future__ import annotations
 
 import asyncio
 import json
 import sqlite3
+import sys
 from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
@@ -23,7 +25,11 @@ class DatabaseStartupError(RuntimeError):
 
 
 def _alembic_config(data_root: Path) -> Config:
-    project_root = Path(__file__).resolve().parents[4]
+    if getattr(sys, "frozen", False):
+        # PyInstaller bundles alembic.ini and migrations beside the executable payload.
+        project_root = Path(sys._MEIPASS)
+    else:
+        project_root = Path(__file__).resolve().parents[4]
     config = Config(str(project_root / "alembic.ini"))
     config.set_main_option("script_location", str(project_root / "migrations"))
     config.attributes["data_root"] = data_root
@@ -48,7 +54,7 @@ def _write_marker(marker_path: Path, data_id: str | None) -> None:
     if marker_path.exists():
         try:
             marker = json.loads(marker_path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
+        except OSError, json.JSONDecodeError:
             marker = {}
     marker.setdefault("layout_version", 1)
     marker.setdefault("data_id", data_id)
@@ -93,7 +99,7 @@ def prepare_database(
             marked_initialized = json.loads(marker.read_text(encoding="utf-8")).get(
                 "db_initialized", False
             )
-        except (OSError, json.JSONDecodeError):
+        except OSError, json.JSONDecodeError:
             marked_initialized = False
         if marked_initialized and not database.is_file():
             raise DatabaseStartupError("DB_MISSING", "Data-root đã khởi tạo nhưng thiếu DB")

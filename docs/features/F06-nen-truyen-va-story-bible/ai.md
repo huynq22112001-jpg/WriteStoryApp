@@ -98,11 +98,11 @@ Yêu cầu chung trong prompt: viết tiếng Việt tự nhiên, không dịch 
 
 ## Việc cần làm
 
-- [ ] `contracts/foundation.py` + JSON schema sinh tự động.
-- [ ] `workflows/longform/foundation.py` (chọn phần, ngữ cảnh nối, checkpoint, chia quyển).
-- [ ] 5 template + `repair_json`, đăng ký manifest id/version/checksum.
-- [ ] `evaluators/foundation_checks.py`.
-- [ ] Kịch bản mock provider: output cố định cho từng phần, `refusal_on`, `truncate_on`, `bad_json_on`.
+- [x] `contracts/foundation.py` + JSON schema sinh từ Pydantic.
+- [x] `workflows/longform/foundation.py` (chọn phần, ngữ cảnh nối, checkpoint, chia quyển và seed state chương 0).
+- [x] 5 template + `repair_json`, đăng ký manifest id/version/checksum.
+- [x] `evaluators/foundation_checks.py`.
+- [x] Kịch bản mock provider: output cố định cho từng phần, refusal, truncate, bad JSON.
 - [ ] Snapshot test prompt đã render (Plan §23.3 #8).
 
 ## Test

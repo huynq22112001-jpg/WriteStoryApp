@@ -6,6 +6,9 @@ from typing import TYPE_CHECKING, Any
 
 from writestory_be.bootstrap.protocol import BootstrapConfig
 from writestory_be.core.clock import utcnow_iso
+from writestory_be.infrastructure.db.engine import create_engine, database_path
+from writestory_be.infrastructure.db.unit_of_work import UnitOfWork
+from writestory_be.infrastructure.db.writer import WriterQueue
 from writestory_be.infrastructure.secrets.secret_store import SecretStore
 from writestory_be.infrastructure.secrets.session_store import SessionSecretStore
 from writestory_be.infrastructure.secrets.vault import VaultService
@@ -38,13 +41,31 @@ class Runtime:
     session_secrets: SessionSecretStore = field(default_factory=SessionSecretStore)
     secrets: SecretStore = field(init=False)
     vault_settings_store: VaultSettingsStore = field(init=False)
+    db_engine: Any | None = field(init=False, default=None)
+    db_sessions: Any | None = field(init=False, default=None)
+    writer_queue: WriterQueue | None = field(init=False, default=None)
+    uow: UnitOfWork | None = field(init=False, default=None)
+    provider_limiter: Any = field(init=False, default=None)
 
     def __post_init__(self) -> None:
+        from writestory_be.infrastructure.ai.limits import ProviderLimiter
+
+        self.provider_limiter = ProviderLimiter()
         self.vault = VaultService(self.config.data_root / "secrets.enc")
         self.secrets = SecretStore(self.vault, self.session_secrets)
         self.vault_settings_store = VaultSettingsStore(
             self.config.data_root / "db" / "app.sqlite3", VaultSettingsState()
         )
+
+    def ensure_database_services(self) -> UnitOfWork:
+        if self.uow is None:
+            from sqlalchemy.ext.asyncio import async_sessionmaker
+
+            self.db_engine = create_engine(database_path(self.data_root))
+            self.db_sessions = async_sessionmaker(self.db_engine, expire_on_commit=False)
+            self.writer_queue = WriterQueue(self.db_sessions, self.event_bus)
+            self.uow = UnitOfWork(self.db_sessions, self.writer_queue)
+        return self.uow
 
     @property
     def data_root(self) -> Path:

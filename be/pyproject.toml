@@ -23,3 +23,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/writestory_be"]
+include = ["src/writestory_be/**/*.json"]
+
+[dependency-groups]
+build = [
+    "pyinstaller>=6.22.3",
+]

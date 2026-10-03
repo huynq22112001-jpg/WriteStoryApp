@@ -124,7 +124,10 @@ Chạy trên Windows 11 WebView2 (Unikey Telex/VNI, Unikey bật/tắt "sửa l�
 
 ## Việc cần làm
 
-- [ ] Spike R0: editor tối thiểu + checklist IME trên cả hai webview; pin `prosemirror-view` ≥ 1.41.9.
+- [ ] Spike R0: editor tối thiểu + checklist IME trên cả hai webview; pin `prosemirror-view` ≥ 1.41.9. Editor, paragraph ID split/merge tests, paste NFC và syllable count parity có; manual IME chưa chạy.
+- [x] Tiptap v3 setup, `paragraph_id` split/merge automated test, paste normalization, Vietnamese syllable/character count and parity tests are implemented.
+- [x] Manual IME checklist and bold/italic test controls are ready at `/editor-spike`.
+- [ ] Run and record the manual IME matrix on Windows WebView2 and macOS WKWebView; no manual result is claimed yet.
 - [ ] `extensions/` đầy đủ + `paragraphId`, `pasteNormalize`, `syllableCounter`.
 - [ ] `useAutosave` theo thuật toán trên; `SaveStatus`; flush khi đổi chương/đóng cửa sổ.
 - [ ] `useEditLock`, `ReadOnlyBaseBanner`, `ConflictBanner`.

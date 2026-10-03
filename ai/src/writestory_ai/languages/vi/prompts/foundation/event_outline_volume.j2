@@ -1,0 +1,6 @@
+Lập dàn ý sự kiện cho quyển {{ volume.volume_no }}: {{ volume.title }} (chương {{ volume.chapter_from }}–{{ volume.chapter_to }}).
+Frame: {{ frame_core|tojson }}
+Nhân vật: {{ cast|tojson }}
+Sự kiện các quyển trước (chỉ dùng làm phụ thuộc nếu hợp lý): {{ previous_events|tojson }}
+Mục tiêu chương toàn truyện: {{ target_chapters }}
+Trả JSON EventOutlineVolumeOutput; temp_id dạng e1; phân bổ 1–3 sự kiện mỗi chương và chỉ dùng depends_on đã có hoặc khai báo trước.

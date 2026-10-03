@@ -1,10 +1,16 @@
 @import "tailwindcss";
+@import "@fontsource/be-vietnam-pro/400.css";
+@import "@fontsource/be-vietnam-pro/500.css";
+@import "@fontsource/be-vietnam-pro/600.css";
+@import "@fontsource-variable/noto-serif";
 
-/* Font tiếng Việt đóng gói offline (Fontsource) sẽ thêm ở bước đầu của F05/F07 (UI §3). */
 @theme {
-  --font-sans: "Be Vietnam Pro", "Inter", "Segoe UI", system-ui, sans-serif;
-  --font-serif: "Noto Serif", Georgia, serif;
+  --font-sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Noto Serif Variable", "Noto Serif", Georgia, serif;
 }
+
+:root { color-scheme: light; --surface: #fafaf9; --foreground: #1c1917; --accent: #047857; }
+.dark { color-scheme: dark; --surface: #1c1917; --foreground: #f5f5f4; --accent: #34d399; }
 
 html,
 body,
@@ -13,6 +19,8 @@ body,
 }
 
 body {
-  @apply bg-stone-50 text-stone-900 antialiased;
+  background: var(--surface);
+  color: var(--foreground);
+  @apply antialiased;
   font-family: var(--font-sans);
 }

@@ -5,6 +5,11 @@
   "engines": {
     "node": ">=22.16.0"
   },
+  "pnpm": {
+    "overrides": {
+      "prosemirror-view": ">=1.41.9"
+    }
+  },
   "scripts": {
     "dev": "node tools/dev/start_dev.mjs",
     "dev:fe": "pnpm --filter fe dev",

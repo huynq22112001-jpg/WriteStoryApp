@@ -4,6 +4,300 @@
  */
 
 export interface paths {
+    "/v1/candidates/{candidate_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Candidate */
+        get: operations["get_candidate"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/candidates/{candidate_id}/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Accept Candidate */
+        post: operations["accept_candidate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/candidates/{candidate_id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Reject Candidate */
+        post: operations["reject_candidate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Chapter */
+        get: operations["get_chapter"];
+        /** Replace Chapter */
+        put: operations["replace_chapter"];
+        post?: never;
+        /** Delete Chapter */
+        delete: operations["delete_chapter"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/candidates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Candidates */
+        get: operations["list_candidates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/findings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create User Finding */
+        post: operations["create_user_finding"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/handoff": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Chapter Handoff */
+        get: operations["get_chapter_handoff"];
+        /** Update Chapter Handoff */
+        put: operations["update_chapter_handoff"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/memory": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Chapter Memory */
+        get: operations["get_chapter_memory"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/plan": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Chapter Plan */
+        get: operations["get_chapter_plan"];
+        /** Update Chapter Plan */
+        put: operations["update_chapter_plan"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/revisions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Chapter Revisions */
+        get: operations["list_chapter_revisions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/revisions/{before_id}/diff/{after_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Diff Chapter Revisions */
+        get: operations["diff_chapter_revisions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/revisions/{revision_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Chapter Revision */
+        get: operations["get_chapter_revision"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/revisions/{revision_id}/restore": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Restore Chapter Revision */
+        post: operations["restore_chapter_revision"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/seam": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Chapter Seam */
+        get: operations["get_chapter_seam"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/snapshot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Snapshot Chapter */
+        post: operations["snapshot_chapter"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/trace": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Chapter Trace */
+        get: operations["get_chapter_trace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/chapters/{chapter_id}/working-copy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Working Copy */
+        get: operations["get_working_copy"];
+        /** Save Working Copy */
+        put: operations["save_working_copy"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/dev/mock-runs": {
         parameters: {
             query?: never;
@@ -38,6 +332,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/findings/{finding_id}/dismiss": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Dismiss Finding */
+        post: operations["dismiss_finding"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/findings/{finding_id}/resolve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Resolve Finding */
+        post: operations["resolve_finding"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/health": {
         parameters: {
             query?: never;
@@ -55,6 +383,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/jobs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Write Job */
+        post: operations["create_write_job"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/jobs/{job_id}/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Accept Job Candidate */
+        post: operations["accept_job_candidate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/jobs/{job_id}/events": {
         parameters: {
             query?: never;
@@ -65,6 +427,267 @@ export interface paths {
         /** Stream Job Events */
         get: operations["stream_job_events"];
         put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/languages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Languages */
+        get: operations["list_languages"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/languages/{code}/genre-presets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Language Genre Presets */
+        get: operations["language_genre_presets"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/languages/{code}/genres": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Genres */
+        get: operations["list_genres"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/languages/{code}/normalize": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Normalize Language Text */
+        post: operations["normalize_language_text"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/languages/{code}/slop-list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Slop List */
+        get: operations["get_slop_list"];
+        /** Put Slop List */
+        put: operations["put_slop_list"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/onboarding": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Onboarding */
+        get: operations["get_onboarding"];
+        /** Update Onboarding */
+        put: operations["update_onboarding"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/onboarding/complete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Complete Onboarding */
+        post: operations["complete_onboarding"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/outline-proposals/{proposal_id}/apply": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Apply Outline Proposal */
+        post: operations["apply_outline_proposal"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/outline-proposals/{proposal_id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Reject Outline Proposal */
+        post: operations["reject_outline_proposal"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/providers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Providers */
+        get: operations["list_providers"];
+        put?: never;
+        /** Create Provider */
+        post: operations["create_provider"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/providers/test": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Test Provider Connection */
+        post: operations["test_provider_connection"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/providers/{provider_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Provider */
+        delete: operations["delete_provider"];
+        options?: never;
+        head?: never;
+        /** Patch Provider */
+        patch: operations["patch_provider"];
+        trace?: never;
+    };
+    "/v1/providers/{provider_id}/discover": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Discover Provider Models */
+        post: operations["discover_provider_models"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/providers/{provider_id}/limits": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Provider Limits */
+        get: operations["get_provider_limits"];
+        /** Put Provider Limits */
+        put: operations["put_provider_limits"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/providers/{provider_id}/models": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Provider Models */
+        get: operations["get_provider_models"];
+        /** Put Provider Models */
+        put: operations["put_provider_models"];
         post?: never;
         delete?: never;
         options?: never;
@@ -102,6 +725,59 @@ export interface paths {
         post?: never;
         /** Delete Secret */
         delete: operations["delete_secret"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/settings/limits": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get App Limits */
+        get: operations["get_app_limits"];
+        /** Put App Limits */
+        put: operations["put_app_limits"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/settings/roles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Role Models */
+        get: operations["get_role_models"];
+        /** Put Role Models */
+        put: operations["put_role_models"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/summaries/{summary_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Update Summary */
+        put: operations["update_summary"];
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -243,10 +919,349 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/works": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Works */
+        get: operations["list_works"];
+        put?: never;
+        /** Create Work */
+        post: operations["create_work"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Work */
+        get: operations["get_work"];
+        put?: never;
+        post?: never;
+        /** Delete Work */
+        delete: operations["delete_work"];
+        options?: never;
+        head?: never;
+        /** Patch Work */
+        patch: operations["patch_work"];
+        trace?: never;
+    };
+    "/v1/works/{work_id}/chapters": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Chapters */
+        get: operations["list_chapters"];
+        put?: never;
+        /** Create Chapter */
+        post: operations["create_chapter"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/chapters/reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Reorder Chapters */
+        post: operations["reorder_chapters"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/continuity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Continuity */
+        get: operations["get_continuity"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/continuity/metrics": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Continuity Metrics */
+        get: operations["get_continuity_metrics"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/findings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Findings */
+        get: operations["list_findings"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/open": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Open Work */
+        post: operations["open_work"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/outline-proposals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Outline Proposals */
+        get: operations["list_outline_proposals"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/resync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Resync Job */
+        post: operations["create_resync_job"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/search": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Search Work Memory */
+        get: operations["search_work_memory"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Work State */
+        get: operations["get_work_state"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/state/changes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Work State Changes */
+        get: operations["get_work_state_changes"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/state/deltas": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Apply State Delta */
+        post: operations["apply_state_delta"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/style-profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Style Profile */
+        get: operations["get_style_profile"];
+        /** Put Style Profile */
+        put: operations["put_style_profile"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/summaries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Work Summaries */
+        get: operations["list_work_summaries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/works/{work_id}/text/check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Check Work Text */
+        post: operations["check_work_text"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AppLimitsIn */
+        AppLimitsIn: {
+            /** App Daily Tokens */
+            app_daily_tokens?: number | null;
+            /** App Daily Usd */
+            app_daily_usd?: number | null;
+            /**
+             * Autowrite Mode Default
+             * @default review_each
+             * @enum {string}
+             */
+            autowrite_mode_default: "auto" | "review_each" | "review_every_k";
+            /**
+             * Chapter Length Max
+             * @default 2500
+             */
+            chapter_length_max: number;
+            /**
+             * Chapter Length Min
+             * @default 1500
+             */
+            chapter_length_min: number;
+            /**
+             * Max Repair Rounds
+             * @default 2
+             */
+            max_repair_rounds: number;
+            /**
+             * Review Every K
+             * @default 5
+             */
+            review_every_k: number;
+            /**
+             * Timezone
+             * @default Asia/Bangkok
+             */
+            timezone: string;
+            /** Work Daily Usd Default */
+            work_daily_usd_default?: number | null;
+            /**
+             * Worker Pool
+             * @default 4
+             */
+            worker_pool: number;
+        };
         /** BackendNoticePayload */
         BackendNoticePayload: {
             /** Detail */
@@ -255,6 +1270,15 @@ export interface components {
             };
             /** Kind */
             kind: string;
+        };
+        /** CandidateAccept */
+        CandidateAccept: {
+            /** Expected Revision Id */
+            expected_revision_id: string;
+            /** Note */
+            note?: string | null;
+            /** Paragraph Ids */
+            paragraph_ids?: string[] | null;
         };
         /** ChangePasswordRequest */
         ChangePasswordRequest: {
@@ -273,6 +1297,24 @@ export interface components {
              * Format: password
              */
             new_password_confirm: string;
+        };
+        /** ChapterCreate */
+        ChapterCreate: {
+            /** Chapter No */
+            chapter_no?: number | null;
+            /**
+             * Title
+             * @default
+             */
+            title: string;
+        };
+        /** CompleteOnboardingRequest */
+        CompleteOnboardingRequest: {
+            /**
+             * Skipped
+             * @default false
+             */
+            skipped: boolean;
         };
         /** CreateVaultRequest */
         CreateVaultRequest: {
@@ -301,7 +1343,7 @@ export interface components {
          * ErrorCode
          * @enum {string}
          */
-        ErrorCode: "VALIDATION" | "REVISION_CONFLICT" | "WORK_BLOCKED" | "WORK_BUSY_QUEUED" | "CHAPTER_RANGE_CONFLICT" | "VAULT_LOCKED" | "VAULT_PASSWORD_INVALID" | "VAULT_UNLOCK_THROTTLED" | "VAULT_ALREADY_EXISTS" | "VAULT_NOT_FOUND" | "VAULT_CORRUPT" | "SECRET_MISSING" | "PROVIDER_AUTH" | "PROVIDER_UNREACHABLE" | "PROVIDER_SERVER_ERROR" | "PROVIDER_RATE_LIMIT" | "PROVIDER_REFUSAL" | "OUTPUT_TRUNCATED" | "STRUCTURED_OUTPUT_INVALID" | "BUDGET_EXCEEDED" | "UNAUTHORIZED" | "FORBIDDEN_HOST" | "FORBIDDEN_ORIGIN" | "NOT_FOUND" | "IDEMPOTENCY_CONFLICT" | "DB_BUSY" | "BACKEND_SHUTTING_DOWN" | "INTERNAL";
+        ErrorCode: "VALIDATION" | "REVISION_CONFLICT" | "WORK_BLOCKED" | "WORK_BUSY_QUEUED" | "WORK_ACTIVE_JOB" | "CHAPTER_RANGE_CONFLICT" | "CHAPTER_READ_ONLY" | "CANDIDATE_NOT_READY" | "CANDIDATE_CLOSED" | "CHAPTER_IS_BASE" | "STATE_SNAPSHOT_MISSING" | "CHAPTER_EMPTY" | "VAULT_LOCKED" | "VAULT_PASSWORD_INVALID" | "VAULT_UNLOCK_THROTTLED" | "VAULT_ALREADY_EXISTS" | "VAULT_NOT_FOUND" | "VAULT_CORRUPT" | "SECRET_MISSING" | "PROVIDER_AUTH" | "PROVIDER_UNREACHABLE" | "PROVIDER_SERVER_ERROR" | "PROVIDER_RATE_LIMIT" | "PROVIDER_IN_USE" | "PROVIDER_REFUSAL" | "OUTPUT_TRUNCATED" | "STRUCTURED_OUTPUT_INVALID" | "BUDGET_EXCEEDED" | "UNAUTHORIZED" | "FORBIDDEN_HOST" | "FORBIDDEN_ORIGIN" | "NOT_FOUND" | "IDEMPOTENCY_CONFLICT" | "DB_BUSY" | "BACKEND_SHUTTING_DOWN" | "INTERNAL";
         /** ErrorResponse */
         ErrorResponse: {
             /** @default null */
@@ -364,6 +1406,26 @@ export interface components {
              * @default null
              */
             work_id: string | null;
+        };
+        /** FindingDecision */
+        FindingDecision: {
+            /** Note */
+            note?: string | null;
+        };
+        /** HandoffUpdate */
+        HandoffUpdate: {
+            /** Ending State */
+            ending_state: {
+                [key: string]: unknown;
+            };
+            /** Expected Handoff Revision */
+            expected_handoff_revision: number;
+            /** Next Opening Requirements */
+            next_opening_requirements?: unknown[];
+            /** Note */
+            note?: string | null;
+            /** Open Threads */
+            open_threads?: unknown[];
         };
         /** HealthResponse */
         HealthResponse: {
@@ -448,6 +1510,80 @@ export interface components {
             /** Step */
             step: string;
         };
+        /** JobWriteRequest */
+        JobWriteRequest: {
+            /** Base Revision Id */
+            base_revision_id?: string | null;
+            /** Chapter Id */
+            chapter_id?: string | null;
+            /** Chapter No */
+            chapter_no?: number | null;
+            /** Finding Ids */
+            finding_ids?: string[];
+            /** Idempotency Key */
+            idempotency_key: string;
+            /** Instruction */
+            instruction?: string | null;
+            /**
+             * Mode
+             * @default review_each
+             */
+            mode: string;
+            /** Scope */
+            scope?: {
+                [key: string]: unknown;
+            };
+            /**
+             * Type
+             * @default write
+             */
+            type: string;
+            /** Work Id */
+            work_id: string;
+        };
+        /** LanguageFindingOut */
+        LanguageFindingOut: {
+            /** Check Id */
+            check_id: string;
+            /** Confidence */
+            confidence: string;
+            /** End */
+            end?: number | null;
+            /** Kind */
+            kind: string;
+            /** Message Key */
+            message_key: string;
+            /** Needs Confirmation */
+            needs_confirmation: boolean;
+            /** Paragraph Id */
+            paragraph_id?: string | null;
+            /** Params */
+            params: {
+                [key: string]: unknown;
+            };
+            /** Quote */
+            quote: string;
+            /** Severity */
+            severity: string;
+            /** Start */
+            start?: number | null;
+            /** Suggestion */
+            suggestion?: string | null;
+        };
+        /** LimitsIn */
+        LimitsIn: {
+            /** Max Concurrent Requests */
+            max_concurrent_requests: number;
+            /**
+             * Max Retries
+             * @default 3
+             */
+            max_retries: number;
+            /** Rpm */
+            rpm?: number | null;
+            /** Tpm */
+            tpm?: number | null;
+        };
         /** MockRunsAccepted */
         MockRunsAccepted: {
             /** Run Ids */
@@ -479,6 +1615,200 @@ export interface components {
              */
             works: number;
         };
+        /** ModelItem */
+        ModelItem: {
+            /** Allowed Roles */
+            allowed_roles?: ("planner" | "writer" | "checker" | "reviewer" | "summary")[] | null;
+            /** Display Name */
+            display_name?: string | null;
+            /** Long Context Params */
+            long_context_params?: {
+                [key: string]: unknown;
+            } | null;
+            /** Long Context Variant Model Id */
+            long_context_variant_model_id?: string | null;
+            /** Max Concurrent Requests */
+            max_concurrent_requests?: number | null;
+            /** Max Input Tokens */
+            max_input_tokens?: number | null;
+            /** Max Tokens */
+            max_tokens?: number | null;
+            /** Model Id */
+            model_id: string;
+            /** Price Cache Read Per Mtok */
+            price_cache_read_per_mtok?: number | null;
+            /** Price Cache Write Per Mtok */
+            price_cache_write_per_mtok?: number | null;
+            /** Price Input Per Mtok */
+            price_input_per_mtok?: number | null;
+            /** Price Output Per Mtok */
+            price_output_per_mtok?: number | null;
+            /** Reset Fields */
+            reset_fields?: string[];
+            /** Supported Efforts */
+            supported_efforts?: string[] | null;
+            /** Tokens Per Syllable */
+            tokens_per_syllable?: number | null;
+        };
+        /** ModelsPut */
+        ModelsPut: {
+            /** Expected Revision */
+            expected_revision: number;
+            /** Items */
+            items: components["schemas"]["ModelItem"][];
+        };
+        /** NormalizeIn */
+        NormalizeIn: {
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "paste" | "save";
+            /** Text */
+            text: string;
+            /** Work Id */
+            work_id?: string | null;
+        };
+        /** NormalizeOut */
+        NormalizeOut: {
+            /** Changes */
+            changes: {
+                [key: string]: unknown;
+            }[];
+            /** Legacy Encoding */
+            legacy_encoding?: {
+                [key: string]: unknown;
+            } | null;
+            /** Text */
+            text: string;
+        };
+        /** OnboardingState */
+        OnboardingState: {
+            /** Completed At */
+            completed_at?: string | null;
+            /** Platform */
+            platform: string;
+            /** Revision */
+            revision: number;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "pending" | "completed" | "skipped";
+            /** Step */
+            step: ("security" | "provider" | "first_work") | null;
+            steps: components["schemas"]["OnboardingSteps"];
+        };
+        /** OnboardingSteps */
+        OnboardingSteps: {
+            /**
+             * Data Root
+             * @enum {string}
+             */
+            data_root: "done" | "not_applicable";
+            /**
+             * First Work
+             * @enum {string}
+             */
+            first_work: "done" | "pending" | "skipped" | "not_applicable";
+            /**
+             * Provider
+             * @enum {string}
+             */
+            provider: "done" | "pending" | "skipped" | "not_applicable";
+            /**
+             * Security
+             * @enum {string}
+             */
+            security: "done" | "pending" | "skipped" | "not_applicable";
+        };
+        /** ParagraphTextIn */
+        ParagraphTextIn: {
+            /** Paragraph Id */
+            paragraph_id: string;
+            /** Text */
+            text: string;
+        };
+        /** PlanUpdate */
+        PlanUpdate: {
+            /** Expected Plan Id */
+            expected_plan_id: string;
+            /** Plan */
+            plan: {
+                [key: string]: unknown;
+            };
+        };
+        /** ProviderIn */
+        ProviderIn: {
+            /** Api Key */
+            api_key?: string | null;
+            /**
+             * Auto Discover
+             * @default true
+             */
+            auto_discover: boolean;
+            /** Base Url */
+            base_url: string;
+            /** Default Effort */
+            default_effort?: ("low" | "medium" | "high" | "xhigh" | "max") | null;
+            /**
+             * Enabled
+             * @default true
+             */
+            enabled: boolean;
+            /**
+             * Key Storage
+             * @default none
+             * @enum {string}
+             */
+            key_storage: "vault" | "session" | "none";
+            /** Name */
+            name: string;
+            /**
+             * Prefer Long Context
+             * @default false
+             */
+            prefer_long_context: boolean;
+            /**
+             * Protocol
+             * @enum {string}
+             */
+            protocol: "anthropic" | "openai_compatible" | "ollama_lmstudio";
+        };
+        /** ProviderPatch */
+        ProviderPatch: {
+            /** Api Key */
+            api_key?: string | null;
+            /** Auto Discover */
+            auto_discover?: boolean | null;
+            /** Base Url */
+            base_url?: string | null;
+            /** Default Effort */
+            default_effort?: ("low" | "medium" | "high" | "xhigh" | "max") | null;
+            /** Enabled */
+            enabled?: boolean | null;
+            /** Expected Revision */
+            expected_revision: number;
+            /** Key Storage */
+            key_storage?: ("vault" | "session" | "none") | null;
+            /** Name */
+            name?: string | null;
+            /** Prefer Long Context */
+            prefer_long_context?: boolean | null;
+        };
+        /** ProviderTestIn */
+        ProviderTestIn: {
+            /** Api Key */
+            api_key?: string | null;
+            /** Base Url */
+            base_url?: string | null;
+            /** Model Id */
+            model_id?: string | null;
+            /** Protocol */
+            protocol?: ("anthropic" | "openai_compatible" | "ollama_lmstudio") | null;
+            /** Provider Id */
+            provider_id?: string | null;
+        };
         /** PutSecretRequest */
         PutSecretRequest: {
             /** Label */
@@ -494,10 +1824,64 @@ export interface components {
              */
             value: string;
         };
+        /** ReorderIn */
+        ReorderIn: {
+            /** Chapter Ids */
+            chapter_ids: string[];
+        };
+        /** ReplaceIn */
+        ReplaceIn: {
+            /** Doc Json */
+            doc_json?: {
+                [key: string]: unknown;
+            } | null;
+            /** Expected Revision */
+            expected_revision: number;
+            /** Title */
+            title?: string | null;
+        };
         /** ResetVaultRequest */
         ResetVaultRequest: {
             /** Confirm */
             confirm: string;
+        };
+        /** RestoreIn */
+        RestoreIn: {
+            /** Expected Revision */
+            expected_revision: number;
+        };
+        /** ResyncRequest */
+        ResyncRequest: {
+            /**
+             * Dry Run
+             * @default false
+             */
+            dry_run: boolean;
+            /** From Chapter */
+            from_chapter: number;
+            /** Idempotency Key */
+            idempotency_key?: string | null;
+            /** To Chapter */
+            to_chapter?: number | null;
+        };
+        /** RoleAssignment */
+        RoleAssignment: {
+            /** Effort */
+            effort?: string | null;
+            /** Model Id */
+            model_id?: string | null;
+            /** Provider Id */
+            provider_id?: string | null;
+            /**
+             * Role
+             * @enum {string}
+             */
+            role: "planner" | "writer" | "checker" | "reviewer" | "summary";
+        };
+        /** RolesPut */
+        RolesPut: {
+            /** Roles */
+            roles: components["schemas"]["RoleAssignment"][];
         };
         /** SecretInfo */
         SecretInfo: {
@@ -538,6 +1922,64 @@ export interface components {
              */
             reason: "app_exit" | "restart";
         };
+        /** SlopEntryIn */
+        SlopEntryIn: {
+            /** Id */
+            id: string;
+            /**
+             * Is Regex
+             * @default false
+             */
+            is_regex: boolean;
+            /** Max Per 1000 Units */
+            max_per_1000_units?: number | null;
+            /**
+             * Note
+             * @default
+             */
+            note: string;
+            /** Pattern */
+            pattern: string;
+            /**
+             * Scope
+             * @default anywhere
+             * @enum {string}
+             */
+            scope: "paragraph_start" | "anywhere";
+        };
+        /** SlopListOut */
+        SlopListOut: {
+            /** Builtin */
+            builtin: {
+                [key: string]: unknown;
+            }[];
+            /** User */
+            user: {
+                [key: string]: unknown;
+            };
+            /** Version */
+            version: number;
+        };
+        /** SlopListPut */
+        SlopListPut: {
+            /** Additions */
+            additions?: components["schemas"]["SlopEntryIn"][];
+            /** Disabled */
+            disabled?: string[];
+            /** Expected Version */
+            expected_version: number;
+        };
+        /** SnapshotIn */
+        SnapshotIn: {
+            /** Expected Revision */
+            expected_revision?: number | null;
+            /**
+             * Reason
+             * @default manual_snapshot
+             * @enum {string}
+             */
+            reason: "leave_chapter" | "idle" | "manual_snapshot" | "before_ai_accept" | "after_ai_accept" | "before_restore" | "full_replace";
+        };
         /** StreamTailPayload */
         StreamTailPayload: {
             /** Candidate Id */
@@ -546,6 +1988,97 @@ export interface components {
             step: string;
             /** Tail */
             tail: string;
+        };
+        /** StyleProfileIn */
+        StyleProfileIn: {
+            /** Banned Phrases */
+            banned_phrases?: string[];
+            /** Dialogue Dash Char */
+            dialogue_dash_char?: ("–" | "—") | null;
+            /**
+             * Dialogue Style
+             * @enum {string}
+             */
+            dialogue_style: "dash" | "quotes";
+            /** Expected Revision */
+            expected_revision: number;
+            /** Punctuation Rules */
+            punctuation_rules?: {
+                [key: string]: unknown;
+            };
+            /**
+             * Tone Mark Style
+             * @enum {string}
+             */
+            tone_mark_style: "old" | "new";
+            /**
+             * Vocab Register
+             * @enum {string}
+             */
+            vocab_register: "han_viet" | "balanced" | "thuan_viet";
+            /** Voice */
+            voice?: string | null;
+            /** Voice Samples */
+            voice_samples?: string[];
+        };
+        /** StyleProfileOut */
+        StyleProfileOut: {
+            /** Banned Phrases */
+            banned_phrases: string[];
+            /** Dialogue Dash Char */
+            dialogue_dash_char: ("–" | "—") | null;
+            /**
+             * Dialogue Style
+             * @enum {string}
+             */
+            dialogue_style: "dash" | "quotes";
+            /** Punctuation Rules */
+            punctuation_rules: {
+                [key: string]: unknown;
+            };
+            /** Revision */
+            revision: number;
+            /**
+             * Tone Mark Style
+             * @enum {string}
+             */
+            tone_mark_style: "old" | "new";
+            /**
+             * Vocab Register
+             * @enum {string}
+             */
+            vocab_register: "han_viet" | "balanced" | "thuan_viet";
+            /** Voice */
+            voice: string | null;
+            /** Voice Samples */
+            voice_samples: string[];
+        };
+        /** SummaryUpdate */
+        SummaryUpdate: {
+            /** Expected Source Hash */
+            expected_source_hash: string;
+            /** Pinned By User */
+            pinned_by_user: boolean;
+            /** Text */
+            text: string;
+        };
+        /** TextCheckIn */
+        TextCheckIn: {
+            /** Chapter Id */
+            chapter_id?: string | null;
+            /** Checks */
+            checks?: string[] | null;
+            /** Paragraphs */
+            paragraphs?: components["schemas"]["ParagraphTextIn"][] | null;
+        };
+        /** TextCheckOut */
+        TextCheckOut: {
+            /** Findings */
+            findings: components["schemas"]["LanguageFindingOut"][];
+            /** Length */
+            length: {
+                [key: string]: number;
+            };
         };
         /** TokenDeltaPayload */
         TokenDeltaPayload: {
@@ -582,6 +2115,29 @@ export interface components {
              */
             password: string;
         };
+        /** UpdateOnboardingRequest */
+        UpdateOnboardingRequest: {
+            /** Expected Revision */
+            expected_revision: number;
+            /**
+             * Step
+             * @enum {string}
+             */
+            step: "security" | "provider" | "first_work";
+        };
+        /** UserFindingCreate */
+        UserFindingCreate: {
+            /** Evidence */
+            evidence?: {
+                [key: string]: unknown;
+            }[];
+            /** Kind */
+            kind: string;
+            /** Message */
+            message: string;
+            /** Severity */
+            severity: string;
+        };
         /** VaultModeRequest */
         VaultModeRequest: {
             /** Expected Revision */
@@ -603,6 +2159,11 @@ export interface components {
              * @enum {string}
              */
             mode: "undecided" | "vault" | "session_only";
+            /**
+             * Revision
+             * @default 1
+             */
+            revision: number;
             /**
              * State
              * @enum {string}
@@ -634,6 +2195,211 @@ export interface components {
              */
             state: "absent" | "locked" | "unlocked";
         };
+        /** WorkBadge */
+        WorkBadge: {
+            /** Kind */
+            kind: string;
+            /** Label Key */
+            label_key: string;
+            /** Params */
+            params?: {
+                [key: string]: unknown;
+            };
+        };
+        /** WorkCreate */
+        WorkCreate: {
+            /** Genre */
+            genre?: string | null;
+            /** Genre Label Custom */
+            genre_label_custom?: string | null;
+            /**
+             * Language
+             * @default vi
+             * @constant
+             */
+            language: "vi";
+            /** Title */
+            title: string;
+            /**
+             * Wizard Step
+             * @default basics
+             */
+            wizard_step: ("basics" | "brief" | "foundation" | "address_rules" | "event_outline" | "writing_config" | "review") | null;
+        };
+        /** WorkListItem */
+        WorkListItem: {
+            badge: components["schemas"]["WorkBadge"];
+            /** Committed Chapters */
+            committed_chapters: number;
+            /** Continuity Chapter No */
+            continuity_chapter_no: number | null;
+            /** Continuity Reason */
+            continuity_reason: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Continuity Status
+             * @enum {string}
+             */
+            continuity_status: "ok" | "blocked_needs_resync" | "stale_from";
+            /** Cost Total Usd */
+            cost_total_usd?: number | null;
+            /** Cover Url */
+            cover_url?: string | null;
+            /** Genre */
+            genre: string | null;
+            /** Genre Label */
+            genre_label: string | null;
+            /** Id */
+            id: string;
+            /** Job */
+            job?: {
+                [key: string]: unknown;
+            } | null;
+            /** Last Opened At */
+            last_opened_at: string | null;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "draft" | "ready" | "archived";
+            /** Target Chapters */
+            target_chapters: number | null;
+            /** Title */
+            title: string;
+            /** Updated At */
+            updated_at: string;
+        };
+        /** WorkListResponse */
+        WorkListResponse: {
+            /** Items */
+            items: components["schemas"]["WorkListItem"][];
+            /** Next Cursor */
+            next_cursor: string | null;
+        };
+        /** WorkOut */
+        WorkOut: {
+            /**
+             * Autowrite Mode Default
+             * @enum {string}
+             */
+            autowrite_mode_default: "auto" | "review_each" | "review_every_k";
+            /** Brief */
+            brief: string | null;
+            /** Budget Daily Tokens */
+            budget_daily_tokens: number | null;
+            /** Budget Daily Usd */
+            budget_daily_usd: number | null;
+            /** Chapter Length Max */
+            chapter_length_max: number;
+            /** Chapter Length Min */
+            chapter_length_min: number;
+            /** Continuity Chapter No */
+            continuity_chapter_no: number | null;
+            /** Continuity Reason */
+            continuity_reason: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Continuity Status
+             * @enum {string}
+             */
+            continuity_status: "ok" | "blocked_needs_resync" | "stale_from";
+            /** Cover Asset Id */
+            cover_asset_id: string | null;
+            /** Created At */
+            created_at: string;
+            /** Genre */
+            genre: string | null;
+            /** Genre Label Custom */
+            genre_label_custom: string | null;
+            /** Id */
+            id: string;
+            /**
+             * Language
+             * @constant
+             */
+            language: "vi";
+            /** Last Opened At */
+            last_opened_at: string | null;
+            /** Max Repair Rounds */
+            max_repair_rounds: number | null;
+            /** Project Id */
+            project_id: string;
+            /** Review Every K */
+            review_every_k: number | null;
+            /** Revision */
+            revision: number;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "draft" | "ready" | "archived";
+            style_profile?: components["schemas"]["StyleProfileOut"] | null;
+            /** Target Chapters */
+            target_chapters: number | null;
+            /** Title */
+            title: string;
+            /** Updated At */
+            updated_at: string;
+            /** Wizard Completed Steps */
+            wizard_completed_steps: ("basics" | "brief" | "foundation" | "address_rules" | "event_outline" | "writing_config" | "review")[];
+            /** Wizard Step */
+            wizard_step: ("basics" | "brief" | "foundation" | "address_rules" | "event_outline" | "writing_config" | "review") | null;
+        };
+        /** WorkPatch */
+        WorkPatch: {
+            /** Autowrite Mode Default */
+            autowrite_mode_default?: ("auto" | "review_each" | "review_every_k") | null;
+            /** Brief */
+            brief?: string | null;
+            /** Budget Daily Tokens */
+            budget_daily_tokens?: number | null;
+            /** Budget Daily Usd */
+            budget_daily_usd?: number | null;
+            /** Chapter Length Max */
+            chapter_length_max?: number | null;
+            /** Chapter Length Min */
+            chapter_length_min?: number | null;
+            /** Cover Asset Id */
+            cover_asset_id?: string | null;
+            /** Expected Revision */
+            expected_revision: number;
+            /** Genre */
+            genre?: string | null;
+            /** Genre Label Custom */
+            genre_label_custom?: string | null;
+            /** Max Repair Rounds */
+            max_repair_rounds?: number | null;
+            /** Review Every K */
+            review_every_k?: number | null;
+            /** Status */
+            status?: ("draft" | "ready" | "archived") | null;
+            /** Target Chapters */
+            target_chapters?: number | null;
+            /** Title */
+            title?: string | null;
+            /** Wizard Completed Steps */
+            wizard_completed_steps?: ("basics" | "brief" | "foundation" | "address_rules" | "event_outline" | "writing_config" | "review")[] | null;
+            /** Wizard Step */
+            wizard_step?: ("basics" | "brief" | "foundation" | "address_rules" | "event_outline" | "writing_config" | "review") | null;
+        };
+        /** WorkingCopyIn */
+        WorkingCopyIn: {
+            /** Base Revision Id */
+            base_revision_id?: string | null;
+            /**
+             * Client Seq
+             * @default 0
+             */
+            client_seq: number;
+            /** Client Session Id */
+            client_session_id?: string | null;
+            /** Doc Json */
+            doc_json: {
+                [key: string]: unknown;
+            };
+        };
     };
     responses: never;
     parameters: never;
@@ -643,6 +2409,733 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    get_candidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                candidate_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    accept_candidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                candidate_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CandidateAccept"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    reject_candidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                candidate_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    [key: string]: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_chapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    replace_chapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReplaceIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    delete_chapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_candidates: {
+        parameters: {
+            query?: {
+                status?: string | null;
+            };
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_user_finding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UserFindingCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_chapter_handoff: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    update_chapter_handoff: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HandoffUpdate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_chapter_memory: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_chapter_plan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    update_chapter_plan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PlanUpdate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_chapter_revisions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    diff_chapter_revisions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+                before_id: string;
+                after_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_chapter_revision: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+                revision_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    restore_chapter_revision: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+                revision_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RestoreIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_chapter_seam: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    snapshot_chapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SnapshotIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_chapter_trace: {
+        parameters: {
+            query?: {
+                job_id?: string | null;
+                step?: string | null;
+            };
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_working_copy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    save_working_copy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                chapter_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["WorkingCopyIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     create_mock_runs: {
         parameters: {
             query?: never;
@@ -712,6 +3205,76 @@ export interface operations {
             };
         };
     };
+    dismiss_finding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                finding_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FindingDecision"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    resolve_finding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                finding_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FindingDecision"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     health: {
         parameters: {
             query?: never;
@@ -728,6 +3291,74 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HealthResponse"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_write_job: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JobWriteRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    accept_job_candidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CandidateAccept"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
                 };
             };
             /** @description Default Response */
@@ -763,6 +3394,683 @@ export interface operations {
                 };
                 content: {
                     "text/event-stream": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_languages: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    language_genre_presets: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_genres: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    normalize_language_text: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NormalizeIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NormalizeOut"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_slop_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SlopListOut"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    put_slop_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SlopListPut"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_onboarding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OnboardingState"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    update_onboarding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateOnboardingRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OnboardingState"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    complete_onboarding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CompleteOnboardingRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OnboardingState"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    apply_outline_proposal: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    [key: string]: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    reject_outline_proposal: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_providers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_provider: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProviderIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    test_provider_connection: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProviderTestIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    delete_provider: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                provider_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    patch_provider: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                provider_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProviderPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    discover_provider_models: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                provider_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_provider_limits: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                provider_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    put_provider_limits: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                provider_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LimitsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_provider_models: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                provider_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    put_provider_models: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                provider_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ModelsPut"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
                 };
             };
             /** @description Default Response */
@@ -857,6 +4165,169 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_app_limits: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    put_app_limits: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AppLimitsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_role_models: {
+        parameters: {
+            query?: {
+                work_id?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    put_role_models: {
+        parameters: {
+            query?: {
+                work_id?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RolesPut"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    update_summary: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                summary_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SummaryUpdate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
             };
             /** @description Default Response */
             default: {
@@ -1112,6 +4583,749 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VaultStatus"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_works: {
+        parameters: {
+            query?: {
+                q?: string | null;
+                genre?: string | null;
+                status?: ("draft" | "ready" | "archived") | null;
+                continuity?: ("ok" | "blocked_needs_resync" | "stale_from") | null;
+                sort?: "updated" | "opened" | "title";
+                cursor?: string | null;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkListResponse"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_work: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["WorkCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkOut"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_work: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkOut"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    delete_work: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    patch_work: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["WorkPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkOut"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_chapters: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_chapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChapterCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    reorder_chapters: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReorderIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_continuity: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_continuity_metrics: {
+        parameters: {
+            query?: {
+                from?: number | null;
+                to?: number | null;
+            };
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_findings: {
+        parameters: {
+            query?: {
+                status?: string | null;
+                chapter?: number | null;
+                severity?: string | null;
+                source?: string | null;
+            };
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    open_work: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_outline_proposals: {
+        parameters: {
+            query?: {
+                status?: string | null;
+            };
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    create_resync_job: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResyncRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    search_work_memory: {
+        parameters: {
+            query: {
+                q: string;
+                kinds?: string[] | null;
+                limit?: number;
+                chapter_from?: number | null;
+                chapter_to?: number | null;
+                cursor?: string | null;
+            };
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_work_state: {
+        parameters: {
+            query?: {
+                chapter?: number | null;
+            };
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_work_state_changes: {
+        parameters: {
+            query: {
+                from: number;
+                to: number;
+                entity?: string | null;
+            };
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    apply_state_delta: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    [key: string]: unknown;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_style_profile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StyleProfileOut"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    put_style_profile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StyleProfileIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StyleProfileOut"];
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_work_summaries: {
+        parameters: {
+            query?: {
+                level?: string | null;
+                from?: number | null;
+                to?: number | null;
+            };
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Default Response */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    check_work_text: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                work_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TextCheckIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TextCheckOut"];
                 };
             };
             /** @description Default Response */

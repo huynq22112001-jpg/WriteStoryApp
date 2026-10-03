@@ -2,6 +2,7 @@ import unicodedata
 
 import pytest
 
+from writestory_ai.languages.base import LanguagePack
 from writestory_ai.languages.registry import (
     UnsupportedLanguageError,
     get_language_pack,
@@ -68,6 +69,7 @@ class TestNormalize:
 class TestRegistry:
     def test_vi_pack(self):
         pack = get_language_pack("vi")
+        assert isinstance(pack, LanguagePack)
         assert pack.code == "vi"
         assert pack.length_unit == "syllable"
         assert pack.count_length("một hai ba") == 3
@@ -75,3 +77,44 @@ class TestRegistry:
     def test_unsupported_language(self):
         with pytest.raises(UnsupportedLanguageError):
             get_language_pack("en")
+
+    def test_pack_exposes_language_data(self):
+        pack = get_language_pack("vi")
+        assert {
+            "xianxia",
+            "wuxia",
+            "fantasy",
+            "romance",
+            "urban",
+            "palace",
+            "transmigration",
+            "detective",
+        } <= set(pack.genre_presets)
+        assert {"ta", "ngươi"} <= {item["text"] for item in pack.pronouns}
+        assert "thì thầm" in pack.speech_verbs
+        assert "người" in pack.valid_syllables
+        assert pack.slop_list
+        assert pack.prompts_dir.name == "prompts"
+
+    def test_language_finding_contract_forbids_unknown_fields(self):
+        from pydantic import ValidationError
+
+        from writestory_ai.languages.contracts import LanguageFinding
+
+        finding = LanguageFinding(
+            check_id="vi.test",
+            kind="spelling",
+            severity="minor",
+            quote="sai",
+            message_key="spelling.invalid",
+        )
+        assert finding.needs_confirmation is False
+        with pytest.raises(ValidationError):
+            LanguageFinding(
+                check_id="vi.test",
+                kind="spelling",
+                severity="minor",
+                quote="sai",
+                message_key="spelling.invalid",
+                unknown="x",
+            )

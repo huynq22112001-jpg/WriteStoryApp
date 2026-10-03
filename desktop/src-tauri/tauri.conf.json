@@ -27,6 +27,12 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["nsis", "dmg"]
+    "targets": ["nsis", "dmg"],
+    "resources": ["resources/backend/"],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "offlineInstaller"
+      }
+    }
   }
 }

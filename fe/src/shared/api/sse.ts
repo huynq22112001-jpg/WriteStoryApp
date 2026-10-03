@@ -93,7 +93,7 @@ export async function connectEvents(options: ConnectEventsOptions): Promise<void
       const query = works.length ? `?works=${encodeURIComponent(works.join(","))}` : "";
       const headers: Record<string, string> = { Authorization: `Bearer ${session.token}` };
       if (lastEventId !== undefined) headers["Last-Event-ID"] = lastEventId;
-      const response = await fetch(`${session.baseUrl}/v1/events${query}`, { headers, signal });
+      const response = await fetch(`${session.base_url}/v1/events${query}`, { headers, signal });
       if (!response.ok || !response.body) throw new Error(`HTTP ${response.status}`);
 
       onStatus?.("open");

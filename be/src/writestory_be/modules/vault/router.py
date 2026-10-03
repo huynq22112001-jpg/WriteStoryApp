@@ -51,6 +51,7 @@ async def _status(runtime, throttle_ms: int = 0) -> VaultStatus:
         updated_at=doc.get("updated_at") if doc else None,
         waiting_jobs=await runtime.vault_settings_store.waiting_jobs(),
         throttle_ms=throttle_ms,
+        revision=settings.revision,
     )
 
 
@@ -104,6 +105,10 @@ async def create_vault(body: CreateVaultRequest, runtime: RuntimeDep):
                 }
         await runtime.vault_settings_store.set_index(index)
     await runtime.secrets.vault_unlocked()
+    if runtime.uow is not None:
+        from writestory_be.modules.providers.service import ProviderService
+
+        runtime.spawn(ProviderService(runtime).discover_waiting())
     await _publish(runtime)
     return await _status(runtime)
 
@@ -122,6 +127,10 @@ async def unlock(body: UnlockRequest, runtime: RuntimeDep):
         raise _vault_exception(exc) from exc
     api_service.clear_password_failures()
     await runtime.secrets.vault_unlocked()
+    if runtime.uow is not None:
+        from writestory_be.modules.providers.service import ProviderService
+
+        runtime.spawn(ProviderService(runtime).discover_waiting())
     vault_refs = await runtime.vault.refs()
     index = {}
     for ref in vault_refs:
@@ -150,8 +159,9 @@ async def change_password(body: ChangePasswordRequest, runtime: RuntimeDep):
     api_service.check_throttle()
     try:
         await runtime.vault.change_password(
-            body.current_password.get_secret_value(), body.new_password.get_secret_value(),
-            body.new_password_confirm.get_secret_value()
+            body.current_password.get_secret_value(),
+            body.new_password.get_secret_value(),
+            body.new_password_confirm.get_secret_value(),
         )
     except (VaultCorrupt, VaultPasswordInvalid) as exc:
         if isinstance(exc, VaultPasswordInvalid):
@@ -197,9 +207,7 @@ async def list_secrets(runtime: RuntimeDep):
     runtime.secrets.remember_vault_refs(set(index))
     infos = []
     for ref, metadata in index.items():
-        infos.append(
-            SecretInfo(ref=ref, available=runtime.vault.state == "unlocked", **metadata)
-        )
+        infos.append(SecretInfo(ref=ref, available=runtime.vault.state == "unlocked", **metadata))
     for ref in runtime.session_secrets.refs():
         item = runtime.session_secrets.get(ref) or {}
         infos.append(
@@ -216,9 +224,7 @@ async def put_secret(ref: str, body: PutSecretRequest, runtime: RuntimeDep):
         await runtime.secrets.put(ref, body.value.get_secret_value(), body.storage, body.label)
     except PermissionError as exc:
         if body.storage == "vault" and runtime.vault.state == "absent":
-            raise _app_error(
-                ErrorCode.VALIDATION, detail={"reason": "vault_absent"}
-            ) from exc
+            raise _app_error(ErrorCode.VALIDATION, detail={"reason": "vault_absent"}) from exc
         raise _app_error(ErrorCode.VAULT_LOCKED) from exc
     if body.storage == "vault":
         state = await runtime.vault_settings_store.read()

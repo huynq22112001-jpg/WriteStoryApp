@@ -151,10 +151,14 @@ Quy tắc transaction: không giữ transaction trong lúc gọi AI; mọi ghi q
 - [ ] Migration bảng/cột ở trên; enum kiểm bằng CHECK constraint.
 - [ ] `domain.py`: state machine candidate + merge 3 bên thuần (không I/O).
 - [ ] `paragraphs.py`: `apply_paragraph_ops` + kiểm tra phạm vi, sinh `paragraph_id` mới cho đoạn chèn.
-- [ ] Accept/reject API + alias `/v1/jobs/{id}/accept`.
-- [ ] Findings: fingerprint gộp trùng, xác minh quote (NFC), API resolve/dismiss/user-create.
-- [ ] `continuity.py` + `/continuity`, `/resync` (gồm `dry_run`), `/continuity/acknowledge`.
-- [ ] Handler job `revise`, `review`, `resync` đăng ký với runner F12.
+- [x] Accept/reject API + alias `/v1/jobs/{id}/accept`; xung đột trả dữ liệu base/current/candidate.
+- [ ] Hoàn thiện merge từng đoạn/resolution, insert-anchor và state machine thuần trong `domain.py`.
+- [x] API findings list/resolve/dismiss/user-create; finding mới có fingerprint và event, finding xác định không dismiss được.
+- [ ] Xác minh quote NFC và hoàn thiện fingerprint gộp trùng cho mọi nguồn.
+- [x] `continuity.py` + `/continuity`, `/resync` dry-run và cập nhật stale/block state.
+- [ ] Thêm `/continuity/acknowledge` và kiểm thử T10 tuần tự/crash.
+- [x] Handler revise/resync theo executor port và khôi phục job bị interrupted.
+- [ ] Đăng ký executor P221 mặc định, job review và tích hợp runner F12.
 - [ ] Insert/delete/reorder + kiểm tra `WORK_RUNNING`.
 - [ ] Dọn candidate `rejected`/`superseded`/`partial` sau 30 ngày (`expires_at`) qua cleanup F14.
 

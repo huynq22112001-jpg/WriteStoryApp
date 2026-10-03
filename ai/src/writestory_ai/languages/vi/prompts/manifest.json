@@ -1,0 +1,338 @@
+{
+  "prompts": [
+    {
+      "id": "common.json_fix",
+      "version": 1,
+      "file": "common/json_fix.j2",
+      "sha256": "bc54811c06c64f729eff1cf5a58e1727a5be187d373f9a60547f4144f286a0c0",
+      "role": "json_fix",
+      "layer": 1,
+      "output_schema": null,
+      "variables": [
+        "errors",
+        "raw_output"
+      ]
+    },
+    {
+      "id": "common.method",
+      "version": 1,
+      "file": "common/method.j2",
+      "sha256": "4742aa5483bd59150f210e8ca06eed8205a4209f0e0bede5290e14bd15048c3e",
+      "role": "method",
+      "layer": 1,
+      "output_schema": null,
+      "variables": [
+        "method_text",
+        "role"
+      ]
+    },
+    {
+      "id": "common.slop_rules",
+      "version": 1,
+      "file": "common/slop_rules.j2",
+      "sha256": "576eae6ed07ce434ad360dffefb5f7afde7afe53d697fd7563c8bdcd5c72f76f",
+      "role": "slop_rules",
+      "layer": 1,
+      "output_schema": null,
+      "variables": [
+        "item"
+      ]
+    },
+    {
+      "id": "common.system",
+      "version": 1,
+      "file": "common/system.j2",
+      "sha256": "0577cdc0e79ec2568cd702a05c87bb5228f10ba64d76e3c420ed4591a84596d2",
+      "role": "system",
+      "layer": 1,
+      "output_schema": null,
+      "variables": []
+    },
+    {
+      "id": "common.vi_rules",
+      "version": 1,
+      "file": "common/vi_rules.j2",
+      "sha256": "7182f54c54926379cb42a976c0b6d59bf449e6dec8e7d68e2b3a1f24553c87fa",
+      "role": "vi_rules",
+      "layer": 1,
+      "output_schema": null,
+      "variables": [
+        "dialogue_style",
+        "tone_mark_style"
+      ]
+    },
+    {
+      "id": "eval.vi_judge",
+      "version": 1,
+      "file": "eval/vi_judge.j2",
+      "sha256": "2374af2f6b6c1ccb78808c7b7e72688f5fe4d0243e936d58e37415dcbf6b440d",
+      "role": "vi_judge",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "text"
+      ]
+    },
+    {
+      "id": "eval.vi_writer_case",
+      "version": 1,
+      "file": "eval/vi_writer_case.j2",
+      "sha256": "53d9b81ab16432a3e6441ddfda4c18e6599c09738fff88063d24d532badb28cd",
+      "role": "vi_writer_case",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "case_prompt",
+        "genre"
+      ]
+    },
+    {
+      "id": "longform.chapter_context",
+      "version": 1,
+      "file": "longform/chapter_context.j2",
+      "sha256": "98348d86bf4b8f82350fb0a900b13433b6b36c1dfc7a47503c195ab7739d9c33",
+      "role": "chapter_context",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "chapter_no",
+        "paragraph"
+      ]
+    },
+    {
+      "id": "longform.outline_review",
+      "version": 1,
+      "file": "longform/outline_review.j2",
+      "sha256": "527d4512b0e924aa529f13c4704e3db44f9bc557b4e08df6a8bd40b197478670",
+      "role": "outline_review",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "events",
+        "pacing"
+      ]
+    },
+    {
+      "id": "longform.planner",
+      "version": 1,
+      "file": "longform/planner.j2",
+      "sha256": "80ece7bd250015948dbff7f73bec5935d2b408432c9b52b60d14453dc582cf57",
+      "role": "planner",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "chapter_no",
+        "context",
+        "outline",
+        "target_max",
+        "target_min"
+      ]
+    },
+    {
+      "id": "longform.repair",
+      "version": 1,
+      "file": "longform/repair.j2",
+      "sha256": "7b6483c095bc1943feb740c39d71551df33d466cc587c7c711e70ff371375dc2",
+      "role": "repair",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "findings",
+        "paragraphs"
+      ]
+    },
+    {
+      "id": "longform.revise",
+      "version": 1,
+      "file": "longform/revise.j2",
+      "sha256": "37379f1a8efc07032e4e8dc5d3f18fa156c2ec231f60faea573a06128c650494",
+      "role": "writer",
+      "layer": 4,
+      "output_schema": "ReviseOutput",
+      "variables": [
+        "findings",
+        "instruction",
+        "mode",
+        "next_opening",
+        "paragraphs",
+        "scope",
+        "state_before",
+        "handoff_prev",
+        "style_profile",
+        "address_rules",
+        "length_target",
+        "completed_event_ids"
+      ]
+    },
+    {
+      "id": "longform.reviewer",
+      "version": 1,
+      "file": "longform/reviewer.j2",
+      "sha256": "44ef7cca2cf236f054fc71d00bb6786ac999fdaf423cf8b88b054b43b16fdf70",
+      "role": "reviewer",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "review_input"
+      ]
+    },
+    {
+      "id": "longform.seam_check",
+      "version": 1,
+      "file": "longform/seam_check.j2",
+      "sha256": "997c6dd2aee16bf16d0c0baa61f8c246f0e604a4730d990abcb8b5c78d58d5a0",
+      "role": "seam_check",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "ending_state",
+        "opening"
+      ]
+    },
+    {
+      "id": "longform.settler",
+      "version": 1,
+      "file": "longform/settler.j2",
+      "sha256": "04afce1c71ce8b5dd4fb81b76916c6c7290f5a2719e3e1e4b06347df0457c4d9",
+      "role": "settler",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "paragraphs"
+      ]
+    },
+    {
+      "id": "longform.summary_arc",
+      "version": 1,
+      "file": "longform/summary_arc.j2",
+      "sha256": "b2ee4b6c2019884c0aa6648a1b2a8105a7b753597b1c7266f348273242b32c2b",
+      "role": "summary_arc",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "end_chapter",
+        "start_chapter",
+        "summaries"
+      ]
+    },
+    {
+      "id": "longform.summary_chapter",
+      "version": 1,
+      "file": "longform/summary_chapter.j2",
+      "sha256": "9bbb1c9b97c5678dc41d7d9ef3e2d17311ef9ea63bb99dafc448f8bdd15e9a14",
+      "role": "summary_chapter",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "chapter_no",
+        "chapter_text"
+      ]
+    },
+    {
+      "id": "longform.synopsis",
+      "version": 1,
+      "file": "longform/synopsis.j2",
+      "sha256": "15b08625969b451bae8be85ab6492e250a7e81b6e243cf50fb8a273abd44001f",
+      "role": "synopsis",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "arc_summary",
+        "old_synopsis",
+        "through_chapter"
+      ]
+    },
+    {
+      "id": "longform.validator",
+      "version": 1,
+      "file": "longform/validator.j2",
+      "sha256": "00bf05f36932c54ac6a9373e9a05cba813974e37678591cebb1c8d88202ff947",
+      "role": "validator",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "candidate",
+        "delta",
+        "state"
+      ]
+    },
+    {
+      "id": "longform.writer",
+      "version": 1,
+      "file": "longform/writer.j2",
+      "sha256": "e0162684139dd6b225dd4c324aba8f23f51911fe4722a01168a889bde62d1003",
+      "role": "writer",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "chapter_no",
+        "handoff",
+        "plan",
+        "tail_text"
+      ]
+    },
+    {
+      "id": "longform.writer_continue",
+      "version": 1,
+      "file": "longform/writer_continue.j2",
+      "sha256": "efa32a2162da32a1cb9bcf5e76f280b3436360ec0efbb0fd5bd8f053f320e683",
+      "role": "writer_continue",
+      "layer": 4,
+      "output_schema": null,
+      "variables": [
+        "partial_text",
+        "tail_text"
+      ]
+    },
+    {
+      "id": "vi.foundation.frame_core",
+      "version": 1,
+      "file": "foundation/frame_core.j2",
+      "sha256": "c7276a32ce485052d3d8afbde2b550956ff6bc85cebc3c1ff2e3e6cd1a93b8d8",
+      "role": "planner",
+      "layer": 4,
+      "output_schema": "FrameCoreOutput",
+      "variables": ["brief", "chapter_length_max", "chapter_length_min", "genre", "genre_label", "instruction", "style", "target_chapters"]
+    },
+    {
+      "id": "vi.foundation.cast",
+      "version": 1,
+      "file": "foundation/cast.j2",
+      "sha256": "c2cc164e58c530ebe14dffa91d6c40f68be05aad2942c7f493d34d8f57a9b73a",
+      "role": "planner",
+      "layer": 4,
+      "output_schema": "CastOutput",
+      "variables": ["frame_core", "instruction", "style"]
+    },
+    {
+      "id": "vi.foundation.address_rules",
+      "version": 1,
+      "file": "foundation/address_rules.j2",
+      "sha256": "b7cdfb17760ec396b149241ae2eafbda7882151b0222ab0202410c958a40a907",
+      "role": "planner",
+      "layer": 4,
+      "output_schema": "AddressRulesOutput",
+      "variables": ["cast", "frame_core", "genre", "genre_label", "instruction"]
+    },
+    {
+      "id": "vi.foundation.event_outline_volume",
+      "version": 1,
+      "file": "foundation/event_outline_volume.j2",
+      "sha256": "898b7374549ffd122cd0f57af7bf31a895c0be4978a19654c51bdd2d6004e344",
+      "role": "planner",
+      "layer": 4,
+      "output_schema": "EventOutlineVolumeOutput",
+      "variables": ["cast", "frame_core", "previous_events", "target_chapters", "volume"]
+    },
+    {
+      "id": "vi.foundation.hooks",
+      "version": 1,
+      "file": "foundation/hooks.j2",
+      "sha256": "5f658722df06cf709c3e122ecb215b19badceb1d29a59c91826d5e4c082f50ac",
+      "role": "planner",
+      "layer": 4,
+      "output_schema": "HooksOutput",
+      "variables": ["cast", "events", "frame_core", "instruction", "target_chapters"]
+    }
+  ]
+}

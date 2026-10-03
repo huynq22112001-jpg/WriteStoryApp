@@ -136,12 +136,16 @@ Bước job (tên dùng trong `job_steps.step` và FE): `gate`, `load`, `plan`, 
 
 - [ ] Migration bảng/cột ở trên; ORM, repository `handoffs`, `plans`, `measurements`, `outline_proposals`.
 - [ ] `gate.py` + test từng điều kiện; `pinning.py`.
-- [ ] Handler `chapter_write` với checkpoint/resume/hủy; `progress_adapter.py` gộp `token.delta`.
-- [ ] `commit.py` idempotent, dùng F09 `commit_chapter_state`; test kill giữa transaction.
+- [x] Handler write có checkpoint/resume sau interrupted và progress/checkpoint adapter; test runner resume với executor giả.
+- [ ] Đăng ký executor mặc định nối đủ 11 stage P219 với provider, model pinning, cancellation.
+- [x] `commit.py` ghi revision, StateDelta, handoff, measurement, FTS và job/event trong một transaction; test integration đạt.
+- [ ] Test kill giữa transaction và hoàn thiện toàn bộ idempotency/fencing guards.
 - [ ] Bước sau commit + áp đề xuất dàn ý theo chế độ.
-- [ ] API continuity/handoff/plan/seam/metrics/outline proposals/resume actions.
+- [x] API continuity, metrics, handoff/plan/seam và danh sách/apply/reject outline proposals đã được thêm.
+- [ ] Áp outline proposal lên story events và API resume actions.
 - [ ] Ràng buộc accept-with-note (chặn khi validator xác định lỗi).
-- [ ] `chapter_measurements` + endpoint chỉ số cho T05–T08, T14.
+- [x] Ghi `chapter_measurements` trong commit và thêm endpoint đọc metrics.
+- [ ] Mở rộng metrics theo toàn bộ chỉ số T05–T08, T14.
 
 ## Test
 

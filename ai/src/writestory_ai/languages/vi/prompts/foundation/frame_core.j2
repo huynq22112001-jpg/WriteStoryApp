@@ -1,0 +1,10 @@
+Tạo nền truyện gốc bằng tiếng Việt.
+Thể loại: {{ genre_label }} ({{ genre }})
+Số chương mục tiêu: {{ target_chapters }}; độ dài mỗi chương: {{ chapter_length_min }}–{{ chapter_length_max }} âm tiết.
+Brief tác giả:
+{{ brief }}
+Phong cách:
+{{ style|tojson }}
+Chỉ dẫn bổ sung:
+{{ instruction }}
+Trả đúng JSON FrameCoreOutput gồm story_frame, volume_map, book_rules, author_intent. Chia quyển liên tục, không chồng hoặc bỏ khoảng chương.

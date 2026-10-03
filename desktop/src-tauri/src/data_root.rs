@@ -197,9 +197,11 @@ fn make_marker(path: &Path) -> Result<DataMarker, DataRootError> {
         return serde_json::from_slice(&bytes)
             .map_err(|err| error("DATA_ROOT_ERROR", format!("Invalid data marker: {err}")));
     }
-    let mut entries =
-        fs::read_dir(path).map_err(|err| error("DATA_ROOT_ERROR", err.to_string()))?;
-    if entries.next().is_some() {
+    let entries = fs::read_dir(path).map_err(|err| error("DATA_ROOT_ERROR", err.to_string()))?;
+    let has_user_data = entries.filter_map(Result::ok).any(|entry| {
+        entry.file_name() != ".gitkeep" || !entry.file_type().is_ok_and(|kind| kind.is_file())
+    });
+    if has_user_data {
         return Err(error(
             "DATA_ROOT_NOT_EMPTY",
             "Choose an empty folder or an existing WriteStoryApp data folder.",
@@ -419,6 +421,26 @@ mod tests {
             allow_cloud_sync: false,
         };
         assert_eq!(resolve(&config).unwrap_err().code, "DATA_ROOT_NOT_EMPTY");
+    }
+
+    #[test]
+    fn repo_data_placeholder_does_not_make_dev_root_nonempty() {
+        let temp = tempfile::tempdir().unwrap();
+        let root = temp.path().join("data");
+        std::fs::create_dir_all(&root).unwrap();
+        std::fs::write(root.join(".gitkeep"), "").unwrap();
+        let config = ResolveOptions {
+            platform: Platform::Other,
+            executable: temp.path().join("app"),
+            app_data: None,
+            home: None,
+            debug: true,
+            dev_data_root: Some(root.clone()),
+            allow_cloud_sync: false,
+        };
+        let resolved = resolve(&config).unwrap();
+        assert!(resolved.path.join(".writestory-data.json").is_file());
+        assert!(root.join(".gitkeep").is_file());
     }
 
     #[test]

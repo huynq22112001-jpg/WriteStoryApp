@@ -166,14 +166,20 @@ Thread chờ `child.wait()`: nếu thoát khi `phase=ready` và không có yêu 
 - [x] Scaffold `desktop/` (pnpm workspace member), `tauri.conf.json` trỏ `frontendDist: ../../fe/dist`, `devUrl` Vite.
 - [x] `data_root.rs`: phân giải data-root Windows/macOS, kiểm tra ghi, marker/con trỏ, cloud sync, ổ mạng, translocation; unit test writable/unwritable, mismatch, translocation, UNC và cloud sync.
 - [x] Plugin single-instance Tauri đăng ký đầu tiên; `instance_lock.rs` khóa độc quyền bằng fs4.
-- [ ] `backend.rs`: spawn, bootstrap JSON, đọc stdout NDJSON, drain stderr, health check, giám sát exit, restart.
-- [ ] `win_job.rs` (crate `windows`), test kill-on-close.
-- [ ] Xử lý `ExitRequested` + `Exit`; test Cmd+Q trên macOS.
+- [x] `backend.rs`: spawn dev, bootstrap JSON, đọc stdout NDJSON, drain stderr, health check, giám sát exit.
+- [x] `backend.rs`: restart backend khi có command (P012).
+- [x] `win_job.rs` (crate `windows`): Job Object `KILL_ON_JOB_CLOSE`.
+- [ ] `win_job.rs`: kiểm thử kill-on-close khi thoát app (smoke đóng gói).
+- [x] Xử lý `ExitRequested` + `Exit`; thử đóng cửa sổ và kill app trên Windows.
+- [ ] Thử Cmd+Q trên macOS và kill-on-close trên bản đóng gói.
 - [ ] Python `__main__.py`, `bootstrap/protocol.py`, `bootstrap/runtime.py`, `bootstrap/lifecycle.py` (stdin EOF, parent watchdog).
 - [ ] `api/security.py` + CORS; `modules/system/router.py` (`/v1/health`, `/v1/system/shutdown`).
 - [ ] `modules/dev/router.py` `mock-runs` chỉ đăng ký khi `dev_features=true`; kiểm bản release không có route.
 - [ ] `tools/packaging/*` cho Windows x64 và macOS arm64; CI job theo OS.
 - [ ] Spike R0: chạy checklist Plan §9 G0 trên máy sạch; đo startup lạnh, RAM idle, dung lượng bundle; ghi ADR (Tauri vs Electron, sidecar vs resources, WebView2 mode, macOS tối thiểu).
+- [x] R0 Windows x64: PyInstaller onedir, Tauri resource spawn, NSIS `offlineInstaller` artifact build và direct release smoke tới `ready`; số đo nằm trong ADR-002.
+- [ ] Cài thử NSIS trên máy sạch không có Python/uv; xác nhận WebView2 offline installer và portable/fixedRuntime.
+- [x] Chuẩn bị script ký Mach-O và hướng dẫn DMG trong ADR-003; chưa chạy trên macOS.
 
 ## Test
 

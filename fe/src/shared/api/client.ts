@@ -15,6 +15,24 @@ export function newIdempotencyKey(): string {
 export interface ApiClient {
   get<T>(path: string, options?: RequestOptions): Promise<T>;
   post<T>(path: string, body: unknown, options?: RequestOptions): Promise<T>;
+  put<T>(path: string, body: unknown, options?: RequestOptions): Promise<T>;
+  patch<T>(path: string, body: unknown, options?: RequestOptions): Promise<T>;
+  delete<T>(path: string, options?: RequestOptions): Promise<T>;
+}
+
+let activeSession: BackendSession | null = null;
+
+/** Desktop session lives in memory only and is installed by BootGate after readiness. */
+export function setSession(session: BackendSession): void {
+  activeSession = session;
+}
+
+export function clearSession(): void {
+  activeSession = null;
+}
+
+export function currentSession(): BackendSession | null {
+  return activeSession;
 }
 
 export function createApiClient(session: BackendSession): ApiClient {
@@ -30,7 +48,7 @@ export function createApiClient(session: BackendSession): ApiClient {
 
     let response: Response;
     try {
-      response = await fetch(`${session.baseUrl}${path}`, {
+      response = await fetch(`${session.base_url}${path}`, {
         method,
         headers,
         body: body === undefined ? undefined : JSON.stringify(body),
@@ -47,5 +65,8 @@ export function createApiClient(session: BackendSession): ApiClient {
   return {
     get: (path, options) => request("GET", path, undefined, options),
     post: (path, body, options) => request("POST", path, body, options),
+    put: (path, body, options) => request("PUT", path, body, options),
+    patch: (path, body, options) => request("PATCH", path, body, options),
+    delete: (path, options) => request("DELETE", path, undefined, options),
   };
 }

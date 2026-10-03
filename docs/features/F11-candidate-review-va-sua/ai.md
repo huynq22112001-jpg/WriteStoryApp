@@ -89,12 +89,12 @@ Template Jinja2 sandbox, manifest id/version/checksum trong `languages/vi/prompt
 
 ## Việc cần làm
 
-- [ ] `contracts/paragraphs.py`, `revise.py`, `review.py`, `resettle.py`.
-- [ ] `workflows/longform/revise.py` với 4 mode và xử lý vùng chọn.
+- [x] `contracts/paragraphs.py`, `revise.py`; `review.py` và `resettle.py` còn mở.
+- [x] `workflows/longform/revise.py` với 4 mode và xử lý vùng chọn.
 - [ ] `reviewer.py` review-only dùng chung với F10.
 - [ ] `resettle.py`.
-- [ ] Template `revise.j2`, `review.j2`, `resettle.j2` tiếng Việt + snapshot test.
-- [ ] Hậu kiểm phạm vi/`rework` trong evaluator.
+- [x] Template `revise.j2` tiếng Việt; review/resettle templates và prompt snapshot còn mở.
+- [x] Hậu kiểm phạm vi/`rework` trong workflow revise; tích hợp evaluator riêng còn mở.
 
 ## Test
 

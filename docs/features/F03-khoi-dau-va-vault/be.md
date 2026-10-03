@@ -149,7 +149,7 @@ Giá trị secret **không bao giờ** có trong response. `ref` hợp lệ: `^[
 - [x] `session_store.py`, `secret_store.py`, `redaction.py`.
 - [x] `modules/vault/` (router, schemas với `SecretStr`, service, throttle).
 - [x] Ẩn `input` trong lỗi validate cho route vault/secrets.
-- [ ] `modules/onboarding/` + tự hoàn tất khi đã có tác phẩm.
+- [x] `modules/onboarding/` + tự hoàn tất khi đã có tác phẩm.
 - [x] Phát `vault.status`; expose `on_change` cho F12; `waiting_jobs`.
 - [ ] Đo thời gian unlock trên máy tham chiếu Win/Mac, ghi ADR (không đặt số trước khi đo).
 

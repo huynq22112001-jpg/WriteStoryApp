@@ -189,10 +189,10 @@ Mức độ do host gán theo bảng này (F10 không để LLM tự nâng/hạ)
 - [ ] `length.py` + golden JSON chung FE/AI.
 - [ ] `search.py` + test lặp lại bảng Review §7.3 trên SQLite thật.
 - [ ] `names.py`, `telex.py`.
-- [ ] 7 kiểm tra trong `checks.py`, mỗi kiểm tra có fixture dương/âm.
+- [x] 7 kiểm tra trong `checks.py`, mỗi kiểm tra có fixture dương/âm.
 - [ ] Chọn nguồn `syllables.txt`, `han_viet_common.txt`, `hoi_nga_pairs.tsv` có giấy phép phù hợp; ghi nguồn trong file.
-- [ ] Soạn `slop_list.txt` khởi tạo (ví dụ Plan §6.6: mở đoạn "Trong khoảnh khắc ấy", mật độ "không khỏi", "một cách") – tác giả bổ sung được.
-- [ ] `genres.json` cho 8 thể loại (xưng hô gợi ý, lớp từ, thoại mặc định); không ghi số liệu chưa đo.
+- [x] Soạn `slop_list.txt` khởi tạo (ví dụ Plan §6.6: mở đoạn "Trong khoảnh khắc ấy", mật độ "không khỏi", "một cách") – tác giả bổ sung được.
+- [x] `genres.json` cho 8 thể loại (xưng hô gợi ý, lớp từ, thoại mặc định); không ghi số liệu chưa đo.
 - [ ] `prompt_env.py`, `manifest.json`, test checksum + snapshot render.
 - [ ] `methods/` cho truyện dài: viết dài, review, khử sáo.
 - [ ] `eval.py` + bộ ca + schema giám khảo.

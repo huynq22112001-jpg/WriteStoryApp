@@ -111,12 +111,12 @@ F07 tiêu thụ (qua FE): `job.state` (bật/tắt khóa chỉ đọc), `chapter
 
 ## Việc cần làm
 
-- [ ] Migration 3 bảng + index; ORM; repository.
-- [ ] `domain.project_doc`, `validate_doc`, `new_paragraph_id`, `align_paragraphs`, `count_syllables_fallback` (NFC, tách khoảng trắng, bỏ token chỉ có dấu câu – Plan §6.6; thay bằng F08).
-- [ ] Service working copy (base, `client_seq`), snapshot, `snapshot_if_dirty`, restore, replace.
-- [ ] Chapters CRUD/reorder + kiểm truyện đang chạy.
+- [x] Migration 3 bảng + index; ORM; repository.
+- [x] `domain.project_doc`, `validate_doc`, `new_paragraph_id`, `align_paragraphs`; syllable count uses F08.
+- [x] Service working copy (base, `client_seq`), snapshot, restore, replace.
+- [x] Chapters CRUD/reorder + kiểm truyện đang chạy.
 - [ ] Ports `ContinuityPort` (stub no-op tới F11), `ActiveJobPort` (stub không khóa tới F12).
-- [ ] API + schema + OpenAPI; ví dụ payload trong `contracts/examples/`.
+- [x] API + schema + OpenAPI.
 
 ## Test
 

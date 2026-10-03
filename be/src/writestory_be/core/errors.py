@@ -12,7 +12,14 @@ class ErrorCode(StrEnum):
     REVISION_CONFLICT = "REVISION_CONFLICT"
     WORK_BLOCKED = "WORK_BLOCKED"
     WORK_BUSY_QUEUED = "WORK_BUSY_QUEUED"
+    WORK_ACTIVE_JOB = "WORK_ACTIVE_JOB"
     CHAPTER_RANGE_CONFLICT = "CHAPTER_RANGE_CONFLICT"
+    CHAPTER_READ_ONLY = "CHAPTER_READ_ONLY"
+    CANDIDATE_NOT_READY = "CANDIDATE_NOT_READY"
+    CANDIDATE_CLOSED = "CANDIDATE_CLOSED"
+    CHAPTER_IS_BASE = "CHAPTER_IS_BASE"
+    STATE_SNAPSHOT_MISSING = "STATE_SNAPSHOT_MISSING"
+    CHAPTER_EMPTY = "CHAPTER_EMPTY"
     VAULT_LOCKED = "VAULT_LOCKED"
     VAULT_PASSWORD_INVALID = "VAULT_PASSWORD_INVALID"
     VAULT_UNLOCK_THROTTLED = "VAULT_UNLOCK_THROTTLED"
@@ -24,6 +31,7 @@ class ErrorCode(StrEnum):
     PROVIDER_UNREACHABLE = "PROVIDER_UNREACHABLE"
     PROVIDER_SERVER_ERROR = "PROVIDER_SERVER_ERROR"
     PROVIDER_RATE_LIMIT = "PROVIDER_RATE_LIMIT"
+    PROVIDER_IN_USE = "PROVIDER_IN_USE"
     PROVIDER_REFUSAL = "PROVIDER_REFUSAL"
     OUTPUT_TRUNCATED = "OUTPUT_TRUNCATED"
     STRUCTURED_OUTPUT_INVALID = "STRUCTURED_OUTPUT_INVALID"
@@ -56,7 +64,10 @@ class ErrorAction(StrEnum):
 _SPEC: dict[ErrorCode, tuple[int, bool, ErrorAction | None, str]] = {
     ErrorCode.VALIDATION: (422, False, None, "Dữ liệu gửi lên không hợp lệ."),
     ErrorCode.REVISION_CONFLICT: (
-        409, False, ErrorAction.VIEW_DIFF, "Nội dung đã thay đổi ở nơi khác; hãy xem so sánh."
+        409,
+        False,
+        ErrorAction.VIEW_DIFF,
+        "Nội dung đã thay đổi ở nơi khác; hãy xem so sánh.",
     ),
     ErrorCode.WORK_BLOCKED: (
         409,
@@ -70,9 +81,29 @@ _SPEC: dict[ErrorCode, tuple[int, bool, ErrorAction | None, str]] = {
         ErrorAction.WAIT,
         "Truyện đang có tác vụ khác; đã xếp hàng.",
     ),
-    ErrorCode.CHAPTER_RANGE_CONFLICT: (
-        409, False, None, "Không thể thay đổi thứ tự chương khi truyện đang chạy."
+    ErrorCode.WORK_ACTIVE_JOB: (
+        409,
+        False,
+        ErrorAction.WAIT,
+        "Dừng tác vụ của truyện trước khi xóa.",
     ),
+    ErrorCode.CHAPTER_RANGE_CONFLICT: (
+        409,
+        False,
+        None,
+        "Không thể thay đổi thứ tự chương khi truyện đang chạy.",
+    ),
+    ErrorCode.CHAPTER_READ_ONLY: (423, False, None, "Chương đang được dùng làm nền cho tác vụ AI."),
+    ErrorCode.CANDIDATE_NOT_READY: (409, False, None, "Bản đề xuất chưa sẵn sàng để nhận."),
+    ErrorCode.CANDIDATE_CLOSED: (409, False, None, "Bản đề xuất đã được đóng."),
+    ErrorCode.CHAPTER_IS_BASE: (409, False, None, "Chương đang làm nền cho tác vụ đang chạy."),
+    ErrorCode.STATE_SNAPSHOT_MISSING: (
+        409,
+        False,
+        ErrorAction.OPEN_RESYNC,
+        "Thiếu snapshot trạng thái truyện.",
+    ),
+    ErrorCode.CHAPTER_EMPTY: (409, False, None, "Chương cần đồng bộ lại đang trống."),
     ErrorCode.VAULT_LOCKED: (423, True, ErrorAction.UNLOCK_VAULT, "Kho khóa API đang khóa."),
     ErrorCode.VAULT_PASSWORD_INVALID: (422, False, None, "Mật khẩu vault không đúng."),
     ErrorCode.VAULT_UNLOCK_THROTTLED: (429, True, ErrorAction.WAIT, "Thử mở vault quá nhiều lần."),
@@ -81,13 +112,22 @@ _SPEC: dict[ErrorCode, tuple[int, bool, ErrorAction | None, str]] = {
     ErrorCode.VAULT_CORRUPT: (500, False, ErrorAction.RELOAD, "Không thể đọc vault."),
     ErrorCode.SECRET_MISSING: (409, False, ErrorAction.OPEN_PROVIDER_SETTINGS, "Chưa lưu API key."),
     ErrorCode.PROVIDER_AUTH: (
-        502, False, ErrorAction.OPEN_PROVIDER_SETTINGS, "Nhà cung cấp AI từ chối API key."
+        502,
+        False,
+        ErrorAction.OPEN_PROVIDER_SETTINGS,
+        "Nhà cung cấp AI từ chối API key.",
     ),
     ErrorCode.PROVIDER_UNREACHABLE: (
-        503, True, ErrorAction.RETRY, "Không kết nối được tới nhà cung cấp AI."
+        503,
+        True,
+        ErrorAction.RETRY,
+        "Không kết nối được tới nhà cung cấp AI.",
     ),
     ErrorCode.PROVIDER_SERVER_ERROR: (
-        502, True, ErrorAction.RETRY, "Nhà cung cấp AI gặp lỗi máy chủ."
+        502,
+        True,
+        ErrorAction.RETRY,
+        "Nhà cung cấp AI gặp lỗi máy chủ.",
     ),
     ErrorCode.PROVIDER_RATE_LIMIT: (
         429,
@@ -95,12 +135,24 @@ _SPEC: dict[ErrorCode, tuple[int, bool, ErrorAction | None, str]] = {
         ErrorAction.WAIT,
         "Nhà cung cấp AI đang giới hạn tốc độ.",
     ),
+    ErrorCode.PROVIDER_IN_USE: (
+        409,
+        False,
+        ErrorAction.WAIT,
+        "Nhà cung cấp đang được tác vụ chạy sử dụng.",
+    ),
     ErrorCode.PROVIDER_REFUSAL: (
-        422, False, ErrorAction.EDIT_INSTRUCTION, "Model từ chối viết nội dung này."
+        422,
+        False,
+        ErrorAction.EDIT_INSTRUCTION,
+        "Model từ chối viết nội dung này.",
     ),
     ErrorCode.OUTPUT_TRUNCATED: (422, True, ErrorAction.RETRY, "Kết quả AI bị cắt giữa chừng."),
     ErrorCode.STRUCTURED_OUTPUT_INVALID: (
-        422, True, ErrorAction.CHANGE_MODEL, "Kết quả AI không đúng định dạng."
+        422,
+        True,
+        ErrorAction.CHANGE_MODEL,
+        "Kết quả AI không đúng định dạng.",
     ),
     ErrorCode.BUDGET_EXCEEDED: (409, False, ErrorAction.ADJUST_BUDGET, "Đã vượt ngân sách."),
     ErrorCode.UNAUTHORIZED: (401, False, ErrorAction.RELOAD, "Phiên làm việc không hợp lệ."),

@@ -216,7 +216,7 @@ Template settle/validator dùng contract ở đây nhưng thuộc F10. Tất c�
 ## Việc cần làm
 
 - [ ] `contracts/state.py`, `contracts/context.py` + xuất JSON Schema vào `contracts/examples/` (Chặn MVP).
-- [ ] `state_reducer.py` + test tính tất định.
+- [x] `state_reducer.py` + test tính tất định.
 - [ ] `state_validator.py` V01–V15 + fixture từng luật.
 - [ ] `evidence.py` `verify_quote`.
 - [ ] `summaries.py` + 3 template + schema.

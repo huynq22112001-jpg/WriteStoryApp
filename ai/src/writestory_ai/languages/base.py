@@ -1,6 +1,8 @@
-from typing import Protocol
+from pathlib import Path
+from typing import Any, Protocol, runtime_checkable
 
 
+@runtime_checkable
 class LanguagePack(Protocol):
     """Mọi xử lý phụ thuộc ngôn ngữ nằm sau interface này (Plan §6.6).
 
@@ -11,6 +13,10 @@ class LanguagePack(Protocol):
 
     code: str
     length_unit: str
+    deterministic_checks: list[Any]
+    slop_list: list[Any]
+    genre_presets: dict[str, Any]
+    prompts_dir: Path
 
     def normalize(self, text: str) -> str:
         """Chuẩn hóa văn bản trước khi lưu/so sánh."""
@@ -23,3 +29,26 @@ class LanguagePack(Protocol):
     def search_fold(self, text: str) -> str:
         """Chuẩn hóa cho cột tìm kiếm FTS và câu truy vấn."""
         ...
+
+
+class LanguageFindingModel(Protocol):
+    check_id: str
+    kind: str
+    severity: str
+    confidence: str
+    paragraph_id: str | None
+    start: int | None
+    end: int | None
+    quote: str
+    message_key: str
+    params: dict[str, Any]
+    suggestion: str | None
+    needs_confirmation: bool
+
+
+class CheckContextModel(Protocol):
+    work_id: str
+    chapter_no: int
+    genre_preset: Any
+    profile: Any
+    paragraphs: list[Any]

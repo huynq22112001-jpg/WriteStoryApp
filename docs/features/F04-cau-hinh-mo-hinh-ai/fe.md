@@ -91,7 +91,7 @@ Namespace `settings`, ví dụ khóa: `settings.models.title` ("Mô hình AI"), 
 - [ ] `RoleTable` cấp app và cấp truyện, hiển thị kế thừa.
 - [ ] Trang Đồng thời & ngân sách (lưu tự động).
 - [ ] Xử lý SSE `provider.status`.
-- [ ] Không bao giờ hiển thị lại API key đã lưu (chỉ `••••` + "Thay key").
+- [x] Không bao giờ hiển thị lại API key đã lưu; API chỉ trả `has_key` và form không nạp lại giá trị key.
 
 ## Test
 

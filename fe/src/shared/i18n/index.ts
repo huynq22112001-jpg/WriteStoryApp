@@ -3,10 +3,11 @@ import { initReactI18next } from "react-i18next";
 
 import common from "./vi/common.json";
 import errors from "./vi/errors.json";
+import boot from "./vi/boot.json";
 
 // Đa ngôn ngữ về kiến trúc, MVP chỉ có tiếng Việt (Plan §1). Thêm ngôn ngữ = thêm thư mục <lang>/.
 export const resources = {
-  vi: { common, errors },
+  vi: { common, errors, boot },
 } as const;
 
 void i18n.use(initReactI18next).init({
@@ -14,7 +15,7 @@ void i18n.use(initReactI18next).init({
   lng: "vi",
   fallbackLng: "vi",
   defaultNS: "common",
-  ns: ["common", "errors"],
+  ns: ["common", "errors", "boot"],
   interpolation: { escapeValue: false },
 });
 

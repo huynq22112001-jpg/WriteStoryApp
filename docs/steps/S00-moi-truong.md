@@ -1,6 +1,6 @@
 # S00 — Chuẩn bị môi trường
 
-Trạng thái: Node 24.15, pnpm 10.33, Rust 1.98, git 2.53 đã có trên máy dev (02/10/2026). **Thiếu uv và Python** → BE/AI chưa chạy được.
+Trạng thái: Node 24.15, pnpm 10.33, Rust 1.98, git 2.53, uv 0.12.22 (PATH người dùng) và CPython 3.14.8 đã có trên máy dev. Đã xác nhận Visual Studio C++ workload và WebView2 Runtime.
 
 ## Mục tiêu
 
@@ -12,7 +12,7 @@ Máy dev có đủ công cụ để build FE, BE, AI và desktop.
 - [x] Rust stable (đang có 1.98) – cần cho S07.
 - [x] uv 0.12.22 (quản lý Python, venv, lockfile).
 - [x] CPython 3.14.8 bản GIL tiêu chuẩn do uv quản lý (Plan §2, §24).
-- [ ] Windows: Microsoft C++ Build Tools (Tauri/Rust) và WebView2 Runtime (có sẵn trên Windows 11).
+- [x] Windows: Microsoft C++ Build Tools (Visual Studio Community 2026) và WebView2 Runtime.
 - [ ] macOS (khi build Mac): Xcode Command Line Tools.
 
 ## Lệnh

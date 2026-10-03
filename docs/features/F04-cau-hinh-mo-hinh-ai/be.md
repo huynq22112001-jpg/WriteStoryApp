@@ -103,14 +103,14 @@ Không tạo job bền cho discovery (tác vụ ngắn, không tốn token sinh 
 
 ## Việc cần làm
 
-- [ ] Migration 5 bảng + partial unique index cho `role_models`.
-- [ ] ORM + repository; service CRUD provider; tích hợp vault (F03) qua port `SecretStore`.
-- [ ] `discovery.py` + task nền sau readiness + chạy lại khi vault mở.
-- [ ] `domain.merge_discovered`, `effective_models`, `resolve_effort` (thuần, có unit test).
-- [ ] API bảng trên + schema Pydantic; export OpenAPI.
+- [x] Migration 5 bảng + partial unique index cho `role_models`.
+- [x] ORM + repository; service CRUD provider; tích hợp vault (F03) qua port `SecretStore`.
+- [x] `discovery.py` + task nền sau readiness + chạy lại khi vault mở.
+- [x] `domain.merge_discovered`, `effective_models`, `resolve_effort` (thuần, có unit test).
+- [x] API bảng trên + schema Pydantic; export OpenAPI.
 - [ ] `ModelResolver` + `PinnedModelConfig`; hook để F12 gọi khi job bắt đầu.
-- [ ] `limits.py` đọc cấu hình cho F12; mặc định theo giao thức.
-- [ ] Che secret: filter log, kiểm tra response/OpenAPI example không có key.
+- [x] `limits.py` đọc cấu hình cho F12; mặc định theo giao thức.
+- [x] Che secret: filter log, kiểm tra response/OpenAPI example không có key.
 
 ## Test
 

@@ -104,6 +104,14 @@ Quy tắc transaction: chuẩn hóa chạy **trước** khi mở transaction ghi
 - [ ] Ánh xạ `LanguageFinding` → bảng `findings` (dùng chung với F10).
 - [ ] `message` lỗi API lấy từ `pack.messages` (Plan §23.1.D).
 
+### P230 đã triển khai
+
+- [x] API preset thể loại, danh sách cụm sáo có revision, chuẩn hóa và kiểm tra văn bản; finding giữ `check_id`, `confidence`, `message_key`, `params`.
+- [x] Điểm lưu working copy gọi `LanguagePack` để chuẩn hóa NFC; kiểm tra có thể nhận đoạn văn trực tiếp hoặc đọc chương hiện tại.
+- [x] Gộp cụm sáo gói/app/truyện, kiểm tra regex đầu vào; test unit, integration và OpenAPI cho phạm vi P230.
+
+Các endpoint đánh giá model và lưu finding vào pipeline tiếp tục ở prompt phụ thuộc tương ứng; F08 vẫn chưa nghiệm thu tổng thể.
+
 ## Test
 
 | Loại | Nội dung | File dự kiến |

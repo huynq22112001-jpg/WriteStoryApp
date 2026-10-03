@@ -1,0 +1,25 @@
+Sửa văn bản theo mode {{ mode }} và yêu cầu tác giả: {{ instruction }}
+
+Phạm vi được phép: {{ scope|tojson }}
+Đoạn hiện có:
+{{ paragraphs|paragraphs }}
+
+Findings cần xử lý:
+{{ findings|tojson }}
+Đầu chương kế tiếp để giữ mạch nối:
+{{ next_opening }}
+
+State trước chương:
+{{ state_before|tojson }}
+Handoff chương trước:
+{{ handoff_prev|tojson }}
+Style profile và quy tắc xưng hô:
+{{ style_profile|tojson }}
+{{ address_rules|tojson }}
+Độ dài mục tiêu:
+{{ length_target|tojson }}
+Sự kiện đã hoàn thành phải được giữ nguyên:
+{{ completed_event_ids|tojson }}
+
+Chỉ trả JSON theo schema ReviseOutput. Không sửa đoạn ngoài phạm vi; giữ nguyên ID đoạn.
+Với scope selection, chỉ trả selection_replacement và không trả paragraph ops.

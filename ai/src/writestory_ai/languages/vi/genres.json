@@ -1,0 +1,82 @@
+[
+  {
+    "key": "xianxia",
+    "label": "Tiên hiệp",
+    "description": "Tu luyện, tông môn và hành trình vượt cảnh giới.",
+    "defaults": {
+      "vocab_register": "han_viet",
+      "dialogue_style": "dash",
+      "tone_mark_style": "new",
+      "chapter_length_min": 2500,
+      "chapter_length_max": 3500
+    },
+    "era": "co_trang", "default_dialogue_style": "dash", "default_vocab_register": "han_viet",
+    "address_presets": [{"label": "đồng môn", "self_term": "ta", "address_term": "đạo hữu"}],
+    "anachronism_lists": ["co_trang"], "recommended_methods": ["viet_truyen_dai"]
+  },
+  {
+    "key": "wuxia", "label": "Kiếm hiệp", "description": "Giang hồ, môn phái và võ học.",
+    "defaults": {"vocab_register": "han_viet", "dialogue_style": "dash", "tone_mark_style": "new", "chapter_length_min": 2500, "chapter_length_max": 3500},
+    "era": "co_trang", "default_dialogue_style": "dash", "default_vocab_register": "han_viet",
+    "address_presets": [{"label": "giang hồ", "self_term": "tại hạ", "address_term": "các hạ"}],
+    "anachronism_lists": ["co_trang"], "recommended_methods": ["viet_truyen_dai"]
+  },
+  {
+    "key": "fantasy", "label": "Huyền huyễn", "description": "Thế giới kỳ ảo và hệ thống sức mạnh.",
+    "defaults": {"vocab_register": "han_viet", "dialogue_style": "dash", "tone_mark_style": "new", "chapter_length_min": 2500, "chapter_length_max": 3500},
+    "era": "hon_hop", "default_dialogue_style": "dash", "default_vocab_register": "han_viet",
+    "address_presets": [{"label": "đồng hành", "self_term": "ta", "address_term": "ngươi"}],
+    "anachronism_lists": [], "recommended_methods": ["viet_truyen_dai"]
+  },
+  {
+    "key": "palace", "label": "Cung đấu", "description": "Tranh đấu quyền lực trong cung đình.",
+    "defaults": {"vocab_register": "han_viet", "dialogue_style": "quotes", "tone_mark_style": "new", "chapter_length_min": 2200, "chapter_length_max": 3200},
+    "era": "co_trang", "default_dialogue_style": "quotes", "default_vocab_register": "han_viet",
+    "address_presets": [{"label": "cung đình", "self_term": "thần thiếp", "address_term": "nương nương"}],
+    "anachronism_lists": ["co_trang"], "recommended_methods": ["review_truyen"]
+  },
+  {
+    "key": "transmigration", "label": "Xuyên không", "description": "Nhân vật hiện đại bước vào bối cảnh khác thời đại.",
+    "defaults": {"vocab_register": "balanced", "dialogue_style": "dash", "tone_mark_style": "new", "chapter_length_min": 2200, "chapter_length_max": 3200},
+    "era": "hon_hop", "default_dialogue_style": "dash", "default_vocab_register": "balanced",
+    "address_presets": [{"label": "xuyên không", "self_term": "tôi", "address_term": "ngươi"}],
+    "anachronism_lists": ["co_trang"], "recommended_methods": ["viet_truyen_dai"]
+  },
+  {
+    "key": "detective", "label": "Trinh thám", "description": "Điều tra manh mối và suy luận vụ án.",
+    "defaults": {"vocab_register": "balanced", "dialogue_style": "quotes", "tone_mark_style": "new", "chapter_length_min": 2200, "chapter_length_max": 3200},
+    "era": "hien_dai", "default_dialogue_style": "quotes", "default_vocab_register": "balanced",
+    "address_presets": [{"label": "điều tra", "self_term": "tôi", "address_term": "anh"}],
+    "anachronism_lists": [], "recommended_methods": ["review_truyen"]
+  },
+  {
+    "key": "urban",
+    "label": "Đô thị",
+    "description": "Bối cảnh hiện đại với nhịp sống và quan hệ đương đại.",
+    "defaults": {
+      "vocab_register": "balanced",
+      "dialogue_style": "dash",
+      "tone_mark_style": "new",
+      "chapter_length_min": 2000,
+      "chapter_length_max": 3000
+    },
+    "era": "hien_dai", "default_dialogue_style": "dash", "default_vocab_register": "balanced",
+    "address_presets": [{"label": "đương đại", "self_term": "tôi", "address_term": "bạn"}],
+    "anachronism_lists": [], "recommended_methods": ["viet_truyen_dai"]
+  },
+  {
+    "key": "romance",
+    "label": "Ngôn tình",
+    "description": "Tập trung vào mối quan hệ tình cảm và phát triển nhân vật.",
+    "defaults": {
+      "vocab_register": "balanced",
+      "dialogue_style": "quotes",
+      "tone_mark_style": "new",
+      "chapter_length_min": 2000,
+      "chapter_length_max": 3000
+    },
+    "era": "hien_dai", "default_dialogue_style": "quotes", "default_vocab_register": "balanced",
+    "address_presets": [{"label": "thân mật", "self_term": "anh", "address_term": "em"}],
+    "anachronism_lists": [], "recommended_methods": ["review_truyen"]
+  }
+]

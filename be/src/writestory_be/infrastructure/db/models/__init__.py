@@ -1,3 +1,33 @@
+from writestory_be.infrastructure.db.models.chapters import (
+    Chapter,
+    ChapterRevision,
+    ChapterWorkingCopy,
+)
+from writestory_be.infrastructure.db.models.longform_generation import (
+    ChapterCandidate,
+    ChapterHandoff,
+    ChapterMeasurement,
+    ChapterPlanRow,
+    Finding,
+    OutlineProposal,
+)
+from writestory_be.infrastructure.db.models.longform_state import (
+    AuthorControl,
+    ContextTrace,
+    Fact,
+    Hook,
+    StatePendingDelta,
+    StoryEvent,
+    StoryStateRow,
+    Summary,
+    TimelineEntry,
+)
+from writestory_be.infrastructure.db.models.providers import (
+    Provider,
+    ProviderLimit,
+    ProviderModel,
+    RoleModel,
+)
 from writestory_be.infrastructure.db.models.system import (
     Asset,
     IdempotencyRecord,
@@ -8,14 +38,40 @@ from writestory_be.infrastructure.db.models.system import (
     Setting,
     WorkLock,
 )
+from writestory_be.infrastructure.db.models.works import Project, StyleProfile, Work
 
 __all__ = [
     "Asset",
+    "AuthorControl",
+    "Chapter",
+    "ChapterCandidate",
+    "ChapterHandoff",
+    "ChapterMeasurement",
+    "ChapterPlanRow",
+    "ChapterRevision",
+    "ChapterWorkingCopy",
+    "ContextTrace",
+    "Fact",
+    "Finding",
+    "Hook",
     "IdempotencyRecord",
     "Job",
     "JobEvent",
     "JobStep",
+    "OutlineProposal",
+    "Project",
+    "Provider",
+    "ProviderLimit",
+    "ProviderModel",
+    "RoleModel",
     "SearchDocument",
     "Setting",
+    "StatePendingDelta",
+    "StoryEvent",
+    "StoryStateRow",
+    "StyleProfile",
+    "Summary",
+    "TimelineEntry",
+    "Work",
     "WorkLock",
 ]

@@ -1,22 +1,22 @@
 # S10 — Kết thúc R0
 
-Trạng thái: todo. Phụ thuộc: S00–S09.
+Trạng thái: nghiệm thu có điều kiện — 1/6 tiêu chí có đủ bằng chứng đạt; 5 tiêu chí chưa đạt/chưa có bằng chứng. Cập nhật: 2026-10-03.
 
 ## Checklist (Plan §9 Giai đoạn 0)
 
-- [ ] Máy sạch không có Python/Node mở được app (S09).
-- [ ] Mock stream AI hiển thị trên FE qua `/v1/events`, không chặn editor (S06, S08).
-- [ ] Thử 3 truyện mock stream song song (`POST /v1/dev/mock-runs`, F00) – editor vẫn gõ mượt.
-- [ ] Đóng app không để lại tiến trình backend (S07).
-- [ ] Gõ tiếng Việt ổn định trên cả hai WebView (S08).
-- [ ] Luồng data-root macOS khi bị App Translocation (S07).
+- [ ] **Chưa đạt — thiếu bằng chứng máy sạch.** NSIS đã build; chưa cài/chạy trên máy không có Python/Node.
+- [ ] **Chưa đạt — thiếu bằng chứng editor.** P008 đã hiển thị stream ở FE; khả năng chạy đồng thời trong WebView mà không chặn editor chưa được đo.
+- [ ] **Chưa đạt — thiếu bằng chứng độ mượt.** Ba stream đã smoke-test ở P008, nhưng editor responsiveness chưa được đo cùng lúc.
+- [x] Đóng app không để lại tiến trình backend (P012 Windows dev smoke: đóng cửa sổ và kill app dọn backend bằng Job Object; chưa lặp trên installer).
+- [ ] **Chưa đạt — thiếu kết quả IME.** Checklist có sẵn, chưa chạy trên Windows WebView2 hoặc macOS WKWebView.
+- [ ] **Chưa đạt — thiếu bằng chứng macOS.** Chưa có host macOS để thử data-root khi App Translocation.
 
 ## ADR cần viết (`docs/adr/`)
 
-- [ ] ADR-001 Giữ Tauri hay đổi Electron (dựa trên S08).
-- [ ] ADR-002 Cách spawn backend: onedir trong resources (D22).
-- [ ] ADR-003 Chế độ WebView2 cho installer và bản zip (D20).
-- [ ] ADR-004 Phiên bản macOS tối thiểu.
+- [x] [ADR-001](../adr/ADR-001-tauri-or-electron.md): quyết định shell còn defer vì chưa có kết quả IME.
+- [x] [ADR-002](../adr/ADR-002-spawn-backend.md): onedir trong resources; app startup/RAM đo một mẫu, clean-machine chưa thử.
+- [x] [ADR-003](../adr/ADR-003-webview2-macos.md): offlineInstaller và quy trình DMG; clean-machine chưa xác minh.
+- [x] [ADR-004](../adr/ADR-004-macos-minimum.md): macOS tối thiểu còn defer đến thử nghiệm thật.
 
 ## Sau R0
 

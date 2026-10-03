@@ -12,7 +12,7 @@ def test_prepare_database_initializes_once_and_reports_schema(tmp_path) -> None:
     database = tmp_path / "db" / "app.sqlite3"
     marker = json.loads((tmp_path / ".writestory-data.json").read_text(encoding="utf-8"))
 
-    assert revision == "0003"
+    assert revision == "0008"
     assert stages == ["migrating", "reconciling"]
     assert marker["db_initialized"] is True
     assert marker["data_id"] == "test-data"

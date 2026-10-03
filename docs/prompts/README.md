@@ -59,16 +59,16 @@ Trạng thái: `todo` · `doing` · `done` · `blocked (lý do)`.
 | [P008](./P008-script-dev-va-readme.md) Script chạy dev BE+FE và README gốc | Tất cả | S06 | P005, P004 | done |
 | [P009](./P009-tauri-scaffold.md) Scaffold desktop Tauri 2 | DESKTOP | F00 / S07 | P004 | done |
 | [P010](./P010-rust-data-root-lock.md) Rust: data-root + khóa instance | DESKTOP | F00 | P009 | done |
-| [P011](./P011-rust-spawn-backend.md) Rust: spawn backend + readiness | DESKTOP | F00 | P010, P003 | todo |
-| [P012](./P012-rust-shutdown-commands.md) Rust: tắt sạch + commands cho FE | DESKTOP | F00 | P011 | todo |
-| [P013](./P013-fe-boot-gate.md) FE: BootGate và màn khởi động | FE | F00 | P012, P004 | todo |
-| [P014](./P014-spike-tiptap.md) Spike editor Tiptap + paragraph_id | FE | F07 / S08 | P004 | todo |
-| [P015](./P015-paste-nfc-dem-am-tiet-ts.md) Paste NFC + đếm âm tiết TS | FE | F07 / F08 | P014 | todo |
-| [P016](./P016-checklist-ime.md) Chuẩn bị kiểm tra bộ gõ tiếng Việt | FE | F07 / S08 | P015, P013 | todo |
-| [P017](./P017-pyinstaller-onedir.md) PyInstaller onedir cho backend | DESKTOP | F00 / S09 | P003 | todo |
-| [P018](./P018-gan-backend-vao-tauri.md) Gắn backend vào bundle Tauri + installer Windows | DESKTOP | F00 / S09 | P017, P012 | todo |
-| [P019](./P019-script-ky-macos.md) Script ký backend cho macOS | DESKTOP | F00 / S09 | P017 | todo |
-| [P020](./P020-nghiem-thu-r0.md) Nghiệm thu R0 + ADR | Tất cả | S10 | P008, P013, P016, P018 | todo |
+| [P011](./P011-rust-spawn-backend.md) Rust: spawn backend + readiness | DESKTOP | F00 | P010, P003 | done |
+| [P012](./P012-rust-shutdown-commands.md) Rust: tắt sạch + commands cho FE | DESKTOP | F00 | P011 | done |
+| [P013](./P013-fe-boot-gate.md) FE: BootGate và màn khởi động | FE | F00 | P012, P004 | done |
+| [P014](./P014-spike-tiptap.md) Spike editor Tiptap + paragraph_id | FE | F07 / S08 | P004 | done |
+| [P015](./P015-paste-nfc-dem-am-tiet-ts.md) Paste NFC + đếm âm tiết TS | FE | F07 / F08 | P014 | done |
+| [P016](./P016-checklist-ime.md) Chuẩn bị kiểm tra bộ gõ tiếng Việt | FE | F07 / S08 | P015, P013 | done |
+| [P017](./P017-pyinstaller-onedir.md) PyInstaller onedir cho backend | DESKTOP | F00 / S09 | P003 | done |
+| [P018](./P018-gan-backend-vao-tauri.md) Gắn backend vào bundle Tauri + installer Windows | DESKTOP | F00 / S09 | P017, P012 | done |
+| [P019](./P019-script-ky-macos.md) Script ký backend cho macOS | DESKTOP | F00 / S09 | P017 | done |
+| [P020](./P020-nghiem-thu-r0.md) Nghiệm thu R0 + ADR | Tất cả | S10 | P008, P013, P016, P018 | done |
 
 ### R1 – nền dữ liệu, vault, thư viện, cấu hình AI, editor
 
@@ -87,78 +87,78 @@ Trạng thái: `todo` · `doing` · `done` · `blocked (lý do)`.
 | [P111](./P111-vault-crypto.md) Vault: mã hóa file secrets.enc | BE | F03 | P003 | done |
 | [P112](./P112-secret-store.md) SecretStore + key theo phiên + che log | BE | F03 | P111 | done |
 | [P113](./P113-vault-api.md) API vault + secrets + event vault.status | BE | F03 | P112, P108 | done |
-| [P114](./P114-onboarding-api.md) API trạng thái onboarding | BE | F03 | P102 | todo |
-| [P115](./P115-works-crud.md) Bảng works + CRUD tác phẩm | BE | F05 | P104 | todo |
-| [P116](./P116-style-profile-languages.md) Style profile + ngôn ngữ + thể loại | BE | F05 | P115 | todo |
-| [P117](./P117-library-badge-search.md) Badge thư viện + tìm theo tiêu đề | BE | F05 | P116, P107 | todo |
-| [P118](./P118-adapter-anthropic.md) AI: adapter Anthropic | AI | F04 | P002 | todo |
-| [P119](./P119-adapter-openai-compatible.md) AI: adapter OpenAI-compatible / Ollama | AI | F04 | P002 | todo |
-| [P120](./P120-list-models.md) AI: liệt kê và chuẩn hóa model | AI | F04 | P118, P119 | todo |
-| [P121](./P121-retry-limiter-port.md) AI: chính sách retry + ProviderLimiterPort | AI | F04 / F12 | P118 | todo |
-| [P122](./P122-providers-crud.md) BE: CRUD provider | BE | F04 | P113 | todo |
-| [P123](./P123-discovery-service.md) BE: tự lấy danh sách model + merge | BE | F04 | P122, P120 | todo |
-| [P124](./P124-models-roles-resolver.md) BE: thứ tự model, vai trò, model_resolver | BE | F04 | P123, P115 | todo |
-| [P125](./P125-limiter-provider.md) BE: limiter theo provider | BE | F04 / F12 | P121, P122 | todo |
-| [P126](./P126-chapters-crud.md) BE: bảng chương + tạo/xóa/sắp xếp | BE | F07 | P115 | todo |
-| [P127](./P127-working-copy-revision.md) BE: working copy autosave + quy tắc revision | BE | F07 | P126 | todo |
-| [P128](./P128-revision-diff-restore.md) BE: diff, restore, xung đột 409 | BE | F07 | P127 | todo |
-| [P129](./P129-paragraph-lock-index.md) BE: paragraph projection, khóa chương nền, index | BE | F07 | P128, P107, P105 | todo |
-| [P150](./P150-shadcn-base-ui.md) FE: shadcn/ui trên Base UI | FE | UI | P004 | todo |
-| [P151](./P151-font-theme.md) FE: font tiếng Việt offline + theme | FE | UI | P150 | todo |
-| [P152](./P152-app-shell.md) FE: AppShell ribbon/header/status bar | FE | UI | P151 | todo |
-| [P153](./P153-error-empty-states.md) FE: ErrorState, EmptyState, Skeleton, toast | FE | F01 | P150 | todo |
-| [P154](./P154-event-bus-fe.md) FE: event bus toàn cục + banner kết nối | FE | F01 | P152 | todo |
-| [P155](./P155-hotkeys-palette.md) FE: phím tắt + command palette | FE | UI | P152 | todo |
-| [P156](./P156-playwright-mock.md) FE: Playwright + backend giả | FE | Test | P152 | todo |
-| [P157](./P157-onboarding-ui.md) FE: luồng lần chạy đầu | FE | F03 | P153, P156 | todo |
-| [P158](./P158-vault-ui.md) FE: mở khóa vault + trang Bảo mật | FE | F03 | P153 | todo |
-| [P159](./P159-library-ui.md) FE: trang Thư viện | FE | F05 | P153 | todo |
-| [P160](./P160-wizard-skeleton.md) FE: khung wizard tạo truyện | FE | F05 | P159 | todo |
-| [P161](./P161-settings-models-connection.md) FE: Cài đặt Mô hình AI – kết nối + lấy danh sách | FE | F04 | P153 | todo |
-| [P162](./P162-settings-model-list.md) FE: danh sách model kéo thả + effort | FE | F04 | P161 | todo |
-| [P163](./P163-settings-roles-concurrency.md) FE: vai trò & effort, đồng thời & ngân sách | FE | F04 / F12 | P161 | todo |
-| [P164](./P164-workspace-chapter-tree.md) FE: workspace 3 cột + cây chương | FE | F07 | P152, P014 | todo |
-| [P165](./P165-editor-autosave.md) FE: editor đầy đủ + autosave | FE | F07 | P164, P015 | todo |
-| [P166](./P166-editor-readonly-focus.md) FE: chương nền chỉ đọc + chế độ tập trung | FE | F07 | P165 | todo |
-| [P167](./P167-history-diff.md) FE: lịch sử phiên bản + diff mức từ | FE | F07 | P165 | todo |
+| [P114](./P114-onboarding-api.md) API trạng thái onboarding | BE | F03 | P102 | done |
+| [P115](./P115-works-crud.md) Bảng works + CRUD tác phẩm | BE | F05 | P104 | done |
+| [P116](./P116-style-profile-languages.md) Style profile + ngôn ngữ + thể loại | BE | F05 | P115 | done |
+| [P117](./P117-library-badge-search.md) Badge thư viện + tìm theo tiêu đề | BE | F05 | P116, P107 | done |
+| [P118](./P118-adapter-anthropic.md) AI: adapter Anthropic | AI | F04 | P002 | done |
+| [P119](./P119-adapter-openai-compatible.md) AI: adapter OpenAI-compatible / Ollama | AI | F04 | P002 | done |
+| [P120](./P120-list-models.md) AI: liệt kê và chuẩn hóa model | AI | F04 | P118, P119 | done |
+| [P121](./P121-retry-limiter-port.md) AI: chính sách retry + ProviderLimiterPort | AI | F04 / F12 | P118 | done |
+| [P122](./P122-providers-crud.md) BE: CRUD provider | BE | F04 | P113 | done |
+| [P123](./P123-discovery-service.md) BE: tự lấy danh sách model + merge | BE | F04 | P122, P120 | done |
+| [P124](./P124-models-roles-resolver.md) BE: thứ tự model, vai trò, model_resolver | BE | F04 | P123, P115 | done |
+| [P125](./P125-limiter-provider.md) BE: limiter theo provider | BE | F04 / F12 | P121, P122 | done |
+| [P126](./P126-chapters-crud.md) BE: bảng chương + tạo/xóa/sắp xếp | BE | F07 | P115 | done |
+| [P127](./P127-working-copy-revision.md) BE: working copy autosave + quy tắc revision | BE | F07 | P126 | done |
+| [P128](./P128-revision-diff-restore.md) BE: diff, restore, xung đột 409 | BE | F07 | P127 | done |
+| [P129](./P129-paragraph-lock-index.md) BE: paragraph projection, khóa chương nền, index | BE | F07 | P128, P107, P105 | done |
+| [P150](./P150-shadcn-base-ui.md) FE: shadcn/ui trên Base UI | FE | UI | P004 | done |
+| [P151](./P151-font-theme.md) FE: font tiếng Việt offline + theme | FE | UI | P150 | done |
+| [P152](./P152-app-shell.md) FE: AppShell ribbon/header/status bar | FE | UI | P151 | done |
+| [P153](./P153-error-empty-states.md) FE: ErrorState, EmptyState, Skeleton, toast | FE | F01 | P150 | done |
+| [P154](./P154-event-bus-fe.md) FE: event bus toàn cục + banner kết nối | FE | F01 | P152 | done |
+| [P155](./P155-hotkeys-palette.md) FE: phím tắt + command palette | FE | UI | P152 | done |
+| [P156](./P156-playwright-mock.md) FE: Playwright + backend giả | FE | Test | P152 | done |
+| [P157](./P157-onboarding-ui.md) FE: luồng lần chạy đầu | FE | F03 | P153, P156 | done |
+| [P158](./P158-vault-ui.md) FE: mở khóa vault + trang Bảo mật | FE | F03 | P153 | done |
+| [P159](./P159-library-ui.md) FE: trang Thư viện | FE | F05 | P153 | done |
+| [P160](./P160-wizard-skeleton.md) FE: khung wizard tạo truyện | FE | F05 | P159 | done |
+| [P161](./P161-settings-models-connection.md) FE: Cài đặt Mô hình AI – kết nối + lấy danh sách | FE | F04 | P153 | done |
+| [P162](./P162-settings-model-list.md) FE: danh sách model kéo thả + effort | FE | F04 | P161 | done |
+| [P163](./P163-settings-roles-concurrency.md) FE: vai trò & effort, đồng thời & ngân sách | FE | F04 / F12 | P161 | done |
+| [P164](./P164-workspace-chapter-tree.md) FE: workspace 3 cột + cây chương | FE | F07 | P152, P014 | done |
+| [P165](./P165-editor-autosave.md) FE: editor đầy đủ + autosave | FE | F07 | P164, P015 | done |
+| [P166](./P166-editor-readonly-focus.md) FE: chương nền chỉ đọc + chế độ tập trung | FE | F07 | P165 | done |
+| [P167](./P167-history-diff.md) FE: lịch sử phiên bản + diff mức từ | FE | F07 | P165 | done |
 
 ### R2 – tiếng Việt, trạng thái/bộ nhớ, viết chương liền mạch, review, đa truyện
 
 | Prompt | Làn | Tính năng | Phụ thuộc | Trạng thái |
 |---|---|---|---|---|
-| [P201](./P201-language-pack-mo-rong.md) AI: mở rộng LanguagePack + dữ liệu tiếng Việt | AI | F08 | P002 | todo |
-| [P202](./P202-kiem-tra-xung-ho.md) AI: kiểm tra xưng hô vi.address | AI | F08 | P201 | todo |
-| [P203](./P203-kiem-tra-ten-lop-tu.md) AI: kiểm tra tên riêng + lớp từ | AI | F08 | P201 | todo |
-| [P204](./P204-kiem-tra-slop-chinh-ta.md) AI: cụm sáo, chính tả, kiểu bỏ dấu, thoại | AI | F08 | P201 | todo |
-| [P205](./P205-prompt-loader.md) AI: nạp prompt Jinja2 + manifest | AI | F08 | P201 | todo |
-| [P206](./P206-storystate-contracts.md) AI: contract StoryState + StateDelta | AI | F09 | P002 | todo |
-| [P207](./P207-apply-delta-v01-v08.md) AI: apply_delta + validator V01–V08 | AI | F09 | P206 | todo |
-| [P208](./P208-validator-v09-v15.md) AI: validator V09–V15 | AI | F09 | P207 | todo |
-| [P209](./P209-paragraph-ops.md) AI: văn bản theo đoạn + ParagraphOps | AI | F09 / F10 | P002 | todo |
-| [P210](./P210-composer-context.md) AI: Composer ngữ cảnh theo lớp | AI | F09 | P206, P205 | todo |
-| [P211](./P211-token-tail-text.md) AI: đếm token + cắt tail_text | AI | F09 | P210 | todo |
-| [P212](./P212-summaries.md) AI: tóm tắt phân tầng | AI | F09 | P210, P205 | todo |
-| [P213](./P213-planner-pacing.md) AI: bước Planner + nhịp truyện | AI | F10 | P210, P118 | todo |
-| [P214](./P214-writer-step.md) AI: bước Writer (nối chương) | AI | F10 | P213, P211 | todo |
-| [P215](./P215-settlement-step.md) AI: bước Settle (delta + ending_state) | AI | F10 | P214, P207 | todo |
-| [P216](./P216-validate-seam.md) AI: validator LLM + kiểm tra mối nối | AI | F10 | P215 | todo |
-| [P217](./P217-reviewer-step.md) AI: bước Review | AI | F10 | P216, P202, P203, P204 | todo |
-| [P218](./P218-repair-loop.md) AI: vòng sửa cục bộ | AI | F10 | P217, P209 | todo |
-| [P219](./P219-pipeline-orchestration.md) AI: điều phối pipeline một chương | AI | F10 | P218, P212, P121 | todo |
-| [P220](./P220-outline-review.md) AI: xét lại dàn ý mỗi K chương | AI | F10 | P219 | todo |
-| [P221](./P221-revise-workflow.md) AI: workflow sửa theo yêu cầu tác giả | AI | F11 | P219 | todo |
-| [P222](./P222-foundation-workflow.md) AI: workflow nền truyện | AI | F06 | P206, P205 | todo |
-| [P230](./P230-language-be.md) BE: gói ngôn ngữ khi lưu + API kiểm tra | BE | F08 | P129, P204 | todo |
-| [P231](./P231-memory-tables.md) BE: bảng trạng thái và bộ nhớ | BE | F09 | P126 | todo |
-| [P232](./P232-apply-delta-transaction.md) BE: áp StateDelta trong một transaction | BE | F09 | P231, P208 | todo |
-| [P233](./P233-memory-api-context-port.md) BE: API trạng thái/bộ nhớ + ContextPort | BE | F09 | P232, P107 | todo |
-| [P234](./P234-longform-tables.md) BE: bảng handoff, plan, candidate, findings | BE | F10 / F11 | P231 | todo |
-| [P235](./P235-write-job-runner.md) BE: job viết chương chạy pipeline | BE | F10 | P234, P233, P219, P124, P125 | todo |
-| [P236](./P236-commit-gate.md) BE: cổng vào + commit một transaction | BE | F10 | P235 | todo |
-| [P237](./P237-continuity-api.md) BE: API liền mạch + chỉ số | BE | F10 | P236 | todo |
-| [P238](./P238-candidate-accept.md) BE: nhận candidate (cả chương / từng đoạn) | BE | F11 | P236 | todo |
-| [P239](./P239-findings-api.md) BE: findings resolve/dismiss | BE | F11 | P238 | todo |
-| [P240](./P240-revise-resync.md) BE: job sửa + stale_from + resync | BE | F11 | P239, P221 | todo |
+| [P201](./P201-language-pack-mo-rong.md) AI: mở rộng LanguagePack + dữ liệu tiếng Việt | AI | F08 | P002 | done |
+| [P202](./P202-kiem-tra-xung-ho.md) AI: kiểm tra xưng hô vi.address | AI | F08 | P201 | done |
+| [P203](./P203-kiem-tra-ten-lop-tu.md) AI: kiểm tra tên riêng + lớp từ | AI | F08 | P201 | done |
+| [P204](./P204-kiem-tra-slop-chinh-ta.md) AI: cụm sáo, chính tả, kiểu bỏ dấu, thoại | AI | F08 | P201 | done |
+| [P205](./P205-prompt-loader.md) AI: nạp prompt Jinja2 + manifest | AI | F08 | P201 | done |
+| [P206](./P206-storystate-contracts.md) AI: contract StoryState + StateDelta | AI | F09 | P002 | done |
+| [P207](./P207-apply-delta-v01-v08.md) AI: apply_delta + validator V01–V08 | AI | F09 | P206 | done |
+| [P208](./P208-validator-v09-v15.md) AI: validator V09–V15 | AI | F09 | P207 | done |
+| [P209](./P209-paragraph-ops.md) AI: văn bản theo đoạn + ParagraphOps | AI | F09 / F10 | P002 | done |
+| [P210](./P210-composer-context.md) AI: Composer ngữ cảnh theo lớp | AI | F09 | P206, P205 | done |
+| [P211](./P211-token-tail-text.md) AI: đếm token + cắt tail_text | AI | F09 | P210 | done |
+| [P212](./P212-summaries.md) AI: tóm tắt phân tầng | AI | F09 | P210, P205 | done |
+| [P213](./P213-planner-pacing.md) AI: bước Planner + nhịp truyện | AI | F10 | P210, P118 | done |
+| [P214](./P214-writer-step.md) AI: bước Writer (nối chương) | AI | F10 | P213, P211 | done |
+| [P215](./P215-settlement-step.md) AI: bước Settle (delta + ending_state) | AI | F10 | P214, P207 | done |
+| [P216](./P216-validate-seam.md) AI: validator LLM + kiểm tra mối nối | AI | F10 | P215 | done |
+| [P217](./P217-reviewer-step.md) AI: bước Review | AI | F10 | P216, P202, P203, P204 | done |
+| [P218](./P218-repair-loop.md) AI: vòng sửa cục bộ | AI | F10 | P217, P209 | done |
+| [P219](./P219-pipeline-orchestration.md) AI: điều phối pipeline một chương | AI | F10 | P218, P212, P121 | done |
+| [P220](./P220-outline-review.md) AI: xét lại dàn ý mỗi K chương | AI | F10 | P219 | done |
+| [P221](./P221-revise-workflow.md) AI: workflow sửa theo yêu cầu tác giả | AI | F11 | P219 | done |
+| [P222](./P222-foundation-workflow.md) AI: workflow nền truyện | AI | F06 | P206, P205 | done |
+| [P230](./P230-language-be.md) BE: gói ngôn ngữ khi lưu + API kiểm tra | BE | F08 | P129, P204 | done |
+| [P231](./P231-memory-tables.md) BE: bảng trạng thái và bộ nhớ | BE | F09 | P126 | done |
+| [P232](./P232-apply-delta-transaction.md) BE: áp StateDelta trong một transaction | BE | F09 | P231, P208 | done |
+| [P233](./P233-memory-api-context-port.md) BE: API trạng thái/bộ nhớ + ContextPort | BE | F09 | P232, P107 | done |
+| [P234](./P234-longform-tables.md) BE: bảng handoff, plan, candidate, findings | BE | F10 / F11 | P231 | done |
+| [P235](./P235-write-job-runner.md) BE: job viết chương chạy pipeline | BE | F10 | P234, P233, P219, P124, P125 | doing |
+| [P236](./P236-commit-gate.md) BE: cổng vào + commit một transaction | BE | F10 | P235 | doing |
+| [P237](./P237-continuity-api.md) BE: API liền mạch + chỉ số | BE | F10 | P236 | doing |
+| [P238](./P238-candidate-accept.md) BE: nhận candidate (cả chương / từng đoạn) | BE | F11 | P236 | doing |
+| [P239](./P239-findings-api.md) BE: findings resolve/dismiss | BE | F11 | P238 | done |
+| [P240](./P240-revise-resync.md) BE: job sửa + stale_from + resync | BE | F11 | P239, P221 | doing |
 | [P241](./P241-chapter-structure-rules.md) BE: chèn/xóa/sắp xếp chương giữa truyện | BE | F11 | P240 | todo |
 | [P242](./P242-scheduler-fair.md) BE: scheduler đa truyện xoay vòng công bằng | BE | F12 | P236 | todo |
 | [P243](./P243-waiting-budget.md) BE: lý do chờ + ngân sách | BE | F12 | P242 | todo |

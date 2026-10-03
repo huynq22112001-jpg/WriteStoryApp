@@ -15,6 +15,7 @@ writestory-ai = { workspace = true }
 writestory-be = { workspace = true }
 
 [dependency-groups]
+build = []
 dev = [
     "writestory-be",
     "writestory-ai",

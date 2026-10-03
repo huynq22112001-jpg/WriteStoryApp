@@ -88,11 +88,11 @@ Namespace `onboarding` và `vault`. Ví dụ khóa: `onboarding.title`, `onboard
 ## Việc cần làm
 
 - [ ] `api/onboarding.ts`, `api/vault.ts` dùng generated types.
-- [ ] `useOnboardingRedirect` gắn ở route gốc (chỉ chạy khi backend `ready`).
-- [ ] Bốn bước wizard; `StepProvider` dùng component F04 (tạm placeholder liên kết tới Cài đặt nếu F04 chưa xong).
+- [x] Điều hướng tới onboarding gắn ở `AppShell`, chỉ chạy khi có phiên backend.
+- [x] Bốn bước wizard; bước provider tích hợp form kết nối của F04.
 - [ ] `VaultUnlockDialog`, `vaultDialogStore`, đăng ký `unlock_vault` vào `errorActions`.
-- [ ] `VaultBadge` trong header; xử lý `vault.status` và `job.state` (wait_reason) từ event bus.
-- [ ] `SecuritySettingsPage` với tạo/đổi mật khẩu/khóa/đặt lại/danh sách key.
+- [x] Badge vault trong header; xử lý `vault.status` và `job.state` (wait_reason) từ event bus.
+- [x] `SecuritySettingsPage` với tạo/đổi mật khẩu/khóa/đặt lại/danh sách key.
 - [ ] Khóa i18n `onboarding`, `vault`.
 
 ## Test
